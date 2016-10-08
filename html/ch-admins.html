@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-admins"></a>
+<p><a name="ch-admins"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-switches.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-prog.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,32 +48,34 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s-perf"></a>
-<h2>9.1 Smart Cache Performance</h2>
+<h2><a name="s-perf"></a>9.1 Smart Cache Performance</h2>
 
 <p>
 Smart Cache runs fast and has comparable performance with other (non-Java)
 proxy servers, such as Apache or Squid.  Proxy servers do not needs much CPU
 power and real world performance is limited by filesystem, network speeds and
 by quality of TCP stack.
+</p>
 
 <p>
 Smart Cache performs well on low end hardware.  Any Pentium class low end
 system with 32MB RAM can do proxy for whole medium-size network without
 troubles.  If you need proxy for your home network any 486 can do that.
+</p>
 
 <p>
 Pentium 166, 64 MB RAM, Debian Linux 3.0, reiserfs 3 filesystem mounted with
 notail,noatime - proxy server for 50 users.
+</p>
 
 <p>
 486 66, 32 MB RAM, OS/2, HPFS filesystem with 2048KB diskcache, IDE hardrives -
 proxy for 25 users.
+</p>
 
 <hr>
 
-<a name="s-bench"></a>
-<h2>9.2 Proxy cache Benchmarks</h2>
+<h2><a name="s-bench"></a>9.2 Proxy cache Benchmarks</h2>
 
 <p>
 Test method: The benchmark is simple `give me the same page` test.  I have run
@@ -88,59 +88,75 @@ Testing software <code><a
 href="http://home.tiscali.cz/~cz210552/webbench.html">webbench 1.2</a></code>.
 Log file analysis shows that one active browsing user needs about 50-60
 requests per minute; this is counted as average from 10 minutes of activity.
+</p>
 
 <p>
 Results shows following:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 only Java 1.1 runs faster with more memory available to JVM.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 -server switch has no speed increase effect.  This switch should optimize JVM
 for server apps.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 JDK 1.3 seems to crashing sometimes when -server switch is used.
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 Linux is <em>3 times faster</em> than Windows XP
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 Linux has no problems with benchmark load
+</p>
 </li>
 </ol>
 <ol type="1" start="6" >
 <li>
+<p>
 Windows gets failed connections (about 0.1%), TCP/IP stack crashes (about 1 per
 5 webbench runs) and BSOD (2 times during benchmark).  No of these problems
 shows during normal Scache use.
+</p>
 </li>
 </ol>
 
 <p>
 Summary: Classic scache startup switches: &quot;java -ms1m &quot; are best for
 everybody with JDK &gt; 1.1.
+</p>
 
 <hr>
 
-<a name="s9.2.1"></a>
-<h3>9.2.1 Pentium 166/32MB</h3>
+<h3><a name="s9.2.1"></a>9.2.1 Pentium 166/32MB</h3>
 
 <p>
 Hardware used: Pentium 166/32MB RAM, IDE hard drive (hdparm -t 7.8MB), Debian
 Linux 3.0, kernel 2.4.19, reiserfs 3.6.25 filesystem.
+</p>
 
 <p>
 Software used: Sun JDK 1.1.8v1, tya JIT 1.7v2, Apache 1.3.24, GCJ-3.2, Squid
 2.4.6, Smart Cache 0.77pre.
+</p>
 
 <pre>
      Results:
@@ -168,20 +184,22 @@ Software used: Sun JDK 1.1.8v1, tya JIT 1.7v2, Apache 1.3.24, GCJ-3.2, Squid
 <p>
 These tests was before -local switch fix.  These patches adds 4% to Smart Cache
 results.  They should be used if you want to get comparable results.
+</p>
 
 <hr>
 
-<a name="s9.2.2"></a>
-<h3>9.2.2 Pentium IV/256MB</h3>
+<h3><a name="s9.2.2"></a>9.2.2 Pentium IV/256MB</h3>
 
 <p>
 Hardware used: Pentium IV/256MB RAM, 256KB cache.  IDE hard drive (hdparm -t
 40.76MB).  Windows XP Home, Knoppix Linux 3.1 with kernel 2.4.20-xfs, NTFS
 filesystem.
+</p>
 
 <p>
 Software used: Sun JDK 1.4.1-rc (Windows), Blackdown JDK 1.3.1-02b-FCS, Apache
 1.3.24/Win32, Smart Cache 0.86b4, webbench 1.2.
+</p>
 
 <pre>
      Windows results:
@@ -213,30 +231,31 @@ Software used: Sun JDK 1.4.1-rc (Windows), Blackdown JDK 1.3.1-02b-FCS, Apache
 
 <hr>
 
-<a name="s9.2.3"></a>
-<h3>9.2.3 Case study #1 - 486/33 OS/2</h3>
+<h3><a name="s9.2.3"></a>9.2.3 Case study #1 - 486/33 OS/2</h3>
 
 <p>
 On my old 486/33DX System with 20MB RAM running IBM JDK1.1.4 under OS/2 (JIT
 off), Smart Cache serves 350 pages/min (with JIT is under OS/2 about 25%
 faster, but sometimes crashes due to JIT bug).  OS/2 port of Apache 1.1 server
 only about 250.
+</p>
 
 <p>
 So 486/33 with Linux can serve 15 users without any problems, if there is
 sufficient amount of installed RAM (20MB) and machine do not run any
 CPU-intensive tasks on normal or high priority.  I have used this configuration
 for 2 years on OS/2 which is even slower on filesystem operations than Linux.
+</p>
 
 <hr>
 
-<a name="s9.2.4"></a>
-<h3>9.2.4 Case study #2 - 486/100 Linux</h3>
+<h3><a name="s9.2.4"></a>9.2.4 Case study #2 - 486/100 Linux</h3>
 
 <p>
 On Linux 486 100Mhz system with JDK1.1.7 with tya1.1 JIT and green threads it
 serves 910 pages/min.  Do not use native threads under Linux's Java 1.1, it is
 buggy, slow and memory hungry.
+</p>
 
 <p>
 Linux can use different filesystems.  Do not use VFAT unless you need to share
@@ -244,63 +263,66 @@ your cache with Windows running on the same machine.  In my benchmarks i have
 found that reiser fs (especially with notail,noatime) is much faster than ext2.
 Reiserfs can pack small files together into one disk block which saves a lot of
 diskspace on large cache, but makes it slower.
+</p>
 
 <hr>
 
-<a name="s-largecache"></a>
-<h2>9.3 Administration of large cache</h2>
+<h2><a name="s-largecache"></a>9.3 Administration of large cache</h2>
 
 <p>
 Large caches needs some special things to consider.  Large cache is anything
 over 2 GB.
+</p>
 
 <hr>
 
-<a name="s9.3.1"></a>
-<h3>9.3.1 Physical storage of data</h3>
+<h3><a name="s9.3.1"></a>9.3.1 Physical storage of data</h3>
 
 <p>
 The best is to store cached data on dedicated physical drive.  You do not need
 to backup it, if drive goes wrong; simply throw it away and plug a new one.
 You can take some used hard drives for that.
+</p>
 
 <p>
 If you are not using dedicated physical drive, than use dedicated partition
 (volume, stripe) of fixed size.  This saves you a lot of troubles when your
 server is short of diskspace.
+</p>
 
 <hr>
 
-<a name="s9.3.2"></a>
-<h3>9.3.2 Choosing a filesystem</h3>
+<h3><a name="s9.3.2"></a>9.3.2 Choosing a filesystem</h3>
 
 <p>
 Important: You _MUST_ use a journaling filesystem, if you do not want to wait
 hours after your server crash.
+</p>
 
 <p>
 Linux: I recommend to use reiser3 filesystem mounted with notail,noatime
 option.  It has 4kB blocksize and goes very well.  I can not recommend to use
 JFS filesystem.
+</p>
 
 <p>
 Windows: I recommend to use NTFS over FAT32.  It has higher performance and
 NTFS seems to be more stable than FAT32.
+</p>
 
 <hr>
 
-<a name="s9.3.3"></a>
-<h3>9.3.3 Configuring swaplevels</h3>
+<h3><a name="s9.3.3"></a>9.3.3 Configuring swaplevels</h3>
 
 <p>
 You must change default values of swap_level1_dirs and swap_level2_dirs in
 <code>scache.cnf</code> In example file <code>sample/scache.cnf</code> you find
 table which lists minimal recommended values based on cache size.
+</p>
 
 <hr>
 
-<a name="s9.3.4"></a>
-<h3>9.3.4 Configuring max connections</h3>
+<h3><a name="s9.3.4"></a>9.3.4 Configuring max connections</h3>
 
 <p>
 Most browsers uses 4 network connections when talks to proxy server.  Your
@@ -308,16 +330,17 @@ network has 100 uses.  You can assume than about 5% of you users are browsing
 web at one time.  Set max_connections to 35, if your outgoing network
 connection can handle more, you can increase it.  When you are editing
 configuration change also loglevel to 3 or 2.
+</p>
 
 <hr>
 
-<a name="s9.3.5"></a>
-<h3>9.3.5 Fine tuning garbage collection</h3>
+<h3><a name="s9.3.5"></a>9.3.5 Fine tuning garbage collection</h3>
 
 <p>
 Smart Caches Garbage collection on large caches can take some time.  Art of
 administration large SC is to tweak <code>gc.cnf</code> values and then clear
 daily files with single scan garbage collection.  How can you do it?
+</p>
 
 <p>
 Smart Cache GC deletes by one cache scan at most gcarraysize objects + number
@@ -329,12 +352,14 @@ when gcarraysize is power of two, because it uses binary search.  Making bigger
 gcarraysize cost more CPU and memory during GC (not problem today).  If you
 make gcarray size too big and OS will needs to start swaping, GC will run very
 slow or runs out of memory.  1 slot in gcarray takes about 1 KB of memory.
+</p>
 
 <p>
 Because size of gcarray is never big enough on multi-gigabyte caches.  Use
 settings like that for forcing fast cleaning of non-checkable and other junk
 pages during cache scan; it will save you valueable gcarraysize.  Also is a
 very good idea to set reference_age to some smaller value, for example 120d.
+</p>
 
 <pre>
      negative_cached_penalty =0.5
@@ -347,8 +372,7 @@ very good idea to set reference_age to some smaller value, for example 120d.
 
 <hr>
 
-<a name="s9.3.6"></a>
-<h3>9.3.6 Example large cache configuration</h3>
+<h3><a name="s9.3.6"></a>9.3.6 Example large cache configuration</h3>
 
 <p>
 30 GB cache, gcarraysize 32768 (if you have 256MB of RAM or more, double it.
@@ -359,11 +383,11 @@ daily traffic.  GC runs once per week and takes about 1 hour to complete.
 Hardware used: Linux 2.4.20 (needed for speeding reiserfs IDE writing),
 reiserfs filesystem (notail,noatime of course), dedicated 100ATA IDE drive for
 caching, 128 MB of RAM, 700Mhz AMD CPU.
+</p>
 
 <hr>
 
-<a name="s-gcj"></a>
-<h2>9.4 Making native executable</h2>
+<h2><a name="s-gcj"></a>9.4 Making native executable</h2>
 
 <p>
 Smart Cache runs when it is recompiled with <code><a
@@ -371,25 +395,29 @@ href="http://gcc.gnu.org/">GCJ</a></code> to native executable.  I have tested
 GCJ 3.2 and there are no problems with it.  This native executable runs faster
 (at least on Linux), but eats more memory.  Is is quite possible that you will
 not able to compile it due to bugs in GCJ.
+</p>
 
 <p>
 You can build Debian GCJ compiled package <code>scache-native</code> directly
 from sources.
+</p>
 
 <hr>
 
-<a name="s-squid"></a>
-<h2>9.5 Smart Cache vs Squid</h2>
+<h2><a name="s-squid"></a>9.5 Smart Cache vs Squid</h2>
 
 <p>
 Squid and Smart Cache are not competing products.  Both uses different designs;
 Apache Web server cache uses SC design also.  This chapter will show some
 differences.  In short Squid needs huge amounts of RAM.
+</p>
 <ul>
 <li>
+<p>
 Squid keeps last accessed pages in RAM, which allows him to serve them faster
 than SC if the same page is re-requested in short time (about 3 minutes).
 Squid grows happily over specified amount of memory, in most cases 2-3x times.
+</p>
 
 <p>
 This is especially shown in `give me the same page` cache benchmark.  This
@@ -397,11 +425,14 @@ benchmark has nothing to do with 'realistic' proxy cache usage patterns.  Smart
 Cache even sometimes beats Squid in this <a href="#s-bench">Proxy cache
 Benchmarks, Section 9.2</a>.  I have found that in real usage squid reports low
 amount of memory page hits in his access statistics.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Squid has entire cache indexes in memory.
+</p>
 
 <p>
 This means that size of RAM which is eaten by Squid depends on cache size.  1
@@ -409,26 +440,31 @@ GB cache with average 12.2K object size needs about 12MB of RAM (143 bytes per
 entry).  This thing allows to make fast on-the-fly LRU based garbage
 collection, while Smart Cache or Apache must reindex whole cache directory as
 part of GC.  Squid cache do not grows over specified amount of diskspace.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Squid can use cache hierarchy and peer caches featuring ICP protocol.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Squid needs about 30% less CPU time.
+</p>
 
 <p>
 Both caches needs nearly no CPU power.  They needs fast disk IO.
+</p>
 </li>
 </ul>
 
 <hr>
 
-<a name="s-ram"></a>
-<h2>9.6 Smart Cache memory usage</h2>
+<h2><a name="s-ram"></a>9.6 Smart Cache memory usage</h2>
 
 <p>
 Smart Cache has been optimized for minimal RAM and CPU use.  In normal use (by
@@ -436,45 +472,32 @@ single browsing user), it requires only about 400Kb RAM from JVM.  To get total
 size of required memory, you must add the shared dynamic (DLL) code loaded by
 the Java Runtime itself, which depends on Java versions, Java runtime options
 and operation system used.
+</p>
 
 <hr>
 
-<a name="s9.6.1"></a>
-<h3>9.6.1 Linux hints</h3>
+<h3><a name="s9.6.1"></a>9.6.1 Linux hints</h3>
 
 <p>
 On Linux with Blackdown JDK1.1.7 disable Motif Java interface (<code>export
 NS_JAVA=true</code>).  You will need only about 2.2MB of physical RAM (green
 threads without JIT) or 2.7MB of physical RAM with tya JIT.  When Smart Cache
 is in heavy use by multiple users add 350-500k.
+</p>
 
 <hr>
 
-<a name="s9.6.2"></a>
-<h3>9.6.2 OS/2 hints</h3>
-
-<p>
-On OS/2 Smart Cache takes about 3.5-4.5MB RAM, it can be reduced by factor 2
-using excellent LXOPT utility on Java's DLLs.  LXOPT utility is freeware now.
-See LXOPT documentation for more info.
-
-<p>
-Another memory gain is to add -norestart option just before -ms1m on Java
-invocation command line.  This do not starts another copy of Java with PM
-libraries (used for AWT).
-
-<hr>
-
-<a name="s-forwarder"></a>
-<h2>9.7 Web forwarding with Smart Cache</h2>
+<h2><a name="s-forwarder"></a>9.7 Web forwarding with Smart Cache</h2>
 
 <p>
 <strong>This feature is currently disabled for security reasons</strong>
+</p>
 
 <p>
 This is the setup for the web forwarder from www.firma.cz to www-orig.firma.cz.
 Smart Cache runs on www.firma.cz and forwards requests to www-orig.firma.cz.
 Some people use term web accelerator instead forwarder.
+</p>
 
 <p>
 Web forwarders are useful for example if you need to maintain your WWW site
@@ -483,9 +506,11 @@ backbone, people will use forwarder, and forwarder will send back cached data
 from your server.  Forwarder is also good when website uses
 dynamically-generated web-pages.  If you have many users then many same pages
 must be generated for every request, which uses valuable CPU resources.
+</p>
 
 <p>
 Example of scache.cnf:
+</p>
 
 <pre>
      BindAddress *
@@ -502,6 +527,7 @@ Example of scache.cnf:
 
 <p>
 Example of fail.cnf:
+</p>
 
 <pre>
      *
@@ -509,6 +535,7 @@ Example of fail.cnf:
 
 <p>
 Example of pass.cnf:
+</p>
 
 <pre>
      http://www-orig.firma.cz/*
@@ -516,6 +543,7 @@ Example of pass.cnf:
 
 <p>
 Example of rewrite.cnf:
+</p>
 
 <pre>
      http://www.firma.cz/* http://www-orig.firma.cz/ 1
@@ -523,26 +551,28 @@ Example of rewrite.cnf:
 
 <hr>
 
-<a name="s-transparent"></a>
-<h2>9.8 Using Smart Cache as transparent proxy</h2>
+<h2><a name="s-transparent"></a>9.8 Using Smart Cache as transparent proxy</h2>
 
 <p>
 Smart Cache can be also used in transparent-proxy mode.  Unlike Squid, Smart
 Cache does all security checks and you will not open new security hole.  [<a
-href="footnotes.html#f6" name="fr6">6</a>] You <strong>don't have to setup
+href="footnotes.html#f5" name="fr5">5</a>] You <strong>don't have to setup
 anything</strong> in <em>scache.cnf</em>, but you need TCP/IP stack or router
 hardware/software, which allow transparent proxying.  Linux or Cisco operations
 systems can do that.
+</p>
 
 <p>
 TCP-IP must be configured to redirect all traffic with destination port 80 to
 your Smart Cache's input port (same as for normal proxy requests).  This
 configuration is operation system dependent, ask your network administrator for
 doing it.
+</p>
 
 <p>
 In Linux, this is done with ipfwadm/ipchains/iptables programs.  Consult
 NAT-HOWTO for more information.  It is in section 6.2.
+</p>
 
 <pre>
      ## Send incoming port-80 web traffic from interface eth1 
@@ -553,25 +583,25 @@ NAT-HOWTO for more information.  It is in section 6.2.
 
 <hr>
 
-<a name="s-swap"></a>
-<h2>9.9 Using cache directory swaplevels</h2>
+<h2><a name="s-swap"></a>9.9 Using cache directory swaplevels</h2>
 
 <p>
 SC by default uses 4x4 swap directory levels.  If you look into it and see,
 that there are many (about 100) subdirectories with server names it may be wise
 to increase <em>swap_level1/2_dirs</em> and than redistribute directories to
 new levels using <em>-rebalance</em> command line option.
+</p>
 
 <p>
 For classic design filesystems which does not uses trees for indexing directory
 (ext2,fat) there should not be more than 100 subdirectories.  Modern
 filesystems HPFS, NTFS, reiserfs, xfs can handle more without any performance
 problems.  See <code>scache.cnf</code> for cachesize vs swaplevels table.
+</p>
 
 <hr>
 
-<a name="s-bind"></a>
-<h2>9.10 Setting the bindaddress</h2>
+<h2><a name="s-bind"></a>9.10 Setting the bindaddress</h2>
 
 <p>
 BindAddress is default set up to 127.0.0.1.  Many people do not need access
@@ -579,25 +609,28 @@ SmartCache from others computers and this also closes access from Internet to
 your computer or LAN via Smart Cache, which is a <em>Good Thing</em>.  No other
 computers can connect to it.  This is very good for security, but not very
 useful if you have LAN.
+</p>
 
 <p>
 If you have an Intranet and want to allow other Intranet computers to connect,
 enter your Intranet IP address here.
+</p>
 
 <p>
 Magic '*' allows any computer (even from Internet) to connect and use your
 proxy.  If you use it, blocking some URLs in you private network will be wise
 (see <a href="ch-operating.html#s-urlblock">URL blocking, Section 5.6</a>).
 There are no known security holes.
+</p>
 
 <p>
 For fine-tuning access to your proxy server see <a href="#s-access">Proxy
 access control, Section 9.11</a>.
+</p>
 
 <hr>
 
-<a name="s-access"></a>
-<h2>9.11 Proxy access control</h2>
+<h2><a name="s-access"></a>9.11 Proxy access control</h2>
 
 <p>
 Proxy access may be limited by using &quot;allow&quot; configuration statement
@@ -605,9 +638,11 @@ with the host ip address as a parameter to grant access only to specified
 hosts.  Hosts that are not allowed to access proxy server will receive
 &quot;403 Cache access denied&quot; response.  If no &quot;allow&quot;
 statements are found then any host is allowed to access the proxy.
+</p>
 
 <p>
 Allow statement can have optionally netmask or number of bits appended.
+</p>
 
 <pre>
      Example:
@@ -620,6 +655,7 @@ Allow statement can have optionally netmask or number of bits appended.
 
 <hr>
 
+<p>
 [ <a href="ch-switches.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -638,26 +674,23 @@ Allow statement can have optionally netmask or number of bits appended.
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-prog.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

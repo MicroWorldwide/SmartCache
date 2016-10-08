@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-configuration"></a>
+<p><a name="ch-configuration"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-inst-setup.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-operating.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,35 +48,40 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s-quickcnf"></a>
-<h2>4.1 Quick Smart Cache configuration</h2>
+<h2><a name="s-quickcnf"></a>4.1 Quick Smart Cache configuration</h2>
 
 <p>
 Smart Cache comes with set of configuration files (*.cnf), which are
 preconfigured to useful default values.  You must copy them from samples
 subdirectory.  You can unpack newer versions of scache over your old version
 without your customized configuration files being overwritten.
+</p>
 
 <p>
 In many cases is not necessary to change anything.  Smart Cache has builtin
 defaults which are used when configuration files are unavailable.
+</p>
 
 <p>
 Edit configuration file <code>scache.cnf</code> with any ASCII editor (for
 example ViM or Notepad in Windows).  Configuration directives are commented.
 If you don't understand them, try ask somebody who does.  I have received very
 few requests for explaining within the entire history of this product.
+</p>
 
 <p>
 Most important directives to change are:
+</p>
 <dl>
 <dt>cache_dir</dt>
 <dd>
+<p>
 where are your cached objects stored.  This is <em>not</em> main directory in
 which Smart Cache is installed.  Best location is in a 1st level directory
 (i.e.  C:\CACHE or /var/scache under Unix) because some URLs have very long
 names.  Directory must be located on filesystem with Long Names support.  OS/2
 with FAT disk will not work.  Example:
+</p>
 
 <pre>
      cache_dir c:\cache
@@ -88,58 +91,54 @@ with FAT disk will not work.  Example:
 <dl>
 <dt>http_proxy</dt>
 <dd>
+<p>
 If you use an ISP's proxy server (which is very recommended), set it in the
 <em>http_proxy</em> directive.  Example:
+</p>
 
 <pre>
      http_proxy 192.108.56.10 3198
 </pre>
 </dd>
 </dl>
-<dl>
-<dt>shutdown_flag and immediate_shutdown_flag (see <a href="ch-operating.html#s-stopping">Stopping Smart Cache/Shutdown flag, Section 5.3</a>)</dt>
-<dd>
-name of flag file - when a file with this name is detected, the cache will be
-stopped (if inactive).  Example:
-
-<pre>
-     shutdown_flag c:\stop
-     immediate_shutdown_flag c:\stop.now
-</pre>
-</dd>
-</dl>
 
 <hr>
 
-<a name="s-gcconf"></a>
-<h2>4.2 Configuration of garbage collection</h2>
+<h2><a name="s-gcconf"></a>4.2 Configuration of garbage collection</h2>
 
 <p>
 Garbage collection is configured in file <code>gc.cnf</code>.  Most important
 directives to change are:
+</p>
 <dl>
 <dt>cache_swap_size</dt>
 <dd>
+<p>
 cache size.  100 MB is good starting point for everyone.  Optimal size depends
 of your browsing activity.  See <a
 href="ch-advancedt.html#s-cachesize">Choosing a good cachesize, Section
 7.1</a>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>block_size</dt>
 <dd>
+<p>
 size of one disk allocation unit (also called cluster) in bytes.  GC needs this
 for computing real diskspace, which is used by file.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>average_directory_size</dt>
 <dd>
+<p>
 Average size of one directory.  Some OSes (OS/2, Win) do not report actual
 directory size.  Directories are about 2-4KB long.  You can get this value
 yourself: Check how many bytes are used (how many diskfree space is gone) after
 creating new directory and several (10) files with zero length in it.  Got it?
+</p>
 </dd>
 </dl>
 
@@ -148,11 +147,13 @@ If you are not planing to use off-line browsing feature, set
 <em>not_checkable_penalty</em> to some big value i.e.  *20 (makes them expire
 20 times faster) or even better =2 (delete them after 2 days), this makes
 faster cleaning of dynamic-generated objects.
+</p>
 
 <p>
 If you are have some favourite web pages, which you like to keep in cache
 longer (for offline browsing), you can tell GC to expire such pages slower than
 others.
+</p>
 
 <pre>
      urlmask http://www.javaworld.com/* /100
@@ -162,99 +163,123 @@ others.
 Javaworld magazine will expire 100 times slower than other pages.  See also <a
 href="ch-advancedt.html#s-gcworks">How garbage collection works, Section
 7.3</a>.
+</p>
 
 <hr>
 
-<a name="s-inst-browser"></a>
-<h2>4.3 Configuring a Web browser</h2>
+<h2><a name="s-inst-browser"></a>4.3 Configuring a Web browser</h2>
 
 <p>
 To use the Smart Cache program, requires that your web browser is set up to use
 it as a proxy for HTTP protocol.  The proxy hostname will be '127.0.0.1' (or
 the name of the host that Smart Cache is running on or bindaddress), and the
 port number will be the one that is used by Smart Cache (default 8080).
+</p>
 
 <p>
 You can also use Smart Cache as proxy for HTTPS protocol.  It is not too
 useful, proxy can only block your connections to certain servers.  HTTPS pages
 can not be cached due to encryption.
+</p>
 
 <p>
 If you want to use Smart Cache as <em>ftp-proxy</em> you <strong>must</strong>
 configure <samp>http_proxy</samp> or <samp>ftp_proxy</samp> in
 <code>scache.cnf</code> configuration file.
+</p>
 <dl>
 <dt>Netscape V1</dt>
 <dd>
+<p>
 In the Options-&gt;Preferences dialog window, enter localhost as the http and
 FTP proxies and 8080 as the port numbers.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Netscape V2,3</dt>
 <dd>
+<p>
 In the Options-&gt;Network Preferences dialog window under the Proxies tab
 select the &quot;Manual Proxy Configuration&quot; option and enter localhost as
 the http and FTP proxies and 8080 as the port numbers.  In Netscape V2 use also
 Options-&gt;Save Options to save your settings.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Netscape V4</dt>
 <dd>
+<p>
 In the Edit-&gt;Preferences dialog window select Advanced and then Proxies,
 select the &quot;Manual Proxy Configuration&quot; option and enter localhost as
 the http and FTP proxies and 8080 as the port numbers.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Mozilla</dt>
 <dd>
+<p>
 Like Netscape V4
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Internet Explorer 2</dt>
 <dd>
+<p>
 View-&gt;Options-&gt;Proxy
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Internet Explorer 3,4</dt>
 <dd>
+<p>
 View-&gt;Options-&gt;Connections; tick <em>Connect through proxy server</em>
 box;Settings;Enter details in HTTP box, with port number in second; OK
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Internet Explorer running on Windows NT</dt>
 <dd>
+<p>
 Control Panel-&gt;Internet-&gt;Advanced-&gt;Proxy
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Mosaic for Windows</dt>
 <dd>
+<p>
 Options-&gt;Preferences-&gt;Proxy, Enter details to HTTP field.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Mosaic/X V2.6, Lynx, Grail, Arena, Emacs-W3:</dt>
 <dd>
+<p>
 Set the environment variables http_proxy and ftp_proxy to
 http://localhost:8080/
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Opera</dt>
 <dd>
-Preferences-&gt;Proxy servers; check box next to HTTP and enter server and port
-number
+<p>
+Preferences-&gt;Advanced-&gt;Connection-&gt;Proxy servers; check box next to
+HTTP and enter server and port number
+</p>
 </dd>
 </dl>
 
 <hr>
 
+<p>
 [ <a href="ch-inst-setup.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -273,26 +298,23 @@ number
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-operating.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

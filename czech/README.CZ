@@ -1,7 +1,7 @@
 				  Smart Cache
 				  ===========
 			 plnohodnotny HTTP proxy server
-			autor (c) Radim Kolar 1998-2005
+			autor (c) Radim Kolar 1998-2009
                          
 Copyright
 =========
@@ -11,8 +11,7 @@ autorskych prav je Radim Kolar a ostatni; Na program se neposkytuje ZADNA
 ZARUKA, autor neni odpovedny za pripadne skody zpusobene pouzitim tohoto
 programu. Vice informaci najdete v souboru 'copyright'. Tento program muze byt
 pouzivan zdarma, bez omezeni. Muzete tento program take distribuovat a/nebo
-modifikovat podle licencnich podminek Obecne verejne licence GNU verze 2, nebo
-(podle vasi volby) libovolne novejsi verze.
+modifikovat podle licencnich podminek Obecne verejne licence GNU verze 2.
 
 Dokumentace
 ===========
@@ -31,14 +30,15 @@ Spusteni
  Zmente textovym editorem dodane konfiguracni soubory podle potreby.
 
 3.
- Sezente si software, ktery umi spoustet Java 1.1 kompilovany bytekod (napr.
- JRE1.1, JDK1.1, Kaffe, Japhar, ...) a nainstalujte ho. Dobre misto pro shaneni
- takovychto produktu je napriklad http://java.sun.com/products/jdk/jre/1.1/
+ Sezente si software, ktery umi spoustet Java 5 aplikace (napr.
+ JRE 5, JDK 1.5 ) a nainstalujte ho. Dobre misto pro shaneni
+ tehto produktu je http://java.sun.com/javase/downloads/index.jsp
 
 4.
- Program se spusti prikazem:
+ Program se spousti v adresari do ktereho jste rozbalili *.class soubory
+ prikazem:
 
-   v prostredi JDK: java -ms1m scache
+   v prostredi JDK: java -ms1m -cp . scache
    v prostredi JRE: jre  -ms1m -cp . scache
  
 Udrzba a uklid dat
@@ -55,8 +55,9 @@ ikonku "Smart Cache NOW". Muzete take seznamit s timto programem Vase pratele.
 
 Diskuzni skupina
 ================
-K otazkam spojenych s timto programem byla vytvore diskuzni skupina 'scache'
-na serveru www.yahoogroups.com.
+K otazkam spojenym s timto programem byla vytvorena diskuzni skupina
+'scache-users' na serveru sourceforge.net.
+https://lists.sourceforge.net/lists/listinfo/scache-users
 
 Kde najit nove verze
 ====================
@@ -65,7 +66,6 @@ Nektere stranky nemusi mit vzdy aktualni verzi tohoto programu.
 http://scache.sourceforge.net/                           (Domovska stranka)
 http://hobbes.nmsu.edu (Binary distribuce, pouzijte funkci search 'scache')
 http://ibiblio.org/pub/linux/apps/www/servers/           (Source code mirror)
-http://www.volny.cz/martin.konicek/scache                (Ceska Homepage)
 
 Program je registrovan na http://freshmeat.net/ pod jmenem scache,
 pokud chcete byt informovani o novych verzich prihlaste se na tento

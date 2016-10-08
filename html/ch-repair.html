@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-repair"></a>
+<p><a name="ch-repair"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-prog.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-bugs.html">next</a> ]
+</p>
 
 <hr>
 
@@ -56,104 +54,126 @@ importing of orphan files.  When importing files, repair looks at filename
 extension and tries to guess mime file type.  When testing the cache repair
 compares also last modified date of file and file length against records in
 .cacheinfo.
+</p>
 
 <hr>
 
-<a name="s11.1"></a>
-<h2>11.1 Running repair</h2>
+<h2><a name="s11.1"></a>11.1 Running repair</h2>
 
 <p>
 Repair is invoked with <samp>java repair</samp> command.  If you do not type
 any parameters, short usage summary will be printed.  Repair can be also
 invoked directly from Smart Cache, when command-line option <em>-repair</em> is
 used.
+</p>
 
 <hr>
 
-<a name="s-repairswitches"></a>
-<h2>11.2 Command line switches</h2>
+<h2><a name="s-repairswitches"></a>11.2 Command line switches</h2>
 <dl>
 <dt>-q</dt>
 <dd>
+<p>
 quiet mode.  Prints less messages.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-r</dt>
 <dd>
+<p>
 recursive into subdirectories.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-c</dt>
 <dd>
+<p>
 compress text files with gzip.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-w</dt>
 <dd>
+<p>
 Write new .cacheinfo files even if they do not changed.  Use this with -r if
 you want to convert Smart Cache data directory into new format.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-n</dt>
 <dd>
+<p>
 Do not actually make changes.  Only print messages what will do.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-f</dt>
 <dd>
+<p>
 ignore existing .cacheinfo files, rebuilds them from scratch.  Use them if some
 files has been repaired with wrong MIME type.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-i &lt;filename&gt;</dt>
 <dd>
+<p>
 &quot;null&quot; filename.  If repair find file with this name, it will not
 append this filename to directory name, when constructing resulting URL.
 Contents of this file will be used as default directory index returned by
 server.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-x &lt;mask&gt;[:mask] ...</dt>
 <dd>
+<p>
 Ignore these files when rebuilding directory.  Default is to ignore *.tmp.
 File mask '!'  resets ignored mask list to empty.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-d &lt;content type&gt;</dt>
 <dd>
+<p>
 Default content-type.  Used when it can not be guessed from file name.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-a</dt>
 <dd>
+<p>
 Translate &amp;amp; to &amp; in URL.  Some browsers performs URL dequoting and
 could not find these objects.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-m &lt;file&gt;</dt>
 <dd>
+<p>
 Use external MIME table for guessing filetype from extension.  Filename !
 resets table to empty.
+</p>
 </dd>
 </dl>
 
 <hr>
 
-<a name="s-mime"></a>
-<h2>11.3 External MIME table file format for repair</h2>
+<h2><a name="s-mime"></a>11.3 External MIME table file format for repair</h2>
 
 <p>
 Line format is: mimetype [spaces or tabs] [extension ...]
+</p>
 
 <pre>
      video/dl                                        dl
@@ -165,6 +185,7 @@ Line format is: mimetype [spaces or tabs] [extension ...]
 
 <hr>
 
+<p>
 [ <a href="ch-prog.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -183,26 +204,23 @@ Line format is: mimetype [spaces or tabs] [extension ...]
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-bugs.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

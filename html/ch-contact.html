@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-contact"></a>
+<p><a name="ch-contact"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-operating.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-advancedt.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,248 +48,280 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s-sponsor"></a>
-<h2>6.1 Sponsoring Smart Cache development</h2>
+<h2><a name="s-sponsor"></a>6.1 Sponsoring Smart Cache development</h2>
 
 <p>
 I have adopted method for sponsoring Free Software development invented by
 <code><a href="http://stallman.org/">RMS</a></code>.  This allows people to
 request needed changes to software or consultation.  Because of GPL Software
 license, you can hire anybody for doing that.
+</p>
 
 <p>
 Do you need new feature, optimization, bug-fix, help with source code, help
 with installation or configuration?  I can do it for you -- if you pay a
-development costs.  Current rate is $15 USD/hour with $30 minimum.  Send it to
-e-gold.com account number 550694.  I can also send you sources and binary
-package(s) on floppy disk, if you have trouble with downloading them.
+development costs.  Current rate is $20 USD/hour with $50 minimum.
+</p>
 
 <hr>
 
-<a name="s-patches"></a>
-<h2>6.2 Sending source code patches</h2>
+<h2><a name="s-patches"></a>6.2 Sending source code patches</h2>
 <ol type="1" start="1" >
 <li>
-Do not ask if you can make some changes, make it and send me patches.
+<p>
+You dont have to ask if you can make some changes, make it and send me patches.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
-Make sure that you have latest available version first.
+<p>
+Make sure that you have latest available version first.  Get latest revision
+from VCS if you can.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 Use diff -cNr &quot;distributed_src_dir&quot; &quot;hacked_src_dir&quot; &gt;
 mypaches
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
-Do not send xdelta binary patches.
+<p>
+Write documentation about your patches, what it does and how it should work.
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
-Compress patches with zip, bzip2 or gzip.
+<p>
+Try to test your code before sending.
+</p>
 </li>
 </ol>
 <ol type="1" start="6" >
 <li>
-Write documentation about your patches, what it does and how it should work.
-</li>
-</ol>
-<ol type="1" start="7" >
-<li>
-Try to test your code before sending.
-</li>
-</ol>
-<ol type="1" start="8" >
-<li>
-You must agree that your piece of code will be distributed under GPL.
+<p>
+You must agree that your piece of code will be distributed under GPL v2.
+</p>
 </li>
 </ol>
 
 <hr>
 
-<a name="s-bugreport"></a>
-<h2>6.3 Bug reporting</h2>
+<h2><a name="s-bugreport"></a>6.3 Bug reporting</h2>
 
 <p>
 Please send you bug reports to <code><a
-href="http://scache.sourceforge.net/list.html">mailing list</a></code>, if
+href="https://apps.sourceforge.net/mantisbt/scache/">Bugtracker</a></code>, if
 possible.  I do not respond to bugs sent to me by individual emails.
+</p>
 
 <p>
-Try latest available version first (you can try also latest CVS version if you
-can work with CVS), maybe your bug is fixed now.  Then try to read this manual.
+Try latest available version first (you can try also latest development version
+stored in VCS if you can work with Bazaar), maybe your bug is fixed already.
+Then try to read this manual.
+</p>
 
 <p>
 To make bug reports more usable write as much as possible from following
 information.  I need to repeat reported bug myself.
+</p>
 <ol type="1" start="1" >
 <li>
-If it is a fatal crash (exception) send stack trace.  But first please disable
-Java JIT compiler.  SET JAVA_COMPILER=lopata.  Stack traces are <strong>very
-important</strong> for bug fixing and without disabled JIT there are useless.
+<p>
+If it is a fatal crash (exception) send stack trace.  Stack traces are
+<strong>very important</strong> for bug fixing.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 Smart Cache version.  VERY important.  If this bug was not in old version,
 report it.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 Java runtime version / OS version.  Important for reporting exceptions or
 crashes.
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 WWW browser version.
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 Description of problem and way how to reproduce it.
+</p>
 </li>
 </ol>
 <ol type="1" start="6" >
 <li>
+<p>
 If this problems appears with specific URL, send this URL.
+</p>
 </li>
 </ol>
 <ol type="1" start="7" >
 <li>
+<p>
 turn on all trace_* and provide request headers dump if this problem
+</p>
 </li>
 </ol>
 <ol type="1" start="8" >
 <li>
+<p>
 Do you use http_proxy ?  If yes, which software is running there?  is specific
 to some URL.
+</p>
 </li>
 </ol>
 <ol type="1" start="9" >
 <li>
+<p>
 If this is problem with redirects (SC will go when clicked on link to old page,
 but it should not), send me sequence of URLs which failed.
+</p>
 </li>
 </ol>
 <ol type="1" start="10" >
 <li>
+<p>
 If this is problem with reload (shows old page) or redirects, send me
 <samp>default_refresh_pattern</samp> and <samp>pragma_no_cache</samp> setting.
 Also try if SHIFT + Reload in Netscape solves this problem.  But you did
 <samp>trace_refresh</samp> first and look on it, right?
+</p>
 </li>
 </ol>
 
 <hr>
 
-<a name="s-success"></a>
-<h2>6.4 User registration/feedback letters</h2>
+<h2><a name="s-success"></a>6.4 User registration/feedback letters</h2>
 
 <p>
 Try to include some of following information.  I am interested mainly in
 3,9,10.
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 Smart Cache version
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 Operation System / Java version
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 Where do you find this program
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 How long you are using it
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 Size of your cache
+</p>
 </li>
 </ol>
 <ol type="1" start="6" >
 <li>
+<p>
 What do you like/dislike
+</p>
 </li>
 </ol>
 <ol type="1" start="7" >
 <li>
+<p>
 What to include in future version(s)
+</p>
 </li>
 </ol>
 <ol type="1" start="8" >
 <li>
+<p>
 If running on network, how many people uses it
+</p>
 </li>
 </ol>
 <ol type="1" start="9" >
 <li>
+<p>
 What you do for your spiritual progress
+</p>
 </li>
 </ol>
 <ol type="1" start="10" >
 <li>
+<p>
 What is purpose/goal of your life
+</p>
 </li>
 </ol>
 
 <hr>
 
-<a name="s-address"></a>
-<h2>6.5 Addresses</h2>
+<h2><a name="s-address"></a>6.5 Addresses</h2>
 <ol type="1" start="1" >
 <li>
+<p>
 Homepage <code><a
 href="http://scache.sourceforge.net/">http://scache.sourceforge.net/</a></code>.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 Mailing list how to join <code><a
 href="http://scache.sourceforge.net/list.html">http://scache.sourceforge.net/list.html</a></code>.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
-Hobbes Archive, secondary distribution source - <code><a
-href="http://hobbes.nmsu.edu/">http://hobbes.nmsu.edu/</a></code>.
-</li>
-</ol>
-<ol type="1" start="4" >
-<li>
-Ibiblio Archive, Unix distribution package - <code><a
-href="http://ibiblio.org/pub/linux/apps/www/servers/">http://ibiblio.org/pub/linux/apps/www/servers/</a></code>.
-</li>
-</ol>
-<ol type="1" start="5" >
-<li>
+<p>
 Author <code><a
-href="mailto:hsn-at-cybermail.net">hsn-at-cybermail.net</a></code>.  Do not
-email, use mailing list.
-</li>
-</ol>
-<ol type="1" start="6" >
-<li>
-Czech Smart Cache pages <code><a
-href="http://www.volny.cz/martin.konicek/scache">http://www.volny.cz/martin.konicek/scache</a></code>
+href="mailto:hsn-at-users.sourceforge.net">hsn-at-users.sourceforge.net</a></code>.
+But do not email unless you want to sponsor SC or some other work.  Use mailing
+list for standard issues.
+</p>
 </li>
 </ol>
 
 <hr>
 
+<p>
 [ <a href="ch-operating.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -310,26 +340,23 @@ href="http://www.volny.cz/martin.konicek/scache">http://www.volny.cz/martin.koni
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-advancedt.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

@@ -7,12 +7,14 @@
 # garbage collection is NOT started when specified cache size is reached
 # you must run it by hand -> java scache -gc [gc-interval]
 #
-# Many users do not bother with GC and deletes all cache by hand,
-# when it grows too large. Real nerds makes quick reformat of
+# Many users do not bothers with GC and deletes all cache by hand,
+# when it grows too large. Real nerds makes quick reformat/mkfs of
 # partition to avoid excesive disk i/o.
 
-# Cache size. Bigger IS better. Running GC on bigger cache takes more time.
-cache_swap_size 200MB
+# Cache size. Bigger IS better. Diskspace is cheap
+# Running GC on bigger cache takes more time. For most people running
+# it once per week is enough. In that case, lowering cache_swap_low helps.
+cache_swap_size 500MB
 
 #size of one allocation unit (also known as cluster or block)
 # OS/2 with HPFS filesystem - 1024 bytes
@@ -41,7 +43,7 @@ block_size 1024B
 #	Specify a time here.  For example:
 #		reference_age 1y
 #
-reference_age 365d
+reference_age 2y
 
 #average directory_size in bytes. Average directory size is average diskspace
 # wasted by creating a average directory with some files inside.
@@ -87,7 +89,7 @@ maximum_object_size 4mb
 minimum_object_size 0b
 
 #size of memory array for holding temporary objects during garbage collection
-gcarraysize 5000
+gcarraysize 12000
 
 # GC is LRU based. Smart Cache doesn't make difference if object
 # is accessed off-line or on-line.
@@ -102,6 +104,9 @@ gcarraysize 5000
 # *2.0 .. make object 2 times older
 # /2.0 .. make object 2 times younger
 # =2   .. if object is 2 or more days old, delete it immediately (even if cache size is good)
+#
+# NOTE: Smart Cache has some builtin defaults. If you do not want to use
+#       some kind of object class in GC, set modifier to *1
 
 #large_object_penalty XXXX YYY ZZZZ QQQ
 # - if cached object is bigger than XXXX bytes make YYY and make QQQ for every
@@ -113,23 +118,23 @@ large_object_penalty 200k *2.5 50k +5
 # if cached object is smaller than XXXX bytes, make YYY and make QQQQ for
 #   every ZZZZ  bytes under XXXX size
 # Some people wants to expire small objects faster.
-small_object_penalty 2k *1.2 512b +10
+small_object_penalty 4k *3 512b +10
 
 #Objects can be penalized by at most ONE penalty rule and ONE urlmask rule
 #Priority of penalty rules is the same as order in this file
 
 #Penalty for negative cached objects (HTTP RC>=400)
 #there are errors messages (not found, forbidden and so on..)
-negative_cached_penalty *10
+negative_cached_penalty *8
 
 #if objects has expired date and now are expired. If undefined - 
 #expired objects are always removed from cache.
-expired_penalty *4
+expired_penalty *5
 
 #If objects are expired, but can be checked with If-Modified-Since request
 # (some servers generates expire info just for their fun because
 #   wants more hits.)
-expired_but_checkable_penalty *1.8
+expired_but_checkable_penalty *2.0
 
 #Some objects are not document or files, but redirects to another
 #location. They should be deleted faster since they are small and can

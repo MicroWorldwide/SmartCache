@@ -8,7 +8,7 @@
 #   rfail.cnf   - posix Regexp block list
 #   cookies.cnf - Cookies filter setup
 #
-# (C) Radim Kolar 1998-2005
+# (C) Radim Kolar 1998-2009
 #  http://scache.sourceforge.net/ (Smart Cache home-page)
 #
 #  Smart Cache is Open Source Software.
@@ -32,14 +32,16 @@
 
 # TCP port for this cache. 
 # 8080 is an old, well known proxy port introduced in the CERN HTTPd.
+# 3128 is port number introduced by squid proxy server, i use that by default
+# because port 8080 is on today system sometimes used by other proxies or by
+# application servers.
 # Some servers use port 80, but as port 80 is used by the standard
 # WWW service, you can not run a web server and Smart Cache on the
-# same port. I use 8080 because it easy to remember.
+# same port.
 #
-# Squid uses port 3128, so you can run both caches; Squid and SC.
 # Keep in mind that you can NEVER run more than ONE program on the 
 # same port at the same time! Set the port that you wish SC to use below.
-http_port 8080
+http_port 3128
 
 #IP address for binding socket, if you enter "*" below all local addresses are bound.
 #
@@ -74,7 +76,7 @@ visible_hostname smart.cache
 # *** SMART CACHE USER INTERFACE SETUP *** 
 # Port number for User interface, must be different from the main one
 # disable this line for turning UI off
-ui_port 8081
+ui_port 3129
 
 # Hostname for user interface. This DNS name must resolve to machine
 # on which SC with UI enabled runs
@@ -296,13 +298,13 @@ loglevel 4
 #     read_timeout    = reading the body of server reply. This should be less
 #                         than 6 minutes. (2*SAVETIMER value in mgr.java).
 client_timeout 30s
-request_timeout 40s
+request_timeout 70s
 read_timeout 210s
 
 # This determines how many seconds Smart Cache will keep outgoing connections 
 # open. This allows the open connection(s) to be reused.
 # Set to 0 to disable keep-alive.
-pconn_timeout 30s
+pconn_timeout 29s
 
 #######################
 #   CACHING CONTROL   #
@@ -462,7 +464,7 @@ trace_redirect no
 #    	  however, modes 2 or 3 are safe. (3 is better than 2.)
 #        Also, if you are having troubles with redirects try 4.
 # NOTE2: nonzero value violates HTTP/1.1 standard.
-pragma_no_cache 1
+pragma_no_cache 2
 
 # @2
 # Keep deleted objects in cache, (and send it to users), even if the
@@ -700,7 +702,7 @@ max_aborted_transfer_time 1m
 #  auto_compress 1    means compress files with size>512
 #  auto_compress x    means compress only files with size>x  (x>=512)
 #  auto_compress 0    disables compression.
-auto_compress 0
+auto_compress 4096
 
 # Smart Cache compresses only text files, (Content-Type: text/*), but because
 # the default mime type in many WWW servers is in text/plain format and 
@@ -710,7 +712,7 @@ auto_compress 0
 # the following:
 #
 # Files with these extension(s) will not be compressed.
-nocompress .tgz .jar .mp3 .mid .wav .class .ra .ram .swf
+nocompress .tgz .jar .mp3 .mid .wav .class .ra .ram .swf .xml
 
 # If your browser can not handle compressed data, Smart Cache can uncompress it.
 # auto_decompress 0    No automatic data decompression
@@ -807,12 +809,12 @@ reload_into_ims yes
 
 # @22
 #  The HTTP/1.1 standard allows for marking certain pages as 'private'.
-# This is for pages that do not need to be password protected but just
-# shouldn't be viewed by others.
-# They can, for example, be cookie-customized.
+#  This is for pages that do not need to be password protected but just
+#  shouldn't be viewed by others.
+#  They can, for example, be cookie-customized.
 # 
 # For your information: YES violates HTTP/1.1 standard.
-cache_private yes
+cache_private no
 
 # @23
 #  HTTP/1.1 allows marking pages negotiated by client request headers.
@@ -822,17 +824,26 @@ cache_private yes
 cache_vary yes
 
 # @24
-# Set this to "yes" if you want "Via: 1.0 hostname (Smart Cache 0.XX)" 
-# appended to request. This option absoletes old method of appending
-# via to User-Agent: header. 
-# Appending to User-Agent is no longer possible with SC. This feature
-# was removed since it causes some problems with PHP-generated pages.
+#  Set this to "yes" if you want "Via: 1.0 hostname (Smart Cache 0.XX)" 
+#  appended to request. This option absoletes old method of appending
+#  via to User-Agent: header. 
+#  Appending to User-Agent is no longer possible with SC. This feature
+#  was removed since it causes some problems with PHP-generated pages.
 proxyvia yes
 
 # @25
-# If set to 'no' redirects can not overwrite regular files with
-# the same URL. This option is usefull for offline browsing
-# only
+#  If set to 'no' redirects can not overwrite regular files with
+#  the same URL. This option is usefull for offline browsing
+#  only.
 overwrite_by_redirect yes
+
+# @26
+#  For better offline browsing experience, Smart Cache can save uncacheable documents
+#  into disk and make them available for offline browsing only. Unlike cache_private,
+#  cache_vary and pragma_no_cache these documents are not read from disk cache unless origin
+#  server is unavailable.
+#  Current state of this option is crude hack because using this feature disables 
+#  overwrite_by_redirect and no_cache settings.
+save_noncacheable no
 
 ## END OF FILE ##

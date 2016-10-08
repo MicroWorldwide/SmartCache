@@ -1,2 +1,1 @@
-jre -cp . -ms2m scache -repair
-
+java -cp . -ms2m scache -repair

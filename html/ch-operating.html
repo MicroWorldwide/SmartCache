@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-operating"></a>
+<p><a name="ch-operating"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-configuration.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-contact.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,92 +48,95 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s-run-debian"></a>
-<h2>5.1 Smart Cache on Debian GNU/Linux</h2>
+<h2><a name="s-run-debian"></a>5.1 Smart Cache on Debian GNU/Linux</h2>
 
 <p>
 Smart Cache is default configured as follows:
+</p>
 <ul>
 <li>
+<p>
 Smart Cache is started on system boot and runs under userid <em>proxy</em>.
+</p>
 </li>
 </ul>
 <ul>
 <li>
-It uses TYA JIT compiler when available.
-</li>
-</ul>
-<ul>
-<li>
+<p>
 Configuration files are in <samp>/etc/scache/</samp>
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 CacheRoot is <samp>/var/cache/scache/</samp>
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Every day, Smart Cache is restarted and logs are rotated.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Every week Smart Cache performs garbage collection.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Smart Cache is restarted after establishing PPP connection
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 You do not need care about <a href="ch-bugs.html#s-dnsbug">Java DNS caching
 bug/feature, Section 12.1</a>
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Logfiles are in /var/log/scache*.log.
+</p>
 </li>
 </ul>
 
 <hr>
 
-<a name="s-running"></a>
-<h2>5.2 Running Smart Cache</h2>
-
-<p>
-If you installed the JRE1.1 start Java with <code>jre -cp .</code> command
-instead only <code>java</code> .  If you are installed JDK1.3 or higher you can
-add switch -server.  (Note: You can also make .jar file see <a
-href="ch-prog.html#s-jar">Making Java 1.2+ .jar file, Section 10.1</a> and run
-it by java -jar scache.jar or by double clicking on .jar file) All other
-parameters remain the same.
+<h2><a name="s-running"></a>5.2 Running Smart Cache</h2>
 
 <p>
 Starting Smart Cache is easy:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 change your current directory to Smart Cache's home directory, where the
 *.class files are in.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
-execute the command <code>java -ms1m scache</code>
+<p>
+execute the command <code>java -cp .  -ms1m scache</code>
+</p>
 </li>
 </ol>
 
 <p>
-JDK1.1 Only: If you want to Smart Cache runs faster at cost of using more
-memory -- Change -ms1m switch to something else.  See <a
-href="ch-admins.html#s-bench">Proxy cache Benchmarks, Section 9.2</a>
-
-<p>
 If all works right Smart Cache starts and you will see something like this:
+</p>
 
 <pre>
      Smart Cache 0.41 - full featured caching proxy server and web forwarder
@@ -148,89 +149,144 @@ If all works right Smart Cache starts and you will see something like this:
 <p>
 If it do not works, read <a href="ch-troubles.html">Troubleshooting, Chapter
 13</a>.
+</p>
 
 <hr>
 
-<a name="s-stopping"></a>
-<h2>5.3 Stopping Smart Cache/Shutdown flag</h2>
+<h2><a name="s-stopping"></a>5.3 Stopping Smart Cache/Shutdown flag</h2>
 
 <p>
-If you have JDK version 1.3 or better you can skip this section.  Smart Cache
-will always perform clean shutdown in this case.
+Smart Cache can be stopped following ways:
+</p>
+
+<hr>
+
+<h3><a name="s-killingsc"></a>5.3.1 Killing process</h3>
 
 <p>
-This is somewhat obscure feature of SC.  You do not need to understand what it
-does or even use it.  Smart Cache can be also stopped by CTRL-C, Closing
-Window, Kill process or CTRL-ALT-DEL on newer Windows versions.
+Probably most convient method.  Its also good for use in startup/shutdown
+scripts.
+</p>
+<ol type="1" start="1" >
+<li>
+<p>
+Killing Smart Cache process.  Please dont use hard kill (SIGKILL or kill -9) if
+possible.  Smart Cache needs to sync <code>.cacheinfo</code> files before
+exiting.  Use hard kill only if Smart Cache gets deadlocked.
+</p>
+</li>
+</ol>
+<ol type="1" start="2" >
+<li>
+<p>
+Closing Smart Cache window
+</p>
+</li>
+</ol>
+<ol type="1" start="3" >
+<li>
+<p>
+Pressing CTRL-C in Smart Cache window
+</p>
+</li>
+</ol>
+
+<hr>
+
+<h3><a name="s5.3.2"></a>5.3.2 Using flag file</h3>
 
 <p>
-If you want to cleanly shutdown cache - just create a file (or directory) with
-name as set in the <em>shutdown_flag</em> and <strong>wait about 3
-minutes</strong>.  This makes clean shutdown of SC without interrupting
-anything.  If Smart Cache is in use, it will continue running and stops after 3
-minutes of inactivity.
-
-<p>
-Smart Cache can make also 'fast shutdown', which is still better than killing
-the Smart Cache process (CTRL-C is also killing, because Java &lt; 1.3 can not
-hook it), because it synces directories information and logfiles.
-Configuration keyword <samp>immediate_shutdown_flag</samp> sets the name of
-this flag file and keyword <samp>flag_check_interval</samp> sets, how often SC
-checks for this flag.  Use this if you do not want to wait for normal cache
-shutdown.
-
-<p>
-Flag file can be created on Unix systems with <samp>touch
-&lt;filename&gt;</samp> command, in Windows environment use for example
+Second method to stop Smart Cache is by creating flag file with name defined in
+<code>scache.cnf</code>.  Flag file can be created on Unix systems with
+<samp>touch &lt;filename&gt;</samp> command.  In Windows environment use for
+example
+</p>
 
 <pre>
      echo &gt; c:\name\of\shutdown\flag     or
-     mkdir     c:\name\of\shutdown\flag
+     mkdir  c:\name\of\shutdown\flag
 </pre>
 
 <p>
-Flag file is nothing special, SC checks only if some file with specified
-filename exists.  Directory with specified name can be also used (this is
-easier to create under Windows).
+Flag file can have any content inside, Smart Cache checks only if some file
+with specified filename exists.
+</p>
+
+<p>
+You might use directory with specified name instead of file (this is easier to
+create under Windows because its just one simple mkdir command).  If you are
+using directory be sure not to place any files inside it because Smart Cache
+will not be able to delete it on shutdown and on next start it will shutdown
+again because flag directory still exists.
+</p>
+<ol type="1" start="1" >
+<li>
+<p>
+If you want to shutdown cache after it becomes inactive use
+<em>shutdown_flag</em> and <strong>wait about 3 minutes</strong>.  Smart Cache
+will shutdown without interrupting anything.  If Smart Cache is still in use,
+it will continue running and stops after 3 minutes of inactivity later.
+</p>
+</li>
+</ol>
+<ol type="1" start="2" >
+<li>
+<p>
+Smart Cache can make also 'fast shutdown'.  Configuration keyword
+<samp>immediate_shutdown_flag</samp> is used for it.  Smart Cache checks
+presence of this flag every <samp>flag_check_interval</samp> seconds.  Use this
+if you do not want to wait for shutdown via flag too long.
+</p>
+</li>
+</ol>
 
 <hr>
 
-<a name="s5.3.1"></a>
-<h3>5.3.1 Background information</h3>
+<h3><a name="s5.3.3"></a>5.3.3 Background information</h3>
 
 <p>
 Smart Cache updates every 3 minutes <samp>.cacheinfo</samp> files, which holds
-information about directory contents.  If .cacheinfo is bad, no/some files in
-directory will not be found, but you can recreate them by repair utility.  If
-you look into SC output, you will see how many .cacheinfo files was updated in
-message <em>XX - directories saved</em>.  If you see <samp>0 dirs saved</samp>
-and you are not using SC, no .cacheinfo contains out-of-date information, so
-you can kill SC process without harming anything.  Also if you are just
-browsing offline, only outdated information in .cacheinfo files is Last Access
-Date, which is used only by GC, so killing SC will not harm your data.
+information about directory contents.  If <samp>.cacheinfo</samp> is bad, no
+(or some) files in directory with that <code>.cacheinfo</code> will be found.
+</p>
+
+<p>
+If you look into SC output, you will see how many <code>.cacheinfo</code> files
+were updated in message <em>XX - directories saved</em>.  If you see <samp>0
+dirs saved</samp> and you are not using SC, no .cacheinfo contains out-of-date
+information.
+</p>
+
+<p>
+You can recreate <samp>.cacheinfo</samp> file by repair utility or more
+convient way is to run <samp>scache -repair</samp>.
+</p>
 
 <hr>
 
-<a name="s-gc"></a>
-<h2>5.4 Running garbage collection</h2>
+<h2><a name="s-gc"></a>5.4 Running garbage collection</h2>
 
 <p>
 If your cache is getting large, you may want to run the <em>garbage
-collection</em> process.  [<a href="footnotes.html#f5" name="fr5">5</a>] Smart
-Cache never deletes something from its data directory, you must run GC or use
-other software tools for freeing disk space.
+collection</em> process.  [<a href="footnotes.html#f4" name="fr4">4</a>] Smart
+Cache never deletes something from its data directory, it only adds or
+overwrites files.  You must run GC or use other software tools for freeing disk
+space.
+</p>
 
 <p>
 GC process scans the entire cache, finds old files and deletes them until
 specified cache size is reached.  Detailed information in <a
 href="ch-advancedt.html#s-gcworks">How garbage collection works, Section
 7.3</a>.
+</p>
 
 <p>
 Garbage collections also checks cache integrity, deletes unreferenced files,
-empty directories and bad entries from .cacheinfo files.  This check is the
-same as does -killunref procedure.  Edit the <code>gc.cnf</code> file and run
-it with <samp>java scache -gc</samp>
+empty directories and bad entries from <code>.cacheinfo</code> files.  This
+check is the same as does -killunref procedure.  Edit the <code>gc.cnf</code>
+file and run it with <samp>java scache -gc</samp>
+</p>
 
 <p>
 Garbage collection can be run, while proxy server is still running, there is no
@@ -238,15 +294,16 @@ need for stopping it.  See also <a
 href="ch-configuration.html#s-gcconf">Configuration of garbage collection,
 Section 4.2</a> and <a href="#s-maint">Smart Cache maintenance, Section
 5.5</a>.
+</p>
 
 <hr>
 
-<a name="s-maint"></a>
-<h2>5.5 Smart Cache maintenance</h2>
+<h2><a name="s-maint"></a>5.5 Smart Cache maintenance</h2>
 
 <p>
 Smart Cache needs no special maintenance except <a href="#s-gc">Running garbage
 collection, Section 5.4</a> and maintaining some free diskspace.
+</p>
 
 <p>
 In some rare cases (mainly due to improper cache shutdown) there can be some
@@ -255,59 +312,72 @@ and deleted using the <samp>java scache -killunref</samp> command or located
 and inserted back into cache (by creating reference for them) by <samp>java
 scache -repair</samp>.  These files are very rare and takes very few diskspace
 (in most installations about 0.1%) , so there is no need to worry about them.
+</p>
 
 <p>
 Nowadays these commands are obsolete and has been replaced by the garbage
 collector, which happily deletes them as part of his normal operation.  Use
 these commands only if you want to repair cache without performing garbage
 collection.  This operation is about 2-3 times faster than garbage collection.
+</p>
 
 <p>
 Repair procedures summary:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 if you are short of diskspace use -gc
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 if you are using -gc you need not to run something else
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 if you are want to recover inaccessible files run -repair
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 if you want to see what files will gc delete without deleting them use -fakegc.
 Very handy for fine tuning GC.
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 do not use -killunref, it is just waste of time.  Repair or GC does much better
 job.
+</p>
 </li>
 </ol>
 
 <hr>
 
-<a name="s-urlblock"></a>
-<h2>5.6 URL blocking</h2>
+<h2><a name="s-urlblock"></a>5.6 URL blocking</h2>
 
 <p>
 Smart Cache has a builtin URL filter.  This filter was designed to eliminate
 ADV.  banners, because they slow down browsing a lot, and other unwanted stuff
 which WWW browsers downloads without asking (for example .AVI files in web
 pages.  Netscape downloads it even if do not have plugin for them.).
+</p>
 
 <p>
-Filter comes in two flavours normal dos-regexp and full-regexp.  Full regexp
-filter has higher priority than normal and is configured in file
-<samp>rfail.cnf</samp>.  Full regexp filter currently do not works with more
-that one non comment line in rfail.cnf.
+Filter comes in two flavours normal MS-DOS like regexp and full posix like
+regexp.  Full regexp filter has higher priority than normal and is configured
+in file <samp>rfail.cnf</samp>.
+</p>
 
 <p>
 Normal filter in controlled by two <samp>fail.cnf</samp> and
@@ -315,19 +385,22 @@ Normal filter in controlled by two <samp>fail.cnf</samp> and
 BLOCKED URLs and list of UNBLOCKED in second.  Files has the same syntax -
 write one URL mask per line, you can use wildchar '*' in expected way.  SC will
 detects when you edit this files and reload it without needing to restart.
+</p>
 
 <p>
-When SC got request for a particular URL, it will look in <samp>pass.cnf</samp>
-first.  If requested URL is one of them, SC will skip following tests and
-displays it.  If requested URL is not found in <samp>pass.cnf</samp> SC will
-look into <samp>fail.cnf</samp>.  If requested URL is there, SC will abort
-request otherwise request will be allowed.
+When SC gets request for a particular URL, it will look in
+<samp>pass.cnf</samp> first.  If requested URL is one of them, SC will skip
+following tests and displays it.  If requested URL is not found in
+<samp>pass.cnf</samp> SC will look into <samp>fail.cnf</samp>.  If requested
+URL is there, SC will abort request otherwise request will be allowed.
+</p>
 
 <p>
 When SC encounters a blocked URL, error <strong>403 Forbidden by rule</strong>
 will be displayed.  You can display any custom URL instead, many people uses
 some images, which will appear on places of ADV.  banners.  You can use any
 picture from net, SC will cache this, so it will not be downloaded more times.
+</p>
 
 <pre>
      ErrorDocument 403 http://some.site.with.nice.images.com/images/nature/bluesky.gif
@@ -336,6 +409,7 @@ picture from net, SC will cache this, so it will not be downloaded more times.
 <p>
 Other people likes blank image instead.  Famous 43 byte long 1x1 transparent
 GIF is now hardcoded in SC and can be used with:
+</p>
 
 <pre>
      ErrorDocument 403 0
@@ -344,17 +418,22 @@ GIF is now hardcoded in SC and can be used with:
 <p>
 In some cases you may got unwanted <strong>Forbidden by rule</strong> errors.
 You have two choices for their eliminating:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 You can locate URL mask which causes the URL blocking and remove it from the
 file.  (<samp>trace_fail yes</samp> helps, if in trouble)
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 Because this URL masks blocks also what you want to block (for example ADV.
 Banners), You can add new mask to <samp>pass.cnf</samp> file which unlock
 incorrectly blocked URL.
+</p>
 </li>
 </ol>
 
@@ -364,17 +443,18 @@ can't do that because Smart Cache has a default entry http://ad.* in
 <code>fail.cnf</code> file, which deny access to this server.  You do not want
 to remove this entry from <code>fail.cnf</code>, because it unlocks many ADV.
 banners.  Solution is add http://ad.astra.* to <code>pass.cnf</code> file.
+</p>
 
 <p>
 You can also turn of announcing blocked URLs to console by directive
 <samp>trace_fail</samp>.  This is useful if you are using a complex
 &quot;fail.cnf&quot; with a lot of entries and can't fiddle out if or why some
 request has been blocked.
+</p>
 
 <hr>
 
-<a name="s-gui"></a>
-<h2>5.7 Smart Cache GUI</h2>
+<h2><a name="s-gui"></a>5.7 Smart Cache GUI</h2>
 
 <p>
 Smart Cache has a simple HTML user interface, which allows to search and browse
@@ -382,9 +462,11 @@ the cache content.  This UI is required if you want to use special offline
 support features (hooks for Smart Cache Loader).  To enable it, add
 <strong>ui_port 8081</strong> to <code>scache.cnf</code>.  After that point www
 browser to http://127.0.0.1:8081/
+</p>
 
 <hr>
 
+<p>
 [ <a href="ch-configuration.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -403,26 +485,23 @@ browser to http://127.0.0.1:8081/
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-contact.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

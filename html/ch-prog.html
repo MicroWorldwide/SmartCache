@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-prog"></a>
+<p><a name="ch-prog"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-admins.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-repair.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,28 +48,34 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s-jar"></a>
-<h2>10.1 Making Java 1.2+ .jar file</h2>
+<h2><a name="s-jar"></a>10.1 Making Smart Cache .jar file</h2>
 
 <p>
-Java versions, starting from 1.2 (JVM Kaffe also do that), can run Java
-applications more easily.  You can make .jar file and run it from command line
-by <samp>java -jar filename.jar</samp> or in Windows by double clicking on it.
+Java can run applications more easily if they are packager as autostartable
+.jar files.  You can make that kind of .jar file and then run it from command
+line by <samp>java -jar filename.jar</samp> or in Windows by double clicking on
+it.
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 cd src
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
-Compile SC Java sources - <samp>javac -O *.java</samp> (or use distributed
+<p>
+Compile SC Java sources - <samp>javac *.java</samp> (or use distributed
 .classes).
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
-Make .jar file - <samp>jar cvfm scache.jar MANIFEST.MF *.class
-gnu/rex/*.class</samp>
+<p>
+Make .jar file - <samp>jar cvfm scache.jar MANIFEST.MF *.class</samp>
+</p>
 </li>
 </ol>
 
@@ -79,277 +83,394 @@ gnu/rex/*.class</samp>
 Because .jar file is just renamed .zip file, you can also copy file MANIFEST.MF
 in SC archive to META-INF/MANIFEST.MF and pack compiled classes with this file
 using any .zip utility.
+</p>
 
 <p>
-If everything works you now have jar file.
+If everything works you now have autostartable jar file.
+</p>
 
 <hr>
 
-<a name="s-javac"></a>
-<h2>10.2 Compiling Smart Cache sources</h2>
-
-<p>
-Distributed .class files are not compiled by -O switch of javac.  If want to
-have SC 'optimised', you can recompile it.
+<h2><a name="s-javac"></a>10.2 Compiling Smart Cache sources</h2>
 
 <p>
 Change working directory to smartcache_home/src and execute command <samp>javac
--O *.java</samp>.  If you have tar distribution running top-level gnu make
-should work.
-
-<p>
-<strong>Do not compile Smart Cache using jikes.  Some versions of jikes (1.13)
-are not quite compatible with some JVMs (OS/2 for example).</strong>
+*.java</samp>.  If you have tar distribution running top-level gnu make should
+work.
+</p>
 
 <hr>
 
-<a name="s-cacheinfo"></a>
-<h2>10.3 Structure of .cacheinfo control files</h2>
+<h2><a name="s-cacheinfo"></a>10.3 Structure of .cacheinfo control files</h2>
 
 <p>
 Technical notes:
+</p>
 <ul>
 <li>
+<p>
 Java stores integers in high-endian (network) byte order.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 INTEGER and LONG are signed types, 4 or 8 bytes long.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 STRINGs are encoded using UTF8.  String length (2 bytes) is stored first, data
 follows.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Time is LONG integer, counted in milliseconds starting from 1.1.1970 (Unix
 era).
+</p>
 </li>
 </ul>
 
 <p>
 Structure of .cacheinfo files (Version 4).
+</p>
 <ul>
 <li>
+<p>
 File Magic number (INT) 0x53433034 - ASCII encoded string 'SC04'.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Number of entries in this file(INT), structure of one entry follows:
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Object name including query string (STRING) (test.php3?id=2211)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Content type (STRING) (text/html)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Local file name, not including directory name (STRING) (test.php3)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Redirect http header (STRING) (&quot;&quot;)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Object size in bytes INT (2031)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 HTTP return code INT (200)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Expire date LONG (none 0)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Date, when object was downloaded or checked LONG
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Last modified date LONG (none=0)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Last access date LONG
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Etag header (STRING) (&quot;&quot;)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Content encoding (String) (&quot;&quot;) May be
 &quot;gzip,x-gzip,compress,x-compress,deflate&quot; See RFC 2616
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Whole entry is successfully downloaded?  BYTE (1=YES, 0=NO - ENTRY TRUNCATED).
 Reserved for use in future auto-resume function.
+</p>
 </li>
 </ul>
 
 <p>
 Structure of .cacheinfo files (Version 3) used in SC from version 0.47 to 0.73.
+</p>
 <ul>
 <li>
+<p>
 File Magic number (INT) 0x53433033 - ASCII encoded string 'SC03'.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Number of entries in this file(INT), structure of one entry follows:
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Object name including query string (STRING) (test.php3?id=2211)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Content type (STRING) (text/html)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Local file name, not including directory name (STRING) (test.php3)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Redirect http header (STRING) (&quot;&quot;)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Object size in bytes INT (2031)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 HTTP return code INT (200)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Expire date LONG (none 0)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Date, when object was downloaded or checked LONG
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Last modified date LONG (none=0)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Last access date LONG
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Content encoding (String) (&quot;&quot;) May be
 &quot;gzip,x-gzip,compress,x-compress,deflate&quot; See RFC 2616
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Whole entry is successfully downloaded?  BYTE (1=YES, 0=NO - ENTRY TRUNCATED).
 Reserved for use in future auto-resume function.
-</li>
-</ul>
-
-<p>
-Following <em>OLD</em> format of .cacheinfo files is used in SC from version
-0.30 to 0.46.
-
-<p>
-Structure of OLD .cacheinfo files (Version 2)
-<ul>
-<li>
-Number of entries in this file(INT), structure of one entry follows:
-</li>
-</ul>
-<ul>
-<li>
-Object name including query string (STRING) (test.php3?id=2211)
-</li>
-</ul>
-<ul>
-<li>
-Content type (STRING) (text/html)
-</li>
-</ul>
-<ul>
-<li>
-Local file name, not including directory name (STRING) (test.php3)
-</li>
-</ul>
-<ul>
-<li>
-Redirect http header (STRING) (&quot;&quot;)
-</li>
-</ul>
-<ul>
-<li>
-Object size in bytes INT (2031)
-</li>
-</ul>
-<ul>
-<li>
-HTTP return code INT (200)
-</li>
-</ul>
-<ul>
-<li>
-Expire date LONG (none 0)
-</li>
-</ul>
-<ul>
-<li>
-Date, when object was downloaded or checked LONG
-</li>
-</ul>
-<ul>
-<li>
-Last modified date LONG (none 0)
-</li>
-</ul>
-<ul>
-<li>
-Last access date LONG
+</p>
 </li>
 </ul>
 
 <hr>
 
+<h2><a name="s-uicommands"></a>10.4 List of UI Control command</h2>
+<ul>
+<li>
+<p>
+/loader/setdepth?depth=x type=(add/refresh)
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/loader/queue/show
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/loader/add?url= depth= options=
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/loader/queue/delete?url
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/loader/confirm/add?url=
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/store/delete?url
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/store/browse?dir showdel=true
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/store/search?dir= depth=
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/store/rmdir?dir=
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/store/purgesearchcache
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/dmachine/queue/show
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/dmachine/queue/delete?url=
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/trace/config
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/trace/set?  what= val=
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/logs/console?  loglevel=
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+/logs?flush
+</p>
+</li>
+</ul>
+
+<hr>
+
+<p>
 [ <a href="ch-admins.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -368,26 +489,23 @@ Last access date LONG
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-repair.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

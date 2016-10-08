@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-advancedt"></a>
+<p><a name="ch-advancedt"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-contact.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-switches.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,31 +48,33 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s-cachesize"></a>
-<h2>7.1 Choosing a good cachesize</h2>
+<h2><a name="s-cachesize"></a>7.1 Choosing a good cachesize</h2>
 
 <p>
 How to choose good cache size?  It depends how you want to use it and how many
 daily traffic you have.  Nowdays <em>diskpace is cheap</em> resource.
 Performance or runtime used memory do not depends on cache size.
+</p>
 
 <p>
 100 MB is starting point - I never recommend cache size to be smaller than 100
 MB.  If you want smaller cache, you do not need it - simply use cache in your
 browser.
+</p>
 
 <p>
 Next sections has some hints about choosing cache size.
+</p>
 
 <hr>
 
-<a name="s7.1.1"></a>
-<h3>7.1.1 Dial-up and offline browsing</h3>
+<h3><a name="s7.1.1"></a>7.1.1 Dial-up and offline browsing</h3>
 
 <p>
 Case #1: If you do not browsing at home very much (you have T1 line at work)
 and just want to see some hot breaking news sometimes and you are not
 interested mainly in offline browsing.  200 MB cachesize is enough.
+</p>
 
 <p>
 Case #2: If you like offline browsing, you need a bigger cache.  Start with 400
@@ -82,6 +82,7 @@ MB if you are not browsing very much.  If you have some free diskspace or you
 are browsing very much, you can go up to 1GB.  In any case use <a
 href="#s-compress">Data compression support, Section 7.10</a>.  It is also good
 to somewhat finetune GC in <code>gc.cnf</code>.  My recommended settings:
+</p>
 
 <pre>
      #two years in cache are enough
@@ -96,29 +97,30 @@ to somewhat finetune GC in <code>gc.cnf</code>.  My recommended settings:
 
 <hr>
 
-<a name="s7.1.2"></a>
-<h3>7.1.2 Know your daily traffic</h3>
+<h3><a name="s7.1.2"></a>7.1.2 Know your daily traffic</h3>
 
 <p>
 You need to determine average daily traffic - how fast will grow your cache
 daily without doing -gc.  It is preferred to use -fakegc operation for
 computing cache size.
+</p>
 
 <p>
 If you are starting with empty cache, do not use numbers from first days.
 Empty cache will grow fast in first days and then will grow slower.  Most
 people are visiting the same set of WWW sites.  Let it run for 14 days; write
 down cache size, wait one week; compute difference and divide it by 7.
+</p>
 
 <hr>
 
-<a name="s7.1.3"></a>
-<h3>7.1.3 Standard network http-proxy</h3>
+<h3><a name="s7.1.3"></a>7.1.3 Standard network http-proxy</h3>
 
 <p>
 Standard mode of operation: leased line Internet, not planing to use offline
 browsing, use proxy cache for saving the bandwidth, about 50 computers
 connected to it.
+</p>
 
 <p>
 In this case you should have cache size for holding about 1 Month traffic with
@@ -126,21 +128,21 @@ In this case you should have cache size for holding about 1 Month traffic with
 traffic size, because in my tests it do not significantly improves cache hit
 rate.  You can make it smaller if you have a heavy traffic site, but do not go
 under 14 days of traffic unless you really need it.  Never go under 7days.
+</p>
 
 <hr>
 
-<a name="s7.1.4"></a>
-<h3>7.1.4 Home network, sharing connection</h3>
+<h3><a name="s7.1.4"></a>7.1.4 Home network, sharing connection</h3>
 
 <p>
 Start with cache size 500 MB.  You should read standard http-proxy section
 also.  <a href="#s-compress">Data compression support, Section 7.10</a> is your
 friend.
+</p>
 
 <hr>
 
-<a name="s-refresh"></a>
-<h2>7.2 Configuring refresh patterns</h2>
+<h2><a name="s-refresh"></a>7.2 Configuring refresh patterns</h2>
 
 <p>
 Smart Cache can be configured how often will made checks if new version of page
@@ -148,79 +150,101 @@ is available.  This is done with keywords <samp>default_refresh_pattern</samp>
 and <samp>refresh_pattern</samp> in configuration file.  The difference between
 them is that <samp>refresh_pattern</samp> contains URL mask, other arguments
 are the same.
+</p>
 
 <p>
 If you want to play with them, setting <samp>trace_refresh yes</samp> and
 <samp>trace_url yes</samp> will provide you more information why page is being
 or not being loaded.  If you can understand Java, go into file cacheobject.java
 and look at function needRefresh().
+</p>
 
 <p>
 Arguments of these commands are:
+</p>
 
 <p>
 [default_]refresh_pattern [URL mask] /Reload_age/ /Min_age/ /Lastmod_factor/
 /max_age/ /Expire_age/ /Redirect_Age/
+</p>
 
 <p>
 These numbers are floating-point times in minutes except /Lastmod_factor/ which
 is a fraction part &lt; 1
+</p>
 
 <p>
 Smart Cache's refresh algorithm in English.  Page age is difference between
 date, when the page was loaded and today.
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 If browser requests a forced page reload and page is older than /Reload_age/,
 reload it otherwise return old copy.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 If page is older than /Max_age/ load it.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 If page has expire date and page has expired and page age is bigger than
 /Expire_age/ load it.
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 If page is redirect to other page and age is older than /Redir_age/ load it.
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 If page is younger than /Min_age/ return cached copy.
+</p>
 </li>
 </ol>
 <ol type="1" start="6" >
 <li>
+<p>
 If page do not have last modified date, load it.
+</p>
 </li>
 </ol>
 <ol type="1" start="7" >
 <li>
+<p>
 Compute last mod factor: lmf= page_age / (page_date - page_last_modified)
+</p>
 </li>
 </ol>
 <ol type="1" start="8" >
 <li>
+<p>
 If lmf &gt; /Lastmod_factor/ load it otherwise return cached copy.
+</p>
 </li>
 </ol>
 
 <hr>
 
-<a name="s-gcworks"></a>
-<h2>7.3 How garbage collection works</h2>
+<h2><a name="s-gcworks"></a>7.3 How garbage collection works</h2>
 
 <p>
 Smart Cache uses real LRU based garbage collection.  It remembers last access
 time to every object in cache.  When GC runs last access value of every object
 is transformed to days.
+</p>
 
 <p>
 Object's age is modified by various object's attributes (for example size or
@@ -228,12 +252,14 @@ expiration age), size rules and best matching penalty rule are applied.
 Priority of penalty rules follows order in sample configuration file.  Last
 step is to apply first matching urlmask rule (if any).  Rules can be fine-tuned
 with high details in <code>gc.cnf</code>.
+</p>
 
 <p>
 If age is bigger than <samp>reference_age</samp> or object is bigger than
 <samp>maximum_object_size</samp> or smaller than
 <samp>minimum_object_size</samp> object is immediately removed from cache
 without considering cache size.
+</p>
 
 <p>
 After all objects in cache are scanned, there are sorted by age.  When cache
@@ -241,21 +267,23 @@ size is bigger than cache high mark GC starts cleaning with removing objects
 with highest score first until size of cache drops between high and low marks.
 GC prefers to clean as much as possible without needing of another cache scan,
 but never deletes files bellow low mark.
+</p>
 
 <hr>
 
-<a name="s-cookies"></a>
-<h2>7.4 Cookies filtering</h2>
+<h2><a name="s-cookies"></a>7.4 Cookies filtering</h2>
 
 <p>
 Some Web sites deal so called &quot;cookies&quot;.  These &quot;cookies&quot;
 are tags sent from the server to the browser, which enable the server to keep
 track of the sites that the user visits, and thus compromise his privacy.
+</p>
 
 <p>
 As was requested by many users, Smart Cache has now built-in filter for
 Cookies.  Smart Cache's cookie filter has now 2 working modes: incoming and
 outgoing.  These modes are switched using <em>allow_all_session_cookies</em>.
+</p>
 
 <p>
 In both modes browsers warns if incoming cookies are detected, so they will
@@ -263,44 +291,56 @@ continue to display warnings.  Just turn this warnings off.  If you use
 Netscape 3+, you can disable confirmation messages for any cookies sent to your
 browser by going into Options-&gt;Network_Preferences-&gt;Protocols and
 checking off the box for <em>Show an Alert before Accepting a cookie</em>.
+</p>
 
 <hr>
 
-<a name="s7.4.1"></a>
-<h3>7.4.1 Outgoing cookie filter</h3>
+<h3><a name="s7.4.1"></a>7.4.1 Outgoing cookie filter</h3>
 
 <p>
 This mode is set by <em>allow_all_session_cookies false</em>.  In this mode all
 cookies sent by your browser will be filtered unless domain name is allowed in
 <code>cookies.cnf</code>.
+</p>
 
 <p>
 Benefits of this solution:
+</p>
 <ul>
 <li>
+<p>
 Outgoing filter (Instead of incoming) is 100% safe, no cookies will gets out.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Cookies which are set by HTML or by JavaScript are not problem.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Incoming cookies can be useful in some cases, because forms which are
 JavaScript enhanced can use cookie for storing user input between sessions.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Storing cookies on your hard-drive doesn't reduce your privacy, just takes some
 little space.  Privacy is compromised when cookies are send back.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 <samp>fake_cookie</samp> option can be easily done.
+</p>
 </li>
 </ul>
 
@@ -312,11 +352,11 @@ name, but unexpected value (for example text instead of numeric input).  Some
 versions of Microsoft Internet Information Server will crash entire (instead of
 just one http-child in Apache), so no new users can access this server until
 IIS is restarted.
+</p>
 
 <hr>
 
-<a name="s7.4.2"></a>
-<h3>7.4.2 Incoming cookie filter</h3>
+<h3><a name="s7.4.2"></a>7.4.2 Incoming cookie filter</h3>
 
 <p>
 This mode is set by <em>allow_all_session_cookies true</em>.  In this mode
@@ -324,76 +364,94 @@ all-session cookies are allowed from all sites and persistent cookies are
 allowed only from sites listed in <code>cookies.cnf</code>.  If persistent
 cookies is not allowed - it is changed to session cookie.  This is enough for
 keeping cookies-only www servers happy.
+</p>
 
 <p>
 It is not a good idea to switch filter from outgoing to incoming mode without
 deleting all cookies in browser cache first.
+</p>
 
 <p>
 Benefits of this solution:
+</p>
 <ul>
 <li>
+<p>
 You do not need to configure list of sites, which are cookie only.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Non persistent cookies are not a security threat.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Unallowed cookies will not be stored in browser.
+</p>
 </li>
 </ul>
 
 <p>
 Drawbacks:
+</p>
 <ul>
 <li>
+<p>
 Not possible to be 100% persistent cookies safe.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Cookies which are set by HTML or by JavaScript <em>are problem</em>.  These are
 not detectable by proxy-server without HTML parsing, which is very slow
 process.
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 <samp>fake_cookie</samp> option is ignored.
+</p>
 </li>
 </ul>
 
 <hr>
 
-<a name="s-logs"></a>
-<h2>7.5 Setting up logfiles</h2>
+<h2><a name="s-logs"></a>7.5 Setting up logfiles</h2>
 
 <p>
 Smart Cache produce common or combined log file formats.  Type of log can be
 switched by <samp>log_common</samp>.
+</p>
 
 <p>
 Logs are wildcard masked, so you can log to multiple logs depending on URL
 requested.  This is especially written for use in <a
 href="ch-admins.html#s-forwarder">Web forwarding with Smart Cache, Section
 9.7</a>, but logs can be produced even if no forwarding is set.
+</p>
 
 <p>
 Usage: access_log mask filename
+</p>
 
 <hr>
 
-<a name="s-import"></a>
-<h2>7.6 Importing files to Smart Cache</h2>
+<h2><a name="s-import"></a>7.6 Importing files to Smart Cache</h2>
 
 <p>
 If you are using SC for offline browsing, sometimes you may find importing
 files from outer sources (for example some CDs has offline copies of some
 servers) useful.
+</p>
 
 <p>
 Place these files to directory structure, which has the exactly same name as
@@ -401,10 +459,12 @@ original URLs of files.  For example in <samp>/tmp</samp> make directory
 <samp>/tmp/www.javaworld.com/javaworld/jw-10-1999/</samp> and copy necessary
 files to it, you can create any number of directories (even from different
 servers).
+</p>
 
 <p>
 After that run <samp>java scache -import /tmp</samp> and files will be
 imported.
+</p>
 
 <p>
 Smart Cache will check if newer version of imported file is not already
@@ -413,64 +473,72 @@ cache, if it fails, because file and cache directory are at different
 filesystems (disks), SC will copy file instead.  Is wise to place files to the
 same filesystem as SC main data directory and <strong>clear READ-ONLY</strong>
 attributes.
+</p>
 
 <hr>
 
-<a name="s-export"></a>
-<h2>7.7 Exporting data from Smart Cache</h2>
+<h2><a name="s-export"></a>7.7 Exporting data from Smart Cache</h2>
 
 <p>
 Cached data can be easily exported from Smart Cache.  Data are exported in
 format, which can be used in <a href="#s-import">Importing files to Smart
 Cache, Section 7.6</a>.
+</p>
 
 <p>
 Smart Cache can export last recently cached data in 3 modes:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 -export uses file's last modified date.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 -fullexport uses date when file was last checked against original server.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 -lruexport uses file's last access date.
+</p>
 </li>
 </ol>
 
 <p>
 Command line syntax is -[lru|full]export &lt;Directory&gt; &lt;Timedelta&gt;
+</p>
 
 <p>
 Time delta is in format number unit with no space.  (For example &quot;1w&quot;
 is one week).  Supported time units are: d/D day, w/W week, m minutes, M
 months, y/Y years, h/H hours, s/S seconds.
+</p>
 
 <hr>
 
-<a name="s-other"></a>
-<h2>7.8 Using Smart Cache for non-HTTP protocols</h2>
+<h2><a name="s-other"></a>7.8 Using Smart Cache for non-HTTP protocols</h2>
 
 <p>
 When Smart Cache gets request for unsupported protocol (for example ftp), it
 will forward it to <samp>ftp_proxy</samp> for FTP protocol or to
 <samp>http_proxy</samp> for rest.  Result obtained from that will be cached.
-See also <a href="ch-bugs.html#s-limitations">Smart Cache limitations, Section
-12.3</a>.
+</p>
 
 <hr>
 
-<a name="s-parentauth"></a>
-<h2>7.9 Parent proxy authentication</h2>
+<h2><a name="s-parentauth"></a>7.9 Parent proxy authentication</h2>
 
 <p>
 A parent proxy login and password may be specified in the
 &quot;http_proxy&quot; or &quot;ftp_proxy&quot; configuration statements after
 the parent proxy port in a form login:password.
+</p>
 
 <pre>
      Example:
@@ -479,8 +547,7 @@ the parent proxy port in a form login:password.
 
 <hr>
 
-<a name="s-compress"></a>
-<h2>7.10 Data compression support</h2>
+<h2><a name="s-compress"></a>7.10 Data compression support</h2>
 
 <p>
 Smart Cache can compress text data while saving them to disk.  This save
@@ -489,11 +556,13 @@ significant amount (about 50%) of diskspace.  If you want to do this set
 greater than 512 bytes.  You can also set filesize limit instead 1, for example
 <samp>auto_compress 20000</samp> will compress files bigger than 20k.  Is
 recommended to use your blocksize as limit for compressing files.
+</p>
 
 <p>
 These data will be sent to your browser in gzip compressed form.  Your browser
 must know how to decompress them.  Existing data can be compressed via <a
 href="ch-repair.html">Smart Cache repair utility, Chapter 11</a>
+</p>
 
 <p>
 If you see garbage on the screen, your browser can not handle compressed data.
@@ -502,76 +571,98 @@ Smart Cache will decompress data if your browser do not sent
 <samp>accept-encoding: gzip</samp> header.  Some browsers do not send this
 header, but accept compressed data, so use auto_decompress only if necessary.
 If you want to ALWAYS decompress outgoing data, use value 2.
+</p>
 
 <p>
 Any modern browser supports compressed HTML pages.  Reported browsers which
 supports compressed HTML pages:
+</p>
 <ul>
 <li>
+<p>
 Netscape 3.0/Linux (requires installed gzip)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Lynx 2.8/Linux (requires installed gzip)
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Netscape 4.61/OS2
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Opera 5
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 StarOffice 5.1 built-in browser
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 w3m (nice text mode browser with table rendering support!)
+</p>
 </li>
 </ul>
 
 <p>
 Browsers which <strong>DO NOT SUPPORTS</strong> compressed pages:
+</p>
 <ul>
 <li>
+<p>
 Netscape 2.02/OS2
+</p>
 </li>
 </ul>
 <ul>
 <li>
+<p>
 Mozilla 5.0 beta/OS2
+</p>
 </li>
 </ul>
 
 <p>
 I have no information about browsers on other OSes (Win,Mac).  If you want, you
 can send me these information.
+</p>
 
 <hr>
 
-<a name="s-remap"></a>
-<h2>7.11 Request remap/redirecting</h2>
+<h2><a name="s-remap"></a>7.11 Request remap/redirecting</h2>
 
 <p>
 Smart Cache can perform request rewriting or redirecting.  Difference between
 rewriting and redirecting is that in case of redirecting browser is able to see
 a new destination.
+</p>
 
 <p>
 If you are using web forwarding, you must use rewrite feature; if you are using
 fast redirects you must use redirect feature.  In all other cases you may use
 anything.
+</p>
 
 <p>
 Syntax of configuration file: &lt;Source mask&gt; &lt;Target url&gt; &lt;star
 number&gt;
+</p>
 
 <pre>
      http://opensource.org/* http://www.opensource.org/ 1
@@ -582,103 +673,133 @@ number&gt;
 Destination URL is second URL with appended string which was matched by n-th
 star from source mask.  If n-th is 0, nothing is appended.  If you need zero
 length Target url, use * instead.
+</p>
 
 <hr>
 
-<a name="s-timestrings"></a>
-<h2>7.12 Timestrings</h2>
+<h2><a name="s-timestrings"></a>7.12 Timestrings</h2>
 
 <p>
 Smart Cache uses in configuration file for time representation data type called
 'timestring'.  Timestring syntax is: &lt;Floating point number&gt;&lt;type&gt;.
 For example: 1h, 40m, 2d.  Timestring defaults to minutes if no type is used.
+</p>
 
 <p>
 Supported types:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 s or S - seconds
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 m - minutes
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 d or D - day
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 w or W - week
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 f or F - fortnight
+</p>
 </li>
 </ol>
 <ol type="1" start="6" >
 <li>
+<p>
 M - months
+</p>
 </li>
 </ol>
 <ol type="1" start="7" >
 <li>
+<p>
 y or Y - years
+</p>
 </li>
 </ol>
 <ol type="1" start="8" >
 <li>
+<p>
 h or H - hours
+</p>
 </li>
 </ol>
 
 <p>
 You can also use full unit name i.e.  &quot;day&quot;.  See function
 timestring() in garbage.java for details.
+</p>
 
 <hr>
 
-<a name="s-sizestrings"></a>
-<h2>7.13 Sizestrings</h2>
+<h2><a name="s-sizestrings"></a>7.13 Sizestrings</h2>
 
 <p>
 Smart Cache uses in configuration file for size representation data type called
 'sizestring'.  Sizestring syntax is: &lt;Floating point number&gt;&lt;type&gt;.
 For example: 1MB, 40KB, 2GB.  Sizestring defaults to Bytes if no type is used.
+</p>
 
 <p>
 Supported types:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 B - bytes
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 K - 1024 Bytes
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 M - 1024 KBytes
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 G - 1024 MBytes
+</p>
 </li>
 </ol>
 
 <p>
 You can also use full unit name i.e.  &quot;kilobytes&quot;.  See function
 sizestring() in garbage.java for details.
+</p>
 
 <hr>
 
+<p>
 [ <a href="ch-contact.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -697,26 +818,23 @@ sizestring() in garbage.java for details.
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-switches.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

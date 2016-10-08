@@ -2,16 +2,15 @@
 				  ===========
 
 	      full featured Open Source HTTP proxy caching server
-		      Copyright (c) Radim Kolar 1998-2005
+		      Copyright (c) Radim Kolar 1998-2009
                          
 Copyright
-=========   
+=========
 
 Smart Cache Open Source Software, copyrighted by Radim Kolar; There is NO
 warranty.  See 'copyright' file for details. You may distribute it and/or
-modify it under the terms of GNU General Public License as published by the
-Free Software Foundation; either version 2, or (at your option) any later
-version.
+modify it under the terms of GNU General Public License version 2
+as published by the Free Software Foundation.
 
 Documentation
 =============
@@ -29,8 +28,8 @@ Quick Start
  If you don't understand what it does, doesn't change it.
 
 3.
- You NEED to get something, which can run Java 1.1 bytecodes, for
- example JRE1.1, JDK1.1, Kaffe, Japhar, ...
+ You NEED to get something, which can run Java 5 applications, for
+ example JRE 5, JDK 1.5.
 
 4.
  If you have missconfigured OS/2 box run `ifconfig lo 127.0.0.1` first.
@@ -38,13 +37,9 @@ Quick Start
 5.
  invoke Smart Cache in program directory (contains *.class files):
 
-   with JDK: java -ms1m scache
+   with JDK: java -cp . -ms1m scache
    with JRE: jre -ms1m -cp . scache
 
-Note:
-  If you have Java 1.3 or higher you need to add to add -cp . for
-  avoiding 'java.lang.NoClassDefFoundError: scache' error
- 
 How to run garbage collection:
 ==============================
 
@@ -67,7 +62,8 @@ some mailing lists.
 
 Mailing list
 ============
-This program has mailing list 'scache' on server www.yahoogroups.com.
+This program has mailing list 'scache-users' on server sourceforge.net.
+https://lists.sourceforge.net/lists/listinfo/scache-users
 
 Where to find a new versions
 ============================
@@ -76,7 +72,6 @@ Some on these sites may have outdated version.
 http://scache.sourceforge.net/                           (Homepage)
 http://hobbes.nmsu.edu/                            (Binary mirror, use search)
 http://ibiblio.org/pub/linux/apps/www/servers/           (Source code mirror)
-http://www.volny.cz/martin.konicek/scache/               (Czech Homepage)
 
 On Homepage you will find Smart Cache-enabled web batch downloader.
 

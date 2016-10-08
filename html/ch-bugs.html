@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-bugs"></a>
+<p><a name="ch-bugs"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-repair.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-troubles.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,23 +48,26 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s-dnsbug"></a>
-<h2>12.1 Java DNS caching bug/feature</h2>
+<h2><a name="s-dnsbug"></a>12.1 Java DNS caching bug/feature</h2>
 
 <p>
 Java (at least 1.1 and 1.2 versions, see notes for Java 1.3 setup) caches for
 security and performance reasons <strong>every</strong> DNS response received.
 This has two negative side effects:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 Java never performs garbage collection on it's internal DNS cache.  After weeks
 of continual use of Smart Cache this eats too much memory.  It's recommended
 restart Smart Cache after some time (for example every 3rd day) of continual
 using to clean internal DNS cache of Java virtual machine.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 Java caches <strong>every</strong> response.  DNS servers sends three types of
 response: Authoritative, Non-Authoritative (cached data) and Server failed.  If
 you are not connected to Internet, you will get server failed responses,
@@ -74,6 +75,7 @@ because server can't check the DNS name.  When Java virtual machine gets this
 response from operation system, it interprets it as <em>Bad hostname</em> and
 stores into internal cache.  This is implementation bug in current Java
 versions.
+</p>
 </li>
 </ol>
 
@@ -84,117 +86,59 @@ problems if you are browsing off line, start a Internet connection and continue
 to browsing on line.  This bug causes that pages on servers, which you visited
 off line, will not be refreshed and new pages will not be loaded from these
 servers.
+</p>
 
 <p>
 Example session: You start Smart Cache at system boot time.  Later you start
 browsing www.yahoo.com, for example.  After some time, you decided to connect
 to Internet and continue browsing.  Smart Cache will report <em>Host
 Unknown</em> error about www.yahoo.com even if you are connected to Internet.
+</p>
 
 <p>
 You can avoid this bug by using one of these solutions:
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 Best solution is <strong>If you are using Java 1.3</strong> add
 <samp>-Dsun.net.inetaddr.ttl=0</samp> option to command line, before word
 <code>scache</code>.
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 <strong>Restart the cache</strong> if you were browsing off line and (after
 establishing connection to your ISP) then want to browse online.  It is not
 necessary to (re)start Smart Cache if you are connected to Internet - only no
 off line browsing activity after start is important.  Web browser restart is
 not required.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 Good solution is <strong>use your ISP's proxy</strong> server, which also
 speed-up the web access speed.  Parent (ISP's) proxy is defined in
 <code>scache.cnf</code> file by directive <code>http_proxy</code>.  But this
 server <strong>MUST BE</strong> entered using his numeric <em>IP address</em>,
 not the hostname!  This also solves problem with Java's growing DNS caches.
+</p>
 
 <p>
 If you are using hostname, this bug will not be defeated.  When SC starts and
 can not resolve http_proxy hostname (not connected to Internet), http_proxy
 will be ignored.
+</p>
 </li>
 </ol>
 
 <hr>
 
-<a name="s-buglist"></a>
-<h2>12.2 Known bugs list</h2>
-<ol type="1" start="1" >
-<li>
-Some regexp expressions in rfail.cnf (for example \.gif$) are not correctly
-evaluated.
-</li>
-</ol>
-<ol type="1" start="2" >
-<li>
-Squid ignores <samp>Authorization:</samp> HTTP header in other protocols than
-HTTP.  Requesting password protected files in other protocols than HTTP does
-not work, when using Squid as parent proxy cache.  If you are using Smart Cache
-only for HTTP, this does not apply to you.
-</li>
-</ol>
-<ol type="1" start="3" >
-<li>
-POSTING HTTP 0.9 clients will gets HTTP 1.0 reply instead of old 0.9, which can
-confuse them.  Many WWW servers do the same.  This do not apply to HTTP/0.9 is
-unsupported error.
-</li>
-</ol>
-
-<hr>
-
-<a name="s-limitations"></a>
-<h2>12.3 Smart Cache limitations</h2>
-<ol type="1" start="1" >
-<li>
-Old HTTP 0.9 servers are not supported.  There are <em>very</em> rare today.
-Do not send emails about it unless you want to send $$$ or hardware.  No plans
-for that.
-</li>
-</ol>
-<ol type="1" start="2" >
-<li>
-No support for HTTP/1.1 <samp>Cache-Control</samp> nonzero max-age in request.
-We do not like reloads, why to add another method for forcing cache refresh?
-No plans for that.
-</li>
-</ol>
-<ol type="1" start="3" >
-<li>
-No support for caching multiple versions of the same page, based on dynamic
-content negotiation and <samp>Vary:</samp> header.  Used for example default
-language select on www.debian.org.  No plans for that.
-</li>
-</ol>
-
-<hr>
-
-<a name="s-jvmbugs"></a>
-<h2>12.4 Java runtime known bugs</h2>
-<ol type="1" start="1" >
-<li>
-In Linux Java 1.1.7/glib2.1 JVM sometimes crashes in constructor of
-<samp>java.util.zip.Inflater class</samp>.  You may turn off auto_compression
-and use repair -c -r instead.  Blackdown Java 1.1.8/glib2.2 works okay.
-</li>
-</ol>
-<ol type="1" start="2" >
-<li>
-OS/2 JVM do not likes jikes 1.13 compiled bytecode, use javac when compiling.
-</li>
-</ol>
-
-<hr>
-
+<p>
 [ <a href="ch-repair.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -213,26 +157,23 @@ OS/2 JVM do not likes jikes 1.13 compiled bytecode, use javac when compiling.
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-troubles.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

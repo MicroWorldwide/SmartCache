@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-troubles"></a>
+<p><a name="ch-troubles"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-bugs.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-faq.html">next</a> ]
+</p>
 
 <hr>
 
@@ -50,14 +48,15 @@ Smart Cache Manual
 
 <hr>
 
-<a name="s13.1"></a>
-<h2>13.1 Start up problems</h2>
+<h2><a name="s13.1"></a>13.1 Start up problems</h2>
 <dl>
 <dt>I got message &quot;Command not found&quot; from OS.</dt>
 <dd>
+<p>
 Add Java runtime directory to your PATH if it was not done by Java installation
 program.  See also <a href="ch-inst-setup.html#s-javainst">Checking the Java
 installation, Section 3.4</a>
+</p>
 </dd>
 </dl>
 <dl>
@@ -65,82 +64,109 @@ installation, Section 3.4</a>
 <dd>
 <ol type="1" start="1" >
 <li>
+<p>
 If you have Java 1.3 or newer, you need to have current directory '.'  listed
 in environment variable CLASSPATH; which is not in default Java installation.
 If not there you need to simply add <samp>-cp .</samp> option to Java runtime,
 just before scache: <samp>java -cp .  -ms1m scache</samp>
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 Are .class files in your current directory?
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 Do you unpacked scache.zip with utility with long names support?
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 Do you recreated directory structure while unpacking archive?
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 Are .class files located on disk, which supports long names?
+</p>
 </li>
 </ol>
 <ol type="1" start="6" >
 <li>
+<p>
 Do not write .class extension when running smartcache.  <strong>DO NOT
 RUN</strong> java scache.class !
+</p>
 </li>
 </ol>
 <ol type="1" start="7" >
 <li>
+<p>
 Do you have at least Java 1.1 version ?  Type java -version for report.
+</p>
 </li>
 </ol>
 <ol type="1" start="8" >
 <li>
+<p>
 If you are using OS/2, Smart Cache will not operate on FAT drives (no long
 names).
+</p>
 </li>
 </ol>
 
 <p>
 See also <a href="ch-inst-setup.html#s-generic">Generic installation from .zip
 file, Section 3.6</a>
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Smart Cache ends with fatal error <em>Can not bind to my port</em></dt>
 <dd>
-This may be caused by one of following things: [<a href="footnotes.html#f7"
-name="fr7">7</a>]
+<p>
+This may be caused by one of following things: [<a href="footnotes.html#f6"
+name="fr6">6</a>]
+</p>
 <ol type="1" start="1" >
 <li>
+<p>
 Smart Cache is already running or
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 Other application runs on the Smart Cache port.  Try <code>telnet</code> to it.
 If you do not get <samp>Connection refused.</samp> error, change port in
 configuration file.
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 Address specified as <em>BindAddress</em> is not your local IP address.  [<a
-href="footnotes.html#f8" name="fr8">8</a>]
+href="footnotes.html#f7" name="fr7">7</a>]
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 You do not have the loopback interface configured.  (Very common problem on
 OS/2 machines) Type: <samp>ifconfig lo 127.0.0.1</samp>
+</p>
 </li>
 </ol>
 </dd>
@@ -148,13 +174,14 @@ OS/2 machines) Type: <samp>ifconfig lo 127.0.0.1</samp>
 
 <hr>
 
-<a name="s13.2"></a>
-<h2>13.2 Browsing problems</h2>
+<h2><a name="s13.2"></a>13.2 Browsing problems</h2>
 <dl>
 <dt>I get the following error: <em>403 Forbidden by rule</em> If I disable the proxy in Netscape and set it for direct Internet connection, the page loads with no problem. How can I fix this?</dt>
 <dd>
+<p>
 See section <a href="ch-operating.html#s-urlblock">URL blocking, Section
 5.6</a>
+</p>
 </dd>
 </dl>
 <dl>
@@ -172,11 +199,13 @@ See section <a href="ch-operating.html#s-urlblock">URL blocking, Section
 
 <p>
 You can't.  HTTP proxies do not cache POST requests.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I get the following error: <em>501 Protocol FTP is not directly supported</em></dt>
 <dd>
+<p>
 Smart Cache supports caching of FTP transfers only if you have set
 <em>http_proxy</em> or <em>ftp_proxy</em> to server, which supports FTP via
 HTTP.  Many ISPs have it.  If you do not know any, set up your browser to not
@@ -184,30 +213,37 @@ use Smart Cache for FTP transfers.  See also <a
 href="ch-configuration.html#s-inst-browser">Configuring a Web browser, Section
 4.3</a>, <a href="ch-advancedt.html#s-other">Using Smart Cache for non-HTTP
 protocols, Section 7.8</a>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I see garbage instead of some pages in my Microsoft Explorer</dt>
 <dd>
+<p>
 It is a gzipped page.  Turn on switch: use HTTP/1.1 when talking to proxy
 server.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I sometimes find SmartCache alters the behaviour of some pages; to be sure, I then disable the proxy setting in Netscape and get a different result. Could this be related to Java programs within the page?</dt>
 <dd>
+<p>
 Smart Cache <strong>do not alter</strong> received pages/data in any way; It
 changes just HTTP headers (when sending to server or to client).  If you see
 different page, it means that remote server sent you a different page.  Right
 question is: ,,why server send me a different page?''
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Why server sent me a different page when I am using Smart Cache?</dt>
 <dd>
+<p>
 Because Smart Cache modified HTTP request from your browser.  The biggest
 effect on sending different pages has User-Agent: header.  If you are using
 <em>fake_user_agent</em> disable it.
+</p>
 </dd>
 </dl>
 <dl>
@@ -215,31 +251,41 @@ effect on sending different pages has User-Agent: header.  If you are using
 <dd>
 <ol type="1" start="1" >
 <li>
+<p>
 <em>fake_user_agent</em> changes your web browser identity.  Some server sends
 slightly modified versions of pages to some browsers.  [<a
-href="footnotes.html#f9" name="fr9">9</a>]
+href="footnotes.html#f8" name="fr8">8</a>]
+</p>
 </li>
 </ol>
 <ol type="1" start="2" >
 <li>
+<p>
 <em>remove_pragma_no_cache</em> When set, 'Pragma' header will be deleted in
 outgoing requests.  (Increases successful IMS hit rate)
+</p>
 </li>
 </ol>
 <ol type="1" start="3" >
 <li>
+<p>
 <em>referer_hack</em> dynamically changes Referer header.
+</p>
 </li>
 </ol>
 <ol type="1" start="4" >
 <li>
+<p>
 <em>fake_referer</em> changes Referer header to specified String.  If
 fake_referer is used, referer_hack is ignored.
+</p>
 </li>
 </ol>
 <ol type="1" start="5" >
 <li>
+<p>
 <em>fake_cookie and cookies filter</em> can replace/remove cookies.
+</p>
 </li>
 </ol>
 </dd>
@@ -247,18 +293,21 @@ fake_referer is used, referer_hack is ignored.
 <dl>
 <dt>Reloads in my browser don't work anymore!</dt>
 <dd>
+<p>
 Look at directive default_refresh_pattern.  First number is for ignoring reload
 requests.  If there is bigger number than zero, reloads of younger page than
 that are forbidden.  If you don't want to ignore reload requests, set it to
 zero, but better is to use some small value, such as 1-3 minutes for avoiding
 reloads forced by browser itself.  See also <a
 href="ch-advancedt.html#s-refresh">Configuring refresh patterns, Section
-7.2</a> [<a href="footnotes.html#f10" name="fr10">10</a>]
+7.2</a> [<a href="footnotes.html#f9" name="fr9">9</a>]
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Automatic dialing does not work any more. How do I fix it?</dt>
 <dd>
+<p>
 Some browsers (such as MSIE-4) can be configured to dial your ISP automatically
 when you click on a link, but this feature gets disabled if you specify a proxy
 running on your own computer (with address localhost or 127.0.0.1) because
@@ -269,63 +318,73 @@ then add <em>127.0.0.1 smart.cache</em> to file c:\windows\hosts (if there
 already is a line beginning with 127.0.0.1, just add smart.cache at the end of
 it.) This should also work with Netscape Communicator 4 on machines where
 MSIE-4 has been installed.
+</p>
 </dd>
 </dl>
 
 <hr>
 
-<a name="s13.3"></a>
-<h2>13.3 Memory usage problems</h2>
+<h2><a name="s13.3"></a>13.3 Memory usage problems</h2>
 <dl>
 <dt>Java runtime eats too much of my memory!</dt>
 <dd>
+<p>
 add <samp>-ms1m</samp> (start JVM with 1MB memory pool) option, before
 <samp>scache</samp> to command line for invoking java interpreter.  If this do
 not helps too much, try different Java runtime.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Java uses on my Linux much more memory than written in this document.</dt>
 <dd>
+<p>
 It is normal.  Java tries to use free memory when it is available.  If this
 memory will be required by other applications kernel just swaps it out and it
 will be never (rarely) loaded back.  For forcing kernel to do that (free memory
 is good for dynamic disk cache) use some utility, such as my
 <code>swapout</code>, which allocates all available physical memory, touches
 this memory and exits.
+</p>
 </dd>
 </dl>
 
 <hr>
 
-<a name="s13.4"></a>
-<h2>13.4 Run time problems</h2>
+<h2><a name="s13.4"></a>13.4 Run time problems</h2>
 <dl>
 <dt>I can't connect to Smart Cache from other computers!</dt>
 <dd>
+<p>
 See <a href="ch-admins.html#s-bind">Setting the bindaddress, Section 9.10</a>
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Smart Cache do not cache anything!</dt>
 <dd>
+<p>
 See <a href="ch-configuration.html#s-inst-browser">Configuring a Web browser,
 Section 4.3</a>
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Smart Cache do not cache any data from secure server! What about to support https?</dt>
 <dd>
+<p>
 Smart Cache supports https now, but these pages <strong>can not be cached
 because there are ENCRYPTED</strong>!  Smart Cache do not even knows URLs of
 encrypted requests.  Blocking entire HTTPS site via <code>fail.cnf</code>
 works.  If you have direct connection to Internet you will not get any extras
 when using SC as https proxy.
+</p>
 </dd>
 </dl>
 
 <hr>
 
+<p>
 [ <a href="ch-bugs.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -344,26 +403,23 @@ when using SC as https proxy.
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-faq.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

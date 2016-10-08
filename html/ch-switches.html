@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-switches"></a>
+<p><a name="ch-switches"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-advancedt.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-admins.html">next</a> ]
+</p>
 
 <hr>
 
@@ -54,180 +52,234 @@ Smart Cache Manual
 Smart Cache has also some command line switches, some of them are documented
 here and some of them has aliases.  See <code>scache.java</code> for more
 detailed info.  These options overrides configuration files.
+</p>
 <dl>
 <dt>-ro</dt>
 <dd>
+<p>
 Read-Only.  Do not write anything to SC data directory.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-cfgdir &lt;Directory&gt;</dt>
 <dd>
+<p>
 Read *.cnf files from this directory, not from current dir.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-nocache</dt>
 <dd>
+<p>
 Do not save new objects to cache
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-nofail</dt>
 <dd>
+<p>
 turn off URL filter
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-nolog</dt>
 <dd>
+<p>
 turn off logging
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-notrace</dt>
 <dd>
+<p>
 turn off console tracing messages
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-online</dt>
 <dd>
+<p>
 disable offline hooks
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-cookies</dt>
 <dd>
+<p>
 disable cookie filter
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-fastrefresh</dt>
 <dd>
+<p>
 use standard web refresh policy
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-killunref</dt>
 <dd>
+<p>
 Delete any unreferenced files in cache.  See also <a
 href="ch-operating.html#s-maint">Smart Cache maintenance, Section 5.5</a>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-p &lt;port number&gt;</dt>
 <dd>
+<p>
 Run SC on alternate port number.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-ui_port &lt;port number&gt;</dt>
 <dd>
+<p>
 Run SC UI on alternate port number.  Use 0 to disable it.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-import &lt;Directory&gt;</dt>
 <dd>
+<p>
 Import files from directory into Smart Cache, see <a
 href="ch-advancedt.html#s-import">Importing files to Smart Cache, Section
 7.6</a>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-importcache &lt;Directory&gt;</dt>
 <dd>
+<p>
 Import files from another Smart Cache, see <a
 href="ch-advancedt.html#s-import">Importing files to Smart Cache, Section
 7.6</a>.  <strong>CAUTION:</strong> files will be moved in (if possible, if not
 it will not be deleted), so backup of original cache may be wise.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-cachedir &lt;Directory&gt; [swap_level1_dirs] [swap_level2_dirs]</dt>
 <dd>
+<p>
 Use alternate directory for caching files.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-http_proxy &lt;Hostname&gt; &lt;port&gt;</dt>
 <dd>
+<p>
 Use specified proxy server for HTTP protocol.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-ftp_proxy &lt;Hostname&gt; &lt;port&gt;</dt>
 <dd>
+<p>
 Use specified proxy server for FTP protocol.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-gc [minutes]</dt>
 <dd>
+<p>
 <a href="ch-operating.html#s-gc">Running garbage collection, Section 5.4</a>
 and exit.  If minutes are used, Smart Cache do not exits after GC is completed,
 but waits XX minutes and GC is repeated.  You can use also strings instead of
 minutes (8h,1d,..).
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-fakegc</dt>
 <dd>
+<p>
 Simulate <a href="ch-operating.html#s-gc">Running garbage collection, Section
 5.4</a> and exit.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-export, -fullexport, -lruexport</dt>
 <dd>
+<p>
 See <a href="ch-advancedt.html#s-export">Exporting data from Smart Cache,
 Section 7.7</a>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-repair</dt>
 <dd>
+<p>
 Same as running recursive repair on cachedir.  See <a
 href="ch-repair.html">Smart Cache repair utility, Chapter 11</a>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-version</dt>
 <dd>
+<p>
 Print Smart Cache version to standard output and exit.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-rebalance</dt>
 <dd>
+<p>
 Rehash directory structure.  Run it after changing swapdir levels or when
 moving by hand some server directories inside cache.  It is a fast operation.
 Also good for paranoid users, can not hurt any data.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-local</dt>
 <dd>
+<p>
 Avoid DNS lookups and do not connect to <strong>ANY server</strong>.  Including
 server running on the same machine as Smart Cache.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-direct</dt>
 <dd>
+<p>
 Bypass http_proxy and make direct connection to target server.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>-help</dt>
 <dd>
+<p>
 Prints short command line help summary.
+</p>
 </dd>
 </dl>
 
 <hr>
 
+<p>
 [ <a href="ch-advancedt.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -246,26 +298,23 @@ Prints short command line help summary.
 [ <a href="ch-faq.html">14</a> ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-admins.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>

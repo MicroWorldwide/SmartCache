@@ -12,9 +12,10 @@
 
 <body>
 
-<a name="ch-faq"></a>
+<p><a name="ch-faq"></a></p>
 <hr>
 
+<p>
 [ <a href="ch-troubles.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -33,13 +34,10 @@
 [ 14 ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-new.html">next</a> ]
+</p>
 
 <hr>
 
@@ -47,11 +45,11 @@
 Smart Cache Manual
 <br>Chapter 14 - FAQ
 </h1>
+
+<hr>
 <dl>
 <dt>May I disable my browser internal cache?</dt>
 <dd>
-<hr>
-
 <p>
 It is recommended to leave some small (5MB) the browser disk cache, browser can
 use this cache for caching SSL pages.  If you browser has delete cache on exit
@@ -59,113 +57,142 @@ option, use it.  For speeding browsing use memory cache if you browser supports
 it (Netscape and Opera does, Microsoft not).  The size of the memory cache
 depends on the amount of free RAM, but 1500 K is a good starting point even if
 your system only has 16Mb RAM.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>When I disable disk cache in Netscape, some files are still cached?</dt>
 <dd>
+<p>
 Bug in browser.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>How can i use SC with junkbuster?</dt>
 <dd>
+<p>
 Make proxy chain: browser -&gt; Smart Cache -&gt; Junkbuster.  New version of
 Junkbuster is called <code><a
 href="http://www.privoxy.org/">privoxy</a></code>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>How can i tell SC if i am online or offline?</dt>
 <dd>
+<p>
 You do not need that.  If you want to force offline mode, use -local switch.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>May I place SC into my archive of Internet/Java/Windows/... Tools?</dt>
 <dd>
+<p>
 Yes go ahead, SC is open source software.  Place it in any archive, you can use
 my name/email for entry submission if you are not like to use own.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I have a 50MB cache in browser and do not want to loose its contents. May I still try SC?</dt>
 <dd>
+<p>
 Yes, SC do not delete anything from it.  Your browser will be still able to use
 your old cached things.  New things will be written to Smart Cache (by itself)
 and also to your browser's cache (by browser).
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I want to use cache from my browser, but I want to use SC for clearing non cacheable headers and other advantages. What should I set up?</dt>
 <dd>
+<p>
 Set <samp>nocaching *</samp> , <samp>generate_lastmod yes</samp>,
 <samp>pragma_no_cache 1</samp> , <samp>quick_abort_min 0</samp> ,
 <samp>quick_abort_max 0</samp>
+</p>
 </dd>
 </dl>
 <dl>
 <dt>What should I set to get even more caching?</dt>
 <dd>
+<p>
 Set <samp>generate_lastmod yes</samp> , <samp>pragma_no_cache 1</samp> ,
 <samp>remove_pragma_no_cache yes</samp> , and first number in
 default_refresh_pattern to non-zero (avoids another Netscape bug).  Using <a
 href="ch-operating.html#s-urlblock">URL blocking, Section 5.6</a> is good idea
 also.  If you are only one SC user, set <samp>cache_password_protected 1</samp>
 and <samp>cache_private 1</samp>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Why SC uses deprecated Java APIs?</dt>
 <dd>
+<p>
 Because there are much faster!  There is no Unicode conversion stuff, which is
 not needed.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I want to abort the requests and Smart Cache <em>NOT to continue</em> to download anything in order to have the full band width for the next requests. How should I set 'quick_abort' to do that?</dt>
 <dd>
+<p>
 quick_abort_min 0 quick_abort_max 0
+</p>
 </dd>
 </dl>
 <dl>
 <dt>What can I set in gc.cnf To prevent the garbage collector from deleting directories I want to keep forever?</dt>
 <dd>
+<p>
 The best I can think of is to specify in gc.cnf for each directory I want to
 keep forever (something like): urlmask url /99999999999.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Can I distribute SC on CD-ROM disk with other software? Need I a permission?</dt>
 <dd>
+<p>
 No, you can distribute unmodified SC in any way you like [<a
-href="footnotes.html#f11" name="fr11">11</a>], you can sell it, place it on
+href="footnotes.html#f10" name="fr10">10</a>], you can sell it, place it on
 your webpage, burn it on CD-ROMs, even with included commercial programs.  If
 you are ISP its OK to place it on your &quot;startup&quot; CDs and its OK to
 run SC in business environments for making money.  But if you redistribute SC,
 you must redistribute GPL License also.  If you want to distributed a modified
 version of Smart Cache see GPL License for some details.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Can I use SC for business purposes?</dt>
 <dd>
+<p>
 Yes, GPL allows to use it for ANY purpose.  This is called freedom zero.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Can I share cached files by SC running under both Windows and Linux?</dt>
 <dd>
+<p>
 Yes, SC used the same file format under both OSes.  Many users do this, just
 place cacheroot directory on FAT disk, seen by both OSes.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>How can I run SC without opening a DOS window?</dt>
 <dd>
+<p>
 In OS/2 you can run it invisibly via <samp>detach java -norestart -ms1m
 scache</samp>.  Scache can very easily (in all Windows versions, afaik) be
 started from a batch file, like so:
+</p>
 
 <pre>
      @echo off
@@ -180,94 +207,106 @@ cache and let it run invisible in the background (if necessary, it can always
 be unloaded later from the Ctrl-Alt-Del dialog).  If you put the same shortcut
 in the Startup folder, the cache will be silently started every time you
 bootup.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>After running -gc, with cache_size 100MB, the output of java scache -gc is: <samp>Cachesize is now 94361600 bytes.</samp> But treesize the cache-directory shows only 52MB. What's happen?</dt>
 <dd>
+<p>
 You may have set incorrect block_size in <code>gc.cnf</code> or treesize
 program do not report actual bytes used, but just sums of files length.  See <a
 href="ch-configuration.html#s-gcconf">Configuration of garbage collection,
 Section 4.2</a>
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Smart Cache's hit/miss ratio is too low when compared with other proxy servers, but browsing is much faster with it!</dt>
 <dd>
+<p>
 When using Smart Cache, WWW browser sends less requests than without it.  If
 you want to get comparable numbers with other proxy caches set
 <samp>generate_lastmod no</samp> and you will see, how much &quot;ratio&quot;
 will be increased.  This of course do not made your browsing faster.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>How can I run Smart Cache as service under Windows NT?</dt>
 <dd>
+<p>
 You can run it from All Users startup.  See also <code><a
 href="http://support.microsoft.com/default.aspx?scid=KB;en-us;q137890">http://support.microsoft.com/default.aspx?scid=KB;en-us;q137890</a></code>
 or you can use <code><a href="http://www.firedaemon.com/">Firedaemon
 program</a></code> or <code><a
 href="http://www.eworksmart.com/JNT/">JNT</a></code>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>How can I clearly deinstall Smart Cache?</dt>
 <dd>
+<p>
 Just delete it and cached files.  It do not writes anything to system
 directories, registers or other strange places.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Java runtime do not works after installation on Windows NT! I must reboot the machine for getting Java to work. After reboot everything works fine.</dt>
 <dd>
+<p>
 This is probably a very common Windows NT (maybe 95/98/00 too?) problem.  This
 was reported by many users.  You must report this program to your Software or
 Operation System Vendors.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Is recommended to run caching DNS server for improving SC performance?</dt>
 <dd>
+<p>
 SC do not needs it, Sun Java itself caches all DNS responses, see <a
 href="ch-bugs.html#s-dnsbug">Java DNS caching bug/feature, Section 12.1</a>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Is possible for Internet users to break into Smart Cache and get access to our local LAN?</dt>
 <dd>
+<p>
 You can set BindAddress (<a href="ch-admins.html#s-bind">Setting the
 bindaddress, Section 9.10</a>) to your local LAN IP address to prevent Internet
 users from doing this.  Using <samp>Fail *your.local.lan*</samp> works also.
 But BindAddress is faster, safer and cleaner.  You can look also on <a
 href="ch-admins.html#s-access">Proxy access control, Section 9.11</a>.
-</dd>
-</dl>
-<dl>
-<dt>What about to compile SC with <samp>javac -O</samp> ?</dt>
-<dd>
-Yes, this turns on inlining.  I do not know if it javac really inlines
-something, but why not to try it.  I do not use that switch for distributed
-.class, because it runs slightly slower.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>When Smart Cache uses If-Modified-Since ?</dt>
 <dd>
+<p>
 Only if requested page has Last-Modified date.  If pages has Etag, Smart Cache
 uses If-none-match.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>What about Expire: headers with dates like 1.1.1970?</dt>
 <dd>
+<p>
 Smart Cache will use it as <samp>Pragma: no-cache</samp>.  If
 <samp>pragma_nocache</samp> is set to non-zero, expire will be ignored and
 removed from server response.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Jikes is faster java compiler, what about to compile SC with them?</dt>
 <dd>
+<p>
 Jikes compiles faster, but faster is only execution of the compiler.  Jikes do
 not generate code which runs faster than code generated by javac.  Jikes can be
 downloaded from <code><a
@@ -275,45 +314,55 @@ href="http://www.alphaworks.ibm.com/">AlphaWorks</a></code> IBM site for free.
 Source code for Jikes is available also.  Jikes is written in C++.  Some
 virtual machines has problems when running jikes compiled classes, using javac
 is recommended.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I have heard that there are some Java compilers, which are able to compile Java to native code, which runs faster. Will be such native versions distributed?</dt>
 <dd>
+<p>
 If you want, try it and distribute native versions yourself.  See <a
 href="ch-admins.html#s-gcj">Making native executable, Section 9.4</a>
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Is Smart Cache better than other Proxy servers? There are many of them.</dt>
 <dd>
+<p>
 Yes there are, especially for Windows some of them are mentioned in <a
 href="ch-intro.html#s-solutions">Other off line browsing solutions, Section
 1.4</a>.  Try some of them and find it yourself.  Better or worse are relative
 terms.  Use server which works the best for <strong>YOU</strong>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>In <code>gc.cnf</code> for HPFS there is a suggested block size of 1024 for HPFS, but the sector size on HPFS is 512 byte and there is no sector-clustering (or with other words a cluster-size of 1) for HPFS.</dt>
 <dd>
+<p>
 HPFS really uses 512 bytes long file blocks, but every (even empty) file uses
 also one sector (512 bytes) FNODE and directory entry (ignoring their size).
 Summary: HPFS uses 512+blocks*512 per file.  Because Smart Cache can not handle
 this configuration, is better to use 1024 <em>block_size</em>.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>It is a shame, that this is written in Java...</dt>
 <dd>
+<p>
 No.  Many people use this software on Windows platform.  I do not use it and
 hardly will ever write software for running only on it.  It was coded under
 OS/2, now I am coding that under Linux and use this on Windows, Mac, OS/2 and
 Linux.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>Are not Java program so slow for normal usage?</dt>
 <dd>
+<p>
 GUI Java applications are a quite slow.  At least on my 486/33 you will not
 have too much fun with it.  But non-GUI Java programs (Windows based people
 often says console or DOS) are much faster than other interpreted languages
@@ -321,24 +370,29 @@ often says console or DOS) are much faster than other interpreted languages
 href="http://www.python.org/">Python</a></code>).  There are fast as many C
 programs.  See <a href="ch-admins.html#s-bench">Proxy cache Benchmarks, Section
 9.2</a>
+</p>
 </dd>
 </dl>
 <dl>
 <dt>What about to rewrite it to C/C++ ?</dt>
 <dd>
+<p>
 I will not do that, it is waste of my time.  If you want C++ performance you
 can <a href="ch-admins.html#s-gcj">Making native executable, Section 9.4</a>.
 In fact Java language is not so slow, some caches coded in C are slower than
-this.  [<a href="footnotes.html#f12" name="fr12">12</a>]
+this.  [<a href="footnotes.html#f11" name="fr11">11</a>]
+</p>
 
 <p>
 Sources are available, you can rewrite it yourself or pay someone to doing it
 for you.  This is one of key benefits of Open Source Software model.
+</p>
 </dd>
 </dl>
 <dl>
 <dt>I have 2 scache programs on 8080 and on 8090 ports whith different filter rules at the same time. Can I make one cache folder for both program?</dt>
 <dd>
+<p>
 Some ppl are doing that.  In worst case when both caches are working with the
 same directory at same time; some files will gets cached twice and some lost
 due to unsynchonized .cacheinfo writings.  If only one scache writes into
@@ -346,11 +400,13 @@ folder, it is 100% ok.  If you do not plan to offline browse, these writing
 conflicts are okay.  Who cares on leased line about if some HTMLs or GIFs are
 loaded twice, there are small in size.  Better is chain them: filtering sc with
 -ro -&gt; non filtering sc -&gt; Internet.
+</p>
 </dd>
 </dl>
 
 <hr>
 
+<p>
 [ <a href="ch-troubles.html">previous</a> ]
 [ <a href="index.html#contents">Contents</a> ]
 [ <a href="ch-intro.html">1</a> ]
@@ -369,26 +425,23 @@ loaded twice, there are small in size.  Better is chain them: filtering sc with
 [ 14 ]
 [ <a href="ch-new.html">15</a> ]
 [ <a href="ch-old.html">16</a> ]
-[ <a href="ch-todo.html">17</a> ]
 [ <a href="ap-credits.html">A</a> ]
 [ <a href="ap-thanks.html">B</a> ]
-[ <a href="ap-gitacd.html">C</a> ]
-[ <a href="ap-dvd.html">D</a> ]
-[ <a href="ap-sacred.html">E</a> ]
 [ <a href="ch-new.html">next</a> ]
+</p>
 
 <hr>
 
 <p>
 Smart Cache Manual
+</p>
 
 <address>
-0.93<br>
+0.94<br>
 <br>
-Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.sendmail.dot.cz">hsn_nospam_at.sendmail.dot.cz</a></code><br>
 <br>
 </address>
-
 <hr>
 
 </body>
