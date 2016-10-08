@@ -48,7 +48,6 @@ Smart Cache Manual
 <br>Chapter 1 - Introduction
 </h1>
 
-
 <hr>
 
 <a name="s-manual"></a>
@@ -60,10 +59,6 @@ This manual has been converted from Smart Cache English homepage to
 formats from one source.  After conversion, this manual was extended by Radim
 Kolar into current form and merged with translated Czech documentation, which
 is no longer maintained.
-
-<p>
-English is not my native language and if you see any errors, just ignore it or
-<code><a href="mailto:hsn@cybermail.net?Subject=manual">mail me</a></code>.
 
 <hr>
 
@@ -92,10 +87,10 @@ Czech telecommunication company <em>SPT Telecom</em>.  I have find that I need
 some useful tool, which allows me to browse WWW pages off line.
 
 <p>
-I have tried several methods (See <a href="ch-intro.html#s-solutions">Other off
-line browsing solutions, Section 1.4</a>) to achieve this goal, but all of them
-has some limitations and I found them totally unusable for me.  These programs
-are not bad, there are just not optimal for this what I wants.
+I have tried several methods (See <a href="#s-solutions">Other off line
+browsing solutions, Section 1.4</a>) to achieve this goal, but all of them has
+some limitations and I found them totally unusable for me.  These programs are
+not bad, there are just not optimal for this what I wants.
 
 <hr>
 
@@ -254,22 +249,22 @@ Another well known proxy cache is Apache 1.3, it is a good emergency sollution
 <h2>1.5 Smart Cache design goals</h2>
 
 <p>
-After considering <a href="ch-intro.html#s-solutions">Other off line browsing
-solutions, Section 1.4</a>, I decided to write my own program, which solves all
-of these problems.  I write down following design notes:
-<ol start="1">
+After considering <a href="#s-solutions">Other off line browsing solutions,
+Section 1.4</a>, I decided to write my own program, which solves all of these
+problems.  I write down following design notes:
+<ol type="1" start="1" >
 <li>
 Perfect off line browsing support.  User must not see any difference between on
 line and off line browsing.
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 Implement it as proxy cache.  It will be independent on the used browser and
 fully transparent to user.
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 Use CERN-HTTP like (not hashed like Apache, Squid or WWWOffle) directory
 structure of the proxy cache for easy locating of cached objects.  Try to use
@@ -277,12 +272,12 @@ read file names like <em>index.html</em> and not obscure hashed like
 <em>Q3E4R2T342XCV3F42G3H2323</em>.
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="4" >
 <li>
 For performance reasons, implement 2 swap directory levels (idea from Squid).
 </li>
 </ol>
-<ol start="5">
+<ol type="1" start="5" >
 <li>
 For easy file access do not store HTTP headers inside cached objects.  When I
 am trying to extract binary files (pictures) from CERN, Squid or Apache's
@@ -290,17 +285,17 @@ caches with text editor (I was lazy to write special program) that claims to
 support binary files (ViM) it still fails and file gets corrupted.
 </li>
 </ol>
-<ol start="6">
+<ol type="1" start="6" >
 <li>
 Do not store all received HTTP headers, just important one.
 </li>
 </ol>
-<ol start="7">
+<ol type="1" start="7" >
 <li>
 Program must be fully portable.  I want to use it on OS/2, Linux and Windows.
 </li>
 </ol>
-<ol start="8">
+<ol type="1" start="8" >
 <li>
 Cache must be able to cache everything what other caches don't.  I don't to
 write <em>good cache which respects headers which webmaster uses to gain more
@@ -309,30 +304,30 @@ surprised, how much faster can browsing be if we cache something more than
 usual and kill some adv.  banners.  This really makes a difference!
 </li>
 </ol>
-<ol start="9">
+<ol type="1" start="9" >
 <li>
 Program must allow to block unwanted URLs.  Yes, for killing adv.  banners.
 </li>
 </ol>
-<ol start="10">
+<ol type="1" start="10" >
 <li>
 Program must remain fast and simple.
 </li>
 </ol>
-<ol start="11">
+<ol type="1" start="11" >
 <li>
 Extremely configurable and tunable garbage collection.  I can't accept the
 design <em>all or nothing</em> used in other caches.  I want to control what
 and how long stays on my disk.
 </li>
 </ol>
-<ol start="12">
+<ol type="1" start="12" >
 <li>
 Possibility to continue with object downloading even if user press STOP in the
 browser (idea from Squid).
 </li>
 </ol>
-<ol start="13">
+<ol type="1" start="13" >
 <li>
 Program must be robust and possibility of data loss must be minimalized.
 </li>
@@ -372,8 +367,10 @@ Program must be robust and possibility of data loss must be minimalized.
 Smart Cache Manual
 
 <address>
-0.89<br>
-Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+0.92<br>
+<br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+<br>
 </address>
 
 <hr>

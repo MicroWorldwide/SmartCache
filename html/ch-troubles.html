@@ -48,7 +48,6 @@ Smart Cache Manual
 <br>Chapter 13 - Troubleshooting
 </h1>
 
-
 <hr>
 
 <a name="s13.1"></a>
@@ -62,46 +61,48 @@ installation, Section 3.4</a>
 </dd>
 </dl>
 <dl>
-<dt>I got message &quot;Class not found&quot; from Java runtime.</dt>
+<dt>I got message &quot;NoClassDefFoundError&quot; from Java runtime.</dt>
 <dd>
-<ol start="1">
+<ol type="1" start="1" >
+<li>
+If you have Java 1.3 or newer, you need to have current directory '.'  listed
+in environment variable CLASSPATH; which is not in default Java installation.
+If not there you need to simply add <samp>-cp .</samp> option to Java runtime,
+just before scache: <samp>java -cp .  -ms1m scache</samp>
+</li>
+</ol>
+<ol type="1" start="2" >
 <li>
 Are .class files in your current directory?
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="3" >
 <li>
 Do you unpacked scache.zip with utility with long names support?
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="4" >
 <li>
 Do you recreated directory structure while unpacking archive?
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="5" >
 <li>
 Are .class files located on disk, which supports long names?
 </li>
 </ol>
-<ol start="5">
+<ol type="1" start="6" >
 <li>
 Do not write .class extension when running smartcache.  <strong>DO NOT
 RUN</strong> java scache.class !
 </li>
 </ol>
-<ol start="6">
+<ol type="1" start="7" >
 <li>
 Do you have at least Java 1.1 version ?  Type java -version for report.
 </li>
 </ol>
-<ol start="7">
-<li>
-Do you have current directory .  listed in environment variable CLASSPATH?  If
-not add <samp>-cp .</samp> option to Java runtime, just before scache.
-</li>
-</ol>
-<ol start="8">
+<ol type="1" start="8" >
 <li>
 If you are using OS/2, Smart Cache will not operate on FAT drives (no long
 names).
@@ -118,25 +119,25 @@ file, Section 3.6</a>
 <dd>
 This may be caused by one of following things: [<a href="footnotes.html#f7"
 name="fr7">7</a>]
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 Smart Cache is already running or
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 Other application runs on the Smart Cache port.  Try <code>telnet</code> to it.
 If you do not get <samp>Connection refused.</samp> error, change port in
 configuration file.
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 Address specified as <em>BindAddress</em> is not your local IP address.  [<a
 href="footnotes.html#f8" name="fr8">8</a>]
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="4" >
 <li>
 You do not have the loopback interface configured.  (Very common problem on
 OS/2 machines) Type: <samp>ifconfig lo 127.0.0.1</samp>
@@ -212,31 +213,31 @@ effect on sending different pages has User-Agent: header.  If you are using
 <dl>
 <dt>Which configuration options affects modifying my requests?</dt>
 <dd>
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 <em>fake_user_agent</em> changes your web browser identity.  Some server sends
 slightly modified versions of pages to some browsers.  [<a
 href="footnotes.html#f9" name="fr9">9</a>]
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 <em>remove_pragma_no_cache</em> When set, 'Pragma' header will be deleted in
 outgoing requests.  (Increases sucessfull IMS hit rate)
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 <em>referer_hack</em> dynamically changes Referer header.
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="4" >
 <li>
 <em>fake_referer</em> changes Referer header to specified String.  If
 fake_referer is used, referer_hack is ignored.
 </li>
 </ol>
-<ol start="5">
+<ol type="1" start="5" >
 <li>
 <em>fake_cookie and cookies filter</em> can replace/remove cookies.
 </li>
@@ -357,8 +358,10 @@ when using SC as https proxy.
 Smart Cache Manual
 
 <address>
-0.89<br>
-Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+0.92<br>
+<br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+<br>
 </address>
 
 <hr>

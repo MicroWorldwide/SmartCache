@@ -1,1 +1,1 @@
-jre -cp . -ms1m scache -gc
+java -ms1m scache -gc

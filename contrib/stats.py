@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # Smart Cache stat.log analyzer
 # GPL v2 Radim Kolar 2003, part of Smart Cache distribution
 # Changelog:

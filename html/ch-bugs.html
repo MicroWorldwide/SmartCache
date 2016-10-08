@@ -48,7 +48,6 @@ Smart Cache Manual
 <br>Chapter 12 - Current bugs and limitations
 </h1>
 
-
 <hr>
 
 <a name="s-dnsbug"></a>
@@ -58,7 +57,7 @@ Smart Cache Manual
 Java (at least 1.1 and 1.2 versions, see notes for Java 1.3 setup) caches for
 security and performance reasons <strong>every</strong> DNS response received.
 This has two negative side effects:
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 Java never performs garbage collection on it's internal DNS cache.  After weeks
 of continual use of Smart Cache this eats too much memory.  It's recommended
@@ -66,7 +65,7 @@ restart Smart Cache after some time (for example every 3rd day) of continual
 using to clean internal DNS cache of Java virtual machine.
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 Java caches <strong>every</strong> response.  DNS servers sends three types of
 response: Authoritative, Non-Authoritative (cached data) and Server failed.  If
@@ -94,14 +93,14 @@ Unknown</em> error about www.yahoo.com even if you are connected to Internet.
 
 <p>
 You can avoid this bug by using one of these solutions:
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 Best solution is <strong>If you are using Java 1.3</strong> add
 <samp>-Dsun.net.inetaddr.ttl=0</samp> option to command line, before word
 <code>scache</code>.
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 <strong>Restart the cache</strong> if you were browsing off line and (after
 establishing connection to your ISP) then want to browse online.  It is not
@@ -110,7 +109,7 @@ off line browsing activity after start is important.  Web browser restart is
 not required.
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 Good solution is <strong>use your ISP's proxy</strong> server, which also
 speed-up the web access speed.  Parent (ISP's) proxy is defined in
@@ -129,19 +128,13 @@ will be ignored.
 
 <a name="s-buglist"></a>
 <h2>12.2 Known bugs list</h2>
-<ol start="1">
+<ol type="1" start="1" >
 <li>
-Access to access.log is not 100% synchonized.  Few lines gets corrupted.
-Unknown cause, under investigation.
+Some regexp expressions in rfail.cnf (for example \.gif$) are not correctly
+evaluated.
 </li>
 </ol>
-<ol start="2">
-<li>
-It looks like regexp fail.cnf is not correctly handled.  Bad regexp library?
-Under investigation.
-</li>
-</ol>
-<ol start="3">
+<ol type="1" start="2" >
 <li>
 Squid ignores <samp>Authorization:</samp> HTTP header in other protocols than
 HTTP.  Requesting password protected files in other protocols than HTTP does
@@ -149,7 +142,7 @@ not work, when using Squid as parent proxy cache.  If you are using Smart Cache
 only for HTTP, this does not apply to you.
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="3" >
 <li>
 POSTING HTTP 0.9 clients will gets HTTP 1.0 reply instead of old 0.9, which can
 confuse them.  Many WWW servers do the same.  This do not apply to HTTP/0.9 is
@@ -161,21 +154,21 @@ unsupported error.
 
 <a name="s-limitations"></a>
 <h2>12.3 Smart Cache limitations</h2>
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 Old HTTP 0.9 servers are not supported.  There are <em>very</em> rare today.
 Do not send emails about it unless you want to send $$$ or hardware.  No plans
 for that.
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 No support for HTTP/1.1 <samp>Cache-Control</samp> nonzero max-age in request.
-But we do not like reloads, why to add another method for forcing cache
-refresh?  No plans for that.
+We do not like reloads, why to add another method for forcing cache refresh?
+No plans for that.
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 No support for caching multiple versions of the same page, based on dynamic
 content negotiation and <samp>Vary:</samp> header.  Used for example default
@@ -187,14 +180,14 @@ language select on www.debian.org.  No plans for that.
 
 <a name="s-jvmbugs"></a>
 <h2>12.4 Java runtime known bugs</h2>
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 In Linux Java 1.1.7/glib2.1 JVM sometimes crashes in constructor of
 <samp>java.util.zip.Inflater class</samp>.  You may turn off auto_compression
 and use repair -c -r instead.  Blackdown Java 1.1.8/glib2.2 works okay.
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 OS/2 JVM do not likes jikes 1.13 compiled bytecode, use javac when compiling.
 </li>
@@ -234,8 +227,10 @@ OS/2 JVM do not likes jikes 1.13 compiled bytecode, use javac when compiling.
 Smart Cache Manual
 
 <address>
-0.89<br>
-Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+0.92<br>
+<br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+<br>
 </address>
 
 <hr>

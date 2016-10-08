@@ -2,7 +2,7 @@
 				  ===========
 
 	      full featured Open Source HTTP proxy caching server
-		      Copyright (c) Radim Kolar 1998-2003
+		      Copyright (c) Radim Kolar 1998-2005
                          
 Copyright
 =========   
@@ -33,23 +33,28 @@ Quick Start
  example JRE1.1, JDK1.1, Kaffe, Japhar, ...
 
 4.
- run it in program directory (contains *.class files)
-
  If you have missconfigured OS/2 box run `ifconfig lo 127.0.0.1` first.
  
- on JDK/JRE 1.1:
-   via JDK: java -ms1m scache
-   via JRE: jre -ms1m -cp . scache
+5.
+ invoke Smart Cache in program directory (contains *.class files):
+
+   with JDK: java -ms1m scache
+   with JRE: jre -ms1m -cp . scache
+
+Note:
+  If you have Java 1.3 or higher you need to add to add -cp . for
+  avoiding 'java.lang.NoClassDefFoundError: scache' error
  
 How to run garbage collection:
 ==============================
+
 Garbage collector DON'T RUN when specified cache size is reached. You
 must run it by hand. So, use some cron-like program for this task.
 
  via JDK: java -ms1m scache -gc
  via JRE: jre -ms1m -cp . scache -gc
- 
-Note: there are also other command line switches - use
+
+Note: Smart Cache has also other command line switches - use
 java scache -help to see it. 
 
 Logo
@@ -71,8 +76,7 @@ Some on these sites may have outdated version.
 http://scache.sourceforge.net/                           (Homepage)
 http://hobbes.nmsu.edu/                            (Binary mirror, use search)
 http://ibiblio.org/pub/linux/apps/www/servers/           (Source code mirror)
-http://www.volny.cz/martin.konicek/scache                (Czech Homepage)
-http://www.yahoogroups.com/group/scache/                 (Mailing list)
+http://www.volny.cz/martin.konicek/scache/               (Czech Homepage)
 
 On Homepage you will find Smart Cache-enabled web batch downloader.
 
@@ -93,7 +97,7 @@ Contacting author
   
 * See also TODO file.
 
-Radim Kolar (hsn@cybermail.net)
+Radim Kolar
 
 Snail mail:
 

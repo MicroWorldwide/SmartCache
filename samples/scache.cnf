@@ -1,43 +1,49 @@
-# Main Smart Cache Config File 
+###    MAIN "SMART CACHE" CONFIGURATION FILE    ###
 # 
-# SEE ALSO
-#       gc.cnf - Smart Cache garbage collector config file
-#     fail.cnf - Blocked URL list
-#     pass.cnf - Allowed URL list
-#    rfail.cnf - posix Regexp block list
-#  cookies.cnf - Cookies filter set-up
+# SEE ALSO:
+#   gc.cnf      - Smart Cache garbage collector config file
+#   fail.cnf    - Blocked URL list
+#   pass.cnf    - Allowed URL list,
+#                 (for the URLs that are inadvertantly trapped by "fail.cnf"
+#   rfail.cnf   - posix Regexp block list
+#   cookies.cnf - Cookies filter setup
 #
 # (C) Radim Kolar 1998-2003  (hsn@cybermail.net)
-#  http://home.tiscali.cz/~cz210552/ (Personal home-page)
 #  http://scache.sourceforge.net/ (Smart Cache home-page)
 #
 #  Smart Cache is Open Source Software.
 #           http://www.opensource.org/
 
-# lines starting with # are comments
+# Lines starting with # are comments
 #
-# As you can see, this product is _VERY_ configurable. So enjoy with it.  Rule
-# of thumb: If you don't understand what you are doing, don't change it.
+# As you can see, this product is _VERY_ configurable. So enjoy it!  Rule
+# of thumb: If you don't understand what you are doing don't change it.
 #
-# Also make a look at gc.cnf, which configures garbage collector.
+# Also make a look at "gc.cnf" which configures the "Garbage Collector".
 #
-# YOU MUST RUN garbage collector BY HAND, Smart Cache didn't invoke it
-# when cache size is reached, because this can be lengthy process on large
-# caches. So it's recommended to run GC in nights via scheduler
-# (for example cron). If you do not run GC, cache size will never shrink.
 
-#TCP port for this cache. 
-# 8080 is old known proxy port, introduced by CERN httpd.
-# Some servers uses port 80, but because port 80 is used by standard
-# WWW service, you can not run web server and Smart Cache on the
+# YOU MUST RUN "Garbage Collector" BY HAND, Smart Cache will not invoke it.
+# When the "Cache Size" is reached, running "Garbage Collector"
+# can take a long while to complete; a one hour process on my 386/40 which
+# has a rather large cache size of +200MB. So, it's recommended that you
+# run GC in nights via a scheduler like cron or the one
+# that comes with Dragtext.
+# If you do not run GC, cache size will never shrink. 
+
+# TCP port for this cache. 
+# 8080 is an old, well known proxy port introduced in the CERN HTTPd.
+# Some servers use port 80, but as port 80 is used by the standard
+# WWW service, you can not run a web server and Smart Cache on the
 # same port. I use 8080 because it easy to remember.
-# Squid uses port 3128, so you can run both caches (Squid and SC).
-# You can not run more than ONE program on the same port! 
+#
+# Squid uses port 3128, so you can run both caches; Squid and SC.
+# Keep in mind that you can NEVER run more than ONE program on the 
+# same port at the same time! Set the port that you wish SC to use below.
 http_port 8080
 
-#IP address for binding socket, if entered * all local addresses are binded
+#IP address for binding socket, if you enter "*" below all local addresses are bound.
 #
-#Note: Others computers can not connect to it when 127.0.0.1 is used, this
+# NOTE: Others computers cannot connect to and utilize Smart Cache when 127.0.0.1 is used, this
 # is very good for enhanced security. If you have intranet and want allow other
 # computers in intranet (but not from Internet) to use this proxy, enter your
 # intranet address here. Using * allows all computers (even from Internet) to
@@ -45,69 +51,73 @@ http_port 8080
 # may be wise. There are no known security holes.
 BindAddress 127.0.0.1
 
-#Listen backlog is the maximum length of the queue of pending connections.
-#Generally no tuning is needed or desired, however on some systems it is
-#desirable to increase this when under a TCP SYN flood attack. See the backlog
-#parameter to the listen(2) system call.  This will often be limited to a
-#smaller number by the operating system. This varies from OS to OS. Also note
-#that many OSes do not use exactly what is specified as the backlog, but use a
-#number based on (but normally larger than) what is set.
+# Listen backlog is the maximum length of the queue of the pending connections.
+# Generally no tuning is needed or desired however, on some systems it is
+# desirable to increase this when under a TCP SYN flood attack. See the backlog
+# parameter to the listen(2) system call. This will often be limited to a
+# smaller number by the operating system which varies from OS to OS. Also note
+# that many OSes do not use exactly what is specified as the backlog but use a
+# number based on, (but normally larger than), what is set.
 listenbacklog 511
 
-#URL link for use in generated error messages. Used for
-# ever moving location of Smart Cache homepage, but feel free to set
-# it to your favourite page (for example to Hobbes Archive).
+# The URL link for use in generated error messages is set here. I use this for
+# ever moving location of Smart Caches homepage, but feel free to set
+# it to your favourite page, (for example: Hobbes Archive).
 visible_link http://scache.sourceforge.net/
 
-#hostname for use in error reports
-#This names has nothing to do with your IP address, real hostname or
-#something. This is just some text, which can be displayed in error
-#messages. 
+# Hostname for use in error reports is set here.
+# This names has nothing to do with your IP address, real hostname or
+# such. This is just some text, which can be displayed in the error
+# messages that Smart Cache will generate.
 visible_hostname smart.cache
 
-# *** SMART CACHE USER INTERFACE SETUP ***
-#Port number for User interface, must be different from the main one
-#disable this line for turning UI off
+# *** SMART CACHE USER INTERFACE SETUP *** 
+# Port number for User interface, must be different from the main one
+# disable this line for turning UI off
 ui_port 8081
-#hostname for user interface. This DNS name must resolve to machine
-#on which SC with UI enabled runs
+
+# Hostname for user interface. This DNS name must resolve to machine
+# on which SC with UI enabled runs
 ui_hostname 127.0.0.1
-#bind address for UI
+
+# This is the Bind address for UI
 ui_bindaddress 127.0.0.1
-#how long cache directory listings for searches
-#when directory scan took X seconds, do not rescan it for X*factor seconds.
+
+# This sets how long the cache directory listings are searched.
+# When directory scan took X seconds, do not rescan it for X*factor seconds.
 ui_searchcache_factor 120.0
-#minimum age of search cache directory listing
+
+# This sets the minimum age of the search cache directory listing;
 ui_searchcache_minage 30s
 
-# *** storage setup ***
-#directory for storing cached objects. Use the shortest path possible
-#and don't end directory name with \ or /
+# *** Storage Setup ***
+# This is the directory for storing cached objects. Use the shortest possible path.
+# Do not end directory names with a "\" or a "/"
 
-########################################################
-#DO NOT USE ROOT directory!!! (for example c:\)
-# unless you have a dedicated partition for Smart Cache
-# and removed check for that from source code.
-########################################################
+#############################################################
+# DO NOT USE ROOT directory!!! (for example c:\)            #
+# - unless you have a dedicated partition for Smart Cache   #
+#   and removed check for that from source code.            #
+#############################################################
 cache_dir C:\store
 
-#default filename for directory index. Unix people doesn't like
-# ".welcome" standard because ls don't displays them. Some people
-# likes index.html or something. Smart Cache avoids local filename
+# This sets the default filename for the directory index. Unix people don't like
+# the ".welcome" standard because ls doesn't displays them. Some people
+# like "index.html" or something similar. Smart Cache avoids local filename
 # clashes, so fee free to set it to any useful name.
 DefaultName dirindex.html
 
-#URL directory CRC32 hashing, used for performance improvement
-#if you don't like dirs - don't set dirs to ZERO! use 1 instead.
+# URL directory CRC32 hashing; used for performance improvement.
+# If you don't like dirs do not set dirs to ZERO, use "1" instead.
 #
-# Bigger caches needs bigger values. You can use nearly any values,
-# using big values does not add any overhead from Smart Cache's
-# point of view. Following table lets you choose some good starting
-# numbers based on expected cache size.
+# Bigger caches needs bigger values. You can use nearly any values.
+# Using bigger values doesn't add any overhead from Smart Cache's
+# point of view. The following table gives you some examples of some 
+# good starting numbers based on an expected cache size.
 #
 # NOTE: if you change your swap_level_dirs values, you MUST reorder 
-#   cache directory by running Smart Cache with -rebalance command
-#   line option! Otherwise Smart Cache will not find any cached data.
+# the cache directory by running Smart Cache with the "-rebalance"
+# commandline option! Otherwise Smart Cache will not find any cached data.
 #
 # Examples:  (MINIMAL recommended values)
 #     4x4 for < 500MB cache
@@ -135,59 +145,57 @@ DefaultName dirindex.html
 swap_level1_dirs 4
 swap_level2_dirs 4
 
-#parent proxy (if any). PORT NUMBER IS REQUIRED!
-#A parent proxy login and password may be specified in the "http_proxy"
-#configuration statement after the parent proxy port in a form login:password.
-#	 Example:
+# Parent Proxy (if used). A PORT NUMBER IS REQUIRED!
+# A parent proxy login and password may be specified in the "http_proxy"
+# configuration statement after the parent proxy port in the form "login:password".
+#     Example:
 #             http_proxy my.cache.net 3128 mylogin:mypass
-#using IP address instead of DNS name is strongly recommended (workaround
-# for JVM DNS caching "feature", see main documentation for more info )
+# Using the IP address instead of the DNS name is strongly recommended. (For a
+# workaround for the JVM DNS caching "feature" see the main documentation.)
 #
-#parent proxy is ALSO required if you need support
-#for other protocols than HTTP (FTP, Gopher, ...). Parent proxy
-#must know how to support these protocols.
-
+# Parent proxy is ALSO required if you need support
+# for protocols other than HTTP (FTP, Gopher, ...). Parent proxy
+# must know how to support these protocols.
 #http_proxy 1.2.3.4 3128
 
-#If you are want to tunnel SSL requests to other proxy, you must define
+# If you want to tunnel SSL requests to another proxy you must define the following:
 #https_proxy IPaddress port
 
-#If you want to have FTP requests handler by other proxy than http_proxy
-#you can define it.
+# If you want to have FTP requests handled by a proxy other than http_proxy
+# you can define it here:
 #ftp_proxy  1.2.3.4  1234
 
-#don't use parent proxy for this servers/domains. Wildcards ARE NOT ALLOWED!
-# string netmag.cz will act like *netmag.cz. Domains are matched by hostnames,
-# not by IP addresses.
+# Don't use "parent proxy" for this servers/domains. Wildcards ARE NOT ALLOWED!
+# The string netmag.cz will act like *netmag.cz. Domains are matched by hostnames
+# and not by IP addresses.
 #no_proxy localhost
 
-#file descriptor limit by your OS will still apply, so don't expect that if
-#you set it to 2000, that 2000 users will be able to connect to this proxy.
-#Smart Cache use 2-3 file descriptors per one client, Squid uses 1-2 descriptors
-#per one client (1 when sending data from memory-cache).
-#Most browsers are configured to open 4 connections to server. 30 connections
-#should be enough for serving 6 users at once.
+# The file descriptor limits by your OS will still apply so don't expect to be able to have 
+# 2000 users connect to this proxy that if you set it to 2000.
+# Smart Cache uses 2-3 file descriptors per one client. Squid uses 1-2 descriptors
+# per one client, (1 when sending data from the memory-cache).
+# Most browsers are configured to open 4 connections to the server.
+# 30 connections should be enough for 6 simultaneous users.
 max_connections 30
 
 # The AllowCONNECT directive specifies a list of port numbers to which
-# the proxy CONNECT method may connect. Today's browsers use this method
-# when a https connection is requested and proxy tunneling over http is
+# the proxy CONNECT method may connect. Todays browsers use this method
+# when an https connection is requested and "proxy tunneling over http" is
 # in effect.
-# By default, only the default https port (443) and the default snews
-# port (563) are enabled. Use the AllowCONNECT directive to override
-# this default and allow connections to the listed ports only.
-
-# If you want to disable CONNECT, comment next line.
-		  
+# By default only the https port 443 and the snews port 563 are enabled.
+# Use the AllowCONNECT directive to override this and to restrict connections 
+# to only the listed ports.
+#
+# To disable CONNECT comment next line.
 allowconnect 443 563
 
-# Proxy access control
+# Proxy Access Control
 #
-#   Proxy access may be limited by using "allow" configuration statement
-#   with the host ip address as a parameter to grant access only to
-#   specified hosts. Hosts that are not allowed to access proxy server
-#   will receive "403 Cache access denied" response. If no "allow"
-#   statements are found then any host is allowed to access the proxy.
+#   Proxy access may be limited by using the "allow" configuration statement
+#   with the host ip address as a parameter. This will grant access only to
+#   specified hosts. Hosts that are not allowed to access the proxy server
+#   will receive the "403 Cache access denied" response. If no "allow"
+#   statements are found then any host is allowed access.
 #
 #   Example:
 #     allow proxy access only from computer it is running at and from addresses
@@ -197,117 +205,117 @@ allowconnect 443 563
 #    allow 192.168.1.2
 #    allow 192.168.1.3
 #
-#    allow statement can have optional netmask or bits count appended
-#    example: 192.168.0.0/16 = 192.168.0.0/255.255.0.0
-	       
-#if you want to use this proxy as forwarder, enter it your primary
-#forwarding hostname (NOT URL!), which will be used if browser
-#do not supply Host: HTTP header. If browser do not sends this header,
-#it can not use proxy server in transparent mode. Nearly all browsers are
-#supported.
+# The "allow" statement can have an optional netmask or bits count appended
+#  Example: 192.168.0.0/16 = 192.168.0.0/255.255.0.0
 
-#If you are running transparent proxy, set it to host, which sends for any URL
-#message ,,Your browser do not send Host: header, so you can not use our
-#network, because we has here transparent proxy set. Upgrade your browser at
-#least to Netscape 2.0''
-
+# If you want to use this proxy as a forwarder enter your primary
+# forwarding hostname, (NOT THE URL), which will be used if the browser
+# does not supply the Host: HTTP header.
+# If you are running a transparent proxy set this to host. This host can send any
+# URL message like: "Your browser does not send a Host: header so you can not use
+# our network as we a using a transparent proxy here. Upgrade your
+# browser to at least Netscape 2.0'' 
+# Nearly all browsers are supported.
 #default_forward_for localhost
 
-# ####################
-#  Control Flag Files
-# ####################
+############################
+#   CONTROL FLAG FILES     #
+############################
 #
-#flag file for clean cache shutdown
-#if this file exists cache will be stopped, without interrupting any
-#active transfers. Flag is checked every 3 minutes.
-#NOTE: If you are browsing off-line, simply press CTRL-C :) or
-#kill the task.
-
+# This is the flag file for a clean cache shutdown.
+# If this file exists the cache will be stopped when it is detected but without 
+# interrupting any active transfers. Smart Cache checks for the flag every 3 minutes.
+# NOTE: If you are browsing off-line simply press CTRL-C :) or just
+# kill the task.
 Shutdown_flag C:\stop
 
-#flag file for immediate cache shutdown
-#if this file exists cache will be always stopped even if there are some
-#active transfers. Smart Cache will try to sync .cacheinfo before
-#exiting, so this is cleaner way to shutdown than killing the task.
+# This is the flag file for an "immediate" cache shutdown.
+# If this file exists the cache will always be stopped even if there are some
+# active transfers. Smart Cache will try to synchronize the .cache info before
+# exiting. This makes it a cleaner way to shutdown than just killing the task.
+Immediate_shutdown_flag /var/run/scache.die
 
-Immediate_shutdown_flag C:\stop.now
-
-#flag file for announcing that Smart Cache is running
-#this flag will be touched every 3 minutes
+# This is the flag file for announcing that Smart Cache is running.
+# This flag will be checked for every 3 minutes.
 alive_flag C:\scache.running
 
-#How often Smart Cache checks for `immediate_shutdown_flag` 
-#and for changed fail/pass.cnf files?
+# This determines how often Smart Cache checks for the "immediate_shutdown_flag"
+# and for any changed fail/pass.cnf files.
 flag_check_interval 30s
 
-# Should be flag files cleared when Smart Cache starts?
+# This determines if the flag files are cleared when Smart Cache starts.
 clear_flags_on_start yes
 
-# ###################
-#      Log files
-# ###################
+# Should be flag files cleared when Smart Cache exits?
+clear_flags_on_shutdown yes
+
+#####################
+#     LOG FILES     #
+#####################
 #
-# Log Hit/miss/block statistics. You can have only one file.
+# Log Hit/miss/block statistics. There can be only one.
 # stat_log <filename>
 
-#logging setup for common type of logs. You can have more than
-#one logfile of the same type.
-#Logs are masked (good for forwarder running multiple servers).
+# This is the logging setup for common type of logs. You can have more than
+# one logfile of the same type.
+# Logs are masked. This is good for a forwarder running multiple servers.
 #
 #access_log <URL mask> <file-name>
-#Example:
-#accesses to netmag.cz are loged to separate file, all other to cache.log
-#access_log http://netmag.cz/* netmag.access.log
-#access_log * cache.log
+#
+# In this example accesses to netmag.cz are loged to separate file and all other logged 
+# to cache.log:
+#	access_log http://netmag.cz/* netmag.access.log
+#	access_log * cache.log
 
-#you can choose one of 2 log file formats. Common or Combined. Common
-#takes less diskspace. Combined has also user-agent and referer.
+# You can choose one of two log file formats; common or combined.
+# Common uses less diskspace.
 log_common yes
 
-#loglevel How much info sent to stdout
-# levels:
+# Loglevel determines how much information is sent to "stdout".
 #
-#       0 - nothing
-#	1 - system errors 
-#	2 - operation/network errors 
-#	3 - stats
-#	4 - operation
+# Levels:
+#    0 - nothing
+#    1 - system errors 
+#    2 - operation/network errors 
+#    3 - stats
+#    4 - operation
 #
-# NOTE: Using loglevel < 4 leads to noticeable performance improvment
-#       in benchmarks.
+# NOTE: Using a loglevel < 4 leads to a noticeable performance improvment
+#         in benchmarks.
 loglevel 4
 
-# ################
-#  T i m e O u t s
-# ################
+##################
+#    TIMEOUTS    #
+##################
 #
-# Timeouts are datestrings use 's' for sec or 'm' for minutes.
-# You can configure following types of timeouts: 
-#     client_timeout = reading request headers from client browser 
-#                      or keeping client-side persistent connection open.
-#     request_timeout= how long wait after sending request for reply.
-#     read_timeout   = reading body of server reply. This should be less
-#                      than 6 minutes (2*SAVETIMER value in mgr.java).
+# Timeouts are datestrings. Use 's' for sec or 'm' for minutes. 
+# You can configure the following types of timeouts: 
+#     client_timeout   = reading request headers from the client browser 
+#                         or keeping a client-side persistent connection open.
+#     request_timeout = how long the wait after sending a request for a reply.
+#     read_timeout    = reading the body of server reply. This should be less
+#                         than 6 minutes. (2*SAVETIMER value in mgr.java).
 client_timeout 30s
 request_timeout 40s
 read_timeout 210s
 
-# How many seconds keep outgoing connections open and possible reuse them.
-# Set to 0 to disable output side keep-alive.
+# This determines how many seconds Smart Cache will keep outgoing connections 
+# open. This allows the open connection(s) to be reused.
+# Set to 0 to disable keep-alive.
 pconn_timeout 30s
 
-###################
-# Caching control #
-###################
-#     Smart Cache allows control over the files to be cached in two ways:
+#######################
+#   CACHING CONTROL   #
+#######################
+# Smart Cache allows control over the files to be cached in two ways:
 #
 #     First, you can specify a set of URLs which must never be cached,
 #     in which case all other URLs are candidates for caching. This uses
 #     the No_Cache directive to specify what URLs must never be cached.
 #
-#     In the second scheme, you can explicitly list all the URLs which
-#     will be considered for caching; URLs not in that list will never
-#     be cached. This uses the CacheOnly directive
+#     Second, you can explicitly list all the URLs which will be considered
+#     for caching; URLs not in that list will never be cached. This uses the 
+#     CacheOnly directive.
 #
 #     Defaults: neither No_Cache nor CacheOnly are given
 #
@@ -321,62 +329,63 @@ pconn_timeout 30s
 # CacheOnly http://www.ibm.com/*
 # No_Cache   http://never.cache.me.net/*
 
-#No_Cache   http://localhost/*
-#CacheOnly http://cache.me.net/*
+# No_Cache   http://localhost/*
+# CacheOnly http://cache.me.net/*
 
 ###################
-##  refresh rate ##
+#  REFRESH RATE   #
 ###################
 # default_refresh_pattern <Reload_age> <Min_age> <Lastmod_factor> <max_age> <Expire_age> <Redirect_Age>
 #
 #      All numbers are floating point.
 #      All times are in minutes, if no time unit is specified.
 #
-#reload_age:  if user wants reload page by Refresh button, but object
-#             is younger than reload_age, old copy is returned and
-#             reload request is ignored.
+#reload_age: If the user wants to reload a page by using the Refresh button
+#             but the object is younger than the reload_age the old copy is returned
+#             and the reload request is ignored.
 #
-#min_age:     all cacheable objects are considered fresh for at least X minutes.
-#             But reload (if allowed) can be used for their forced refresh.
+#min_age:    All cacheable objects are considered fresh for at least X minutes,
+#             but reload, (if allowed), can be used for their forced refresh.
 #
 #expire_age: 
-#             If object has expire time and it is expired and current age
-#             of object is > Expire_age, expire is honored, otherwise it
+#             If an object has an "expire time" and it has expired and the current age
+#             of the object is > Expire_age, the "expire" is honored otherwise it
 #             is ignored.
 #
 #redirect_Age:
-#             Minimal age for considering temporary redirect as fresh.
+#             This is the minimal age for considering a temporary redirect as fresh.
 #
 # lastmod_factor:
 #
 #    AGE is how much the object has aged *since* it was retrieved:
 #                
-#	AGE = NOW - OBJECT_DATE
+#        AGE = NOW - OBJECT_DATE
 #
 #    LM_AGE is how old the object was *when* it was retrieved:
 #
-#	LM_AGE = OBJECT_DATE - LAST_MODIFIED_TIME
+#        LM_AGE = OBJECT_DATE - LAST_MODIFIED_TIME
 #
 #    LM_FACTOR is the ratio of AGE to LM_AGE:
 #
-#	LM_FACTOR = AGE / LM_AGE
+#        LM_FACTOR = AGE / LM_AGE
 #
-# Max_age:  if object is older than XX minutes, cache will reload it.
+# Max_age: if an object is older than XX minutes the cache will reload it.
 #
-# For your information:
-#     Setting nonzero <Reload_age> and <Expire_age> violates HTTP/1.1
+# NOTE: 
+#	 Setting a nonzero <Reload_age> and <Expire_age> violates the 
+# HTTP/1.1 standard.
 default_refresh_pattern 15s 1h 0.25 1w 10m 50s
 
-#Specific refresh patters for some URLs
+# Specific refresh patterns for some URLs:
 #refresh_pattern http://technet.cz/* 0 1h 0.30 3d 10 0
 
-#######################
-# Request size limits #
-#######################
+#############################
+#    REQUEST SIZE LIMITS    #
+#############################
 
 #reply_body_max_size  10mb
 #       This option specifies the maximum size of a reply body.  It
-#       can be used to prevent users from downloading very large files,
+#       can be used to prevent users from downloading very large files
 #       such as MP3's and movies.  
 
 #request_body_max_size 1mb
@@ -386,28 +395,31 @@ default_refresh_pattern 15s 1h 0.25 1w 10m 50s
 #       than this limit receives an "Invalid Request" error message.
 
 max_cacheable_size  50mb
-#       This specifies the maximum size of object which will be stored in
-#       disk cache. Note that any object bigger than
+#       This specifies the maximum size of AN object which can be 
+#       stored in the disk cache. Note that any object bigger than the
 #       maximum_object_size setting in gc.cnf will be deleted during GC.
 
-#####################
-## Request tracing ## Can be also set at runtime using UI
-#####################
-
-# Announce blocked URLs to console
+#######################
+#   REQUEST TRACING   #
+#######################
 #
-# This is useful if you are using a complex "fail.cnf" with
-# a lot of entries and can't fiddle out if or why some request has
+# Announce blocked URLs to the console.
+#
+# This can be useful if you are using a complex "fail.cnf" with
+# a lot of entries and can't fiddle out if or why, some request has
 # been blocked.
 trace_fail no
 
-# Announce requested URLs to console
+# Print request timestamps to console
+trace_timestamp no
+
+# Announce requested URLs to the console
 trace_url no
 
-# Announce incomming request headers to console
+# Announce incoming request headers to the console
 trace_request no
 
-# Announce incomming server's reply headers to console
+# Announce incoming server's reply headers to the console
 trace_reply no
 
 # Trace refresh engine
@@ -431,77 +443,80 @@ trace_rewrite no
 # Trace fast redirects
 trace_redirect no
 
-# ###############################################
-# Smart Cache special features. Have fun with it.
-# ###############################################
-
+##############################################################
+#    SMART CACHE SPECIAL FEATURES - Have fun with it. 8)     #
+##############################################################
+#
 # @1
-#pragma:no cache handling, what to do with non-cacheable documents?
-#expires < now is the same as pragma: no-cache
-# 0 - HTTP/1.1 standard setting - don't cache any uncacheable objects
-# 1 - cache all uncacheable documents
-# 2 - cache only uncacheable images (probably only adv and counters)
-# 3 - don't cache uncacheable text objects, but all others do
-# 4 - don't cache uncacheable redirects, but all others do
+# pragma:no cache handling or "what to do with non-cacheable documents."
+# expires < now is the same as pragma: no-cache.
 #
-#Hint: if this cache use multiple users, using mode 1 may cause some troubles,
-#    but 2 or 3 are safe. (3 is better than 2)
-#If you have troubles with redirects try 4
+# Parameters:
+# 	0 - Standard setting - be nice - don't cache any uncacheable objects.
+# 	1 - Cache all uncacheable documents
+# 	2 - Cache only uncacheable images, (probably only adv and counters).
+# 	3 - Cache everything except uncacheable text objects.
+# 	4 - Cache everything except uncacheable redirects.
 #
-#For your information: nonzero value violates HTTP/1.1 standard.
+# NOTE: If this cache serves multiple users using "mode 1" may cause some troubles,
+#    	  however, modes 2 or 3 are safe. (3 is better than 2.)
+#        Also, if you are having troubles with redirects try 4.
+# NOTE2: nonzero value violates HTTP/1.1 standard.
 pragma_no_cache 1
 
 # @2
-#Keep deleted objects in cache (and send it to users) even if the
-#original page has been deleted (rc=404). Very useful.
-
+# Keep deleted objects in cache, (and send it to users), even if the
+# original page has been deleted; (rc=404). Very useful.
 keep_deleted yes
 
 # @3
-#Generate Last-Modified header if object is cacheable and this header
-#doesn't exist. It helps HTTP-Clients make IMS Requests against your cache.
-#This is also good idea when running as forwarder.
-# no  - don't generate
-# yes - generate when sending objects from cache
+# Generate a Last-Modified header if an object is cacheable and this header
+# doesn't exist. It helps HTTP-Clients make IMS Requests against your cache.
+# This is a good idea when are running Smart Cache as a forwarder.
+# no  - don't generate,
+# yes - generate when sending objects from cache.
 #
-# For your information: YES violates HTTP/1.1 standard.
+# For your information: YES violates the HTTP/1.1 standard.
 generate_lastmod yes
 
 # @4
-#Hide remote servers errors. If remote server returns some kind of error,
-#when we try to refresh page, return old page from cache.
-#This may helps to clean server busy messages and load_failed messages
-#from parent proxy. Return codes considered as errors are RC=400, 403 and 500+
+# Hide Remote Servers Errors: If the remote server returns some kind of error
+# when we try to refresh page, return an old page from the cache.
+# This may help to clean "server busy" messages and load_failed messages
+# from the parent proxy. Return codes that are considered as errors are RC=400, 
+# 403 and 500+
 hide_errors no
 
 # @5
-#Customized error messages. If used we will send redirect to specified URL.
-#only rc=403 (Forbidden) and rc=500 (Load failed) are now supported.
+# Customized Error Messages: If this is used Smart Cache will send a redirect 
+# to a specified URL.
+# only rc=403 (Forbidden) and rc=500 (Load failed) are now supported.
 #
-# The best is to use '0' for displaying 1x1 empty GIF with transparent
-# background. Gif can be also non transparent with configurable colors
-
+# It is best to use a '0' for displaying 1x1 empty GIF with a transparent
+# background. The GIF can also be non transparent with configurable colours
 #builtin_gif_color 200 100 200
 
-# If page name ends with .js - it sends empty page.
-#RECOMMENDED:
+# If the page name ends with .js - it ends an empty page.
+# RECOMMENDED:
 #ErrorDocument 403 0
+
+# There is also an alternative to sending a 206 Return code, (No Content).
+# Use a '-' instead, (see examples). If you have an image without the size 
+# specified in the HTML, this will not work with Netscape as it will not render
+# anything on the page. 
+# ErrorDocument 403 -
 #
-# There is also alternative to send 206 Return code (No content)
-# instead if '-' is used (see examples), but not in Netscape (if got image
-# without size specified in HTML, it does not render anything on page. 
-#ErrorDocument 403 -
-#
-#Or what about to Redirect to some interesting GIF ?
+# Also you can redirect to an interesting GIF:
 #ErrorDocument 403 http://site.with.nice.images.com/images/nature/bluesky.gif
 
 # @6
-#Remove Pragma: no-cache from clients requests. When sending
-#user's request to HTTP server (or HTTP proxy), remove this request line.
-#Some servers has workaround for some browsers bug and when receive
-#If-Modified-Since request with Pragma:no-cache, sends whole object
-#instead of 304 reply. Modern browsers don't have this bug, but servers
-#unfortunately doesn't recognize buggy and non-buggy browsers.
+# Remove Pragma: no-cache from clients requests. When sending
+# a user's request to an HTTP server, (or HTTP proxy), remove 
+# this request line.
+# Some servers have a workaround for a bug in some browsers. When they
+# receive an If-Modified-Since request with Pragma:no-cache it sends the
+# whole object instead of a 304 reply. Modern browsers don't have this bug
+# but some servers unfortunately, can't tell the difference.
 #
 # Description of bug from Apache 0.8.5 documentation
 # *) Work around bogus behavior when reloading from Netscape.
@@ -510,261 +525,291 @@ hide_errors no
 #    comes with Pragma: no-cache, which is way out of line with the HTTP
 #    spec (according to Roy Fielding, the redactor).
 #
-#If you are using parent proxy, you will not be able to force it
-#to refresh page. 
+# If you are using "parent proxy" you will not be able to force Smart Cache
+# to refresh the page.
 #
-#Hint: If you are NOT using parent proxy and don't have
-#historic browser (Netscape 2+ is OK), USE it.
+# NOTE:
+#  If you are NOT using "parent proxy" don't use a historic browser.
+#  Netscape 2 or better works fine.
 remove_pragma_no_cache no
 
 # @7
-# What to do with Referer header ?
-#  Referer header contains last visited URL. This allows webmasters
-#   to track your browsing path. If you want to protect your privacy
-#   set this to 3, which is the safest choice. When used, Smart Cache
-#   will send totally useless information for webmaster, but enough
-#   to fool any referer checks scripts.
+# What to do with Referer header:
+# 	The Referer Header contains the last visited URL. This allows webmasters
+# 	to track your browsing path. If you want to protect your privacy
+# 	set this to 3; the safest choice. When this is used Smart Cache
+# 	will send totally useless information to the webmaster. Take note that
+# 	this will not fool any referer checks scripts.
 #
-#  0 - nothing, do not touch this!
-#  1 - remove it. Some applications (like counters) may stop working.
-#  2 - make it the same as requested URL
-#  3 - same as 2, but change it even after remaping by Rewrite. Safest and
-#      best choice to protect your privacy.
+# Parameters:
+#  0 - do nothing - do not touch this!
+#  1 - remove it. Note that some applications, (like counters), may stop working.
+#  2 - make it the same as the requested URL
+#  3 - same as 2 but it disguises it even after remapping by Redirect. This is the best choice
+#       for privacy protection.
 #
-# Warning: Some applications with heavy depending on referer header, may stop working.
+# Warning: Some applications with heavy dependancy on the referer header may stop working.
 referer_hack 0
 
 # @8
-# What about to send fake Referer header ?
-#  You can send anything. If used, option referer_hack will be ignored.
-
-#fake_referer http://i.fall.down.from.spiritual.world/
+# As an alternative you can send a fake Referer header.
+# You can send anything however, if this is used the referer_hack option will be ignored.
+#
+# fake_referer http://i.fall.down.from.spiritual.world/
 
 # @9
-# What about to send fake user-agent (Browser id)? 
-# It you want to hide what browser and version are you using, this is for you.
-# Or you can make WWW logs somewhat more interesting...
+# This is where you can send a send fake user-agent, (browser ID).
+# It you want to hide what browser and version are you using this is for you.
+# This can make their WWW logs somewhat more interesting... 8)
 # fake_user_agent <String>
-
-#fake_user_agent Lord Vishnu/Transcendental (Vaikuntha;Supreme Personality of Godness)
-
-#Should be "Via: 1.0 hostname (Smart Cache 0.XX)" appended to request?
-proxyvia yes
+#
+# Examples:
+# 	To tell server that we are using Netscape/3 under Linux set as follows;
+# fake_user_agent Mozilla/3.0 (X11; U; Linux 1.2.13 i386)
+#
+# 	or just send anything you like such as;
+# fake_user_agent Lord Vishnu/Transcendental (Vaikuntha;Supreme Personality of Godness)
 
 # @10
-# Request rewriting. This is similar to Fast redirects @16, but browser
-# will not see that is being redirected to another location.
+# Request a rewriting. This is similar to @16 - "Fast Redirects," but the browser
+# will not be able to detect that it has been redirected to another location.
 Rewrite_file rewrite.cnf
 
 # @11
 # Smart Cache can cache password-protected documents. Of course, this opens
-# a security hole, because once password-protected document gets cached,
-# it can be received from proxy without knowing password.
+# a security hole as once a password-protected document gets cached
+# it can be received from proxy without entering a password or even knowing that
+# one is required. In other words; be careful when setting it to "yes"!
 cache_password_protected no
 
 # @12
-# Are URL tests case sensitive? (see gc.cnf for example)
-# case sensitive matching is MUCH faster. Use it if you have a lot of
+# Here you can set URL case sensitivity. (See gc.cnf for examples.)
+# Case sensitivity matching is MUCH faster. Use it if you have a lot of
 # URLs (about 200)
 #
 case_sensitive_matching no
 
 # @13 
-# OUTGOING C00kies filter
-# Cookies block list is loaded from external file and reloaded when
-# changed.
+# Outgoing Cookie Filter.
+# The "cookie block list" is loaded from external file and reloaded when
+# its changed. If you do not use it comment it out.
 #
 allow_cookies_to_file cookies.cnf
 
-# Cookie filter can be switched to Incomming. This is a less safe than
-# outgoing if you have enabled JavaScript in browser.
-allow_all_session_cookies off
+# The cookie filter can filter cookies as they come in. This is a less safe method 
+# than filtering them as they go out "if" you have enabled JavaScript in your browser.
+allow_all_session_cookies on
 
 # @14
-# You can also send fake cookies. When sending cookies out is not permitted
-# cookie will be replaced by fake_cookie instead of deleting.
+# You can also send fake cookies. When filtering outgoing cookies you can limit your access 
+# to certain sites. Another option is to have Smart Cache replace the cookie by fake_cookie.
+# Otherwise the cookie will just be deleted.
 #
-#  format is name=value [ ; name=value ; ....]
-#  value can not contains spaces -> use underscores '_' instead.
-#  Smart Cache don't tests wafer for validity, just sends it out.
-#    RFC says that cookies must be shorter than 4k, but Smart Cache sends out
-#    String of any size, which is good for buffer overflow attacking on remote
-#    sites.
+#  The format is:
+#		    name=value [ ; name=value ; ....]
 #
-#fake_cookie NOTICE=HEY_GUYS!_DON'T_SEND_ME_YOUR_JUNK!
+#  "value" cannot contains spaces; use underscores '_' instead.
+#  Smart Cache doesn't tests wafer for validity it just sends it out.
+#
+#  The RFC says that all cookies must be shorter than 4k but Smart Cache can send out
+#  a string of any size. This is good for "buffer overflow" attacking on remote sites.
+#
+fake_cookie NOTICE=HEY_GUYS!_DON'T_SEND_ME_YOUR_JUNK!
 
 # @15
 # URL Filter
 #
-# Smart Cache allows to set-up URL filter. This filter is controlled by
-# two keywords.
-# First is Pass <URL pattern>. This marks URLs, which are always allowed
-#  even if Fail disables them.
-# Second is Fail <URL pattern> which marks not allowed URLs.
+# Smart Cache will allow you to setup a URL filter. This filter is 
+# controlled by two keywords:
 #
-# Smart Cache has support only for '*' wildcard. You can use it in pattern
-# more times.
+# The first is by using: "Pass <URL pattern>".
+#	This indicates which URLs are always allowed even if "Fail" disables them.
+#
+# The second is by using: "Fail <URL pattern>".
+#	This indicate which URLs that are never allowed.
+#
+# Smart Cache will recgonize on the '*' as a wildcard but you can use multiple times 
+# in one pattern.
 #
 # You can also use external files for blocking URLs. These files can
-# be automagicaly reloaded when changed which eliminates need of restarting
-# Smart Cache as in case of hardcoded Fail or Pass directives in scache.cnf
+# be automagically reloaded when changed. This eliminates need of restarting
+# Smart Cache should there be hardcoded "Fail" or "Pass" directives in "scache.cnf".
 #
 Fail_file fail.cnf
 Pass_file pass.cnf
-#Smart Cache also understands regexp style fail file
+#
+# Smart Cache also understands "regexp" style fail file
 regex_fail_file rfail.cnf
 
 # @16 
-# Fast redirects. Smart Cache can generate redirects and send them back
-# to the browser. You can redirect specified URLs to another.
+# Fast Redirects.
+# SmartCache can generate redirects and send them back
+# to the browser. You can redirect specified URLs to another by placing them 
+# in the following file and uncommenting it:
 Redirect_file redir.cnf
 
-# @17  Quick Abort Feature    
-#    what to do with aborted requests?
+# @17
+# Quick Abort Feature.
+# This determines how SmartCache handles aborted requests.
 #
-#    values for min_bytes, percent, max-bytes
-#    When request is aborted by client, SmartCache may continue download
-#    the requested file into cache. Downloading is continued if
-#      * file size is known in the time, when request starts
+#    values min_kbytes, percent, max-kbytes
+#
+# When a request is aborted by the client SmartCache may continue to download
+# the requested file into the cache.
+#
+# Downloading will continue if:
+#      * the file size is known at the time when the request starts
 #        and
-#      * need to download < min_bytes 
+#      * need to download < min_kbytes > 
 #        or
-#      * > percent file is transfered and need to download < max_bytes
+#      * percent file is transfered and need to download < max_kbytes >
 #
-#      if min_bytes set to -1 for quick abort is DISABLED
+#       If min_kbytes set to -1 for quick abort is DISABLED
 #                                  (always continue with downloads).
 #
 
-#ENABLE quick abort
+# ENABLE quick abort
 #quick_abort_min 20k
 #quick_abort_pct 50
 #quick_abort_max 100k
 
-#DISABLE quick abort, default is continue to download Aborted objects
+# DISABLE quick abort. The default is continue to download Aborted objects
 quick_abort_min -1 
 quick_abort_pct 50
 quick_abort_max 100k
 
-# if quick_abort is *disabled*, all transfers will be continued.
-# Because you may download by mistake a very large unwanted file, I
-# implemented timeout for this type of downloads. After that time
-# aborted background is allways stoped.
-# Timeout time is in minutes. If quick abort is not disabled, this value
-# has no meaning.
-
-#default is abort download of Aborted objects after 60s.
+# If "quick_abort" is *disabled* all transfers will continue.
+# Because you may download a file by mistake... a very large unwanted file, I
+# implemented a timeout for this situation. After that time has elapsed the
+# aborted background download is always stopped.
+# Timeout time is set in minutes.
+# If "quick_abort" is not DISABLED this value has no meaning.
+#
+# By default, aborted objects will cease downloading after 2 minutes.
+#
 max_aborted_transfer_time 1m
 
 # @18
-#  Data compression support    
+#  DATA COMPRESSION SUPPORT    
 #
 #    Smart Cache can store text data in gzip format. This saves diskspace.
 #    Data stored in Cache are sent to your browser in gzipped form, so your
 #    browser must know how to handle them or use auto_decompress.
-
-# values for x >512 useful if some files should not be compressed
+#
+# Values for x >512 can be useful if you do not wish to compress files of a certain size.
 #  auto_compress 1    means compress files with size>512
 #  auto_compress x    means compress only files with size>x  (x>=512)
+#  auto_compress 0    disables compression.
 auto_compress 0
 
-# Smart Cache compress only text files (Content-Type: text/*), but because
-# default mime type in many www servers is text/plain and many www servers
-# are misconfigured. SC will compress file(s) which it should not and
-# helpers applications will have troubles. 
+# Smart Cache compresses only text files, (Content-Type: text/*), but because
+# the default mime type in many WWW servers is in text/plain format and 
+# because many HTTP, (*www), servers are misconfigured, SC will sometimes compress
+#  some file(s) which it should not and, as a result, helper applications could have a problem. 
+# Therefore, you can exclude certain file types from compression by using 
+# the following:
+#
 # Files with these extension(s) will not be compressed.
 nocompress .tgz .jar .mp3 .mid .wav .class .ra .ram .swf
 
-#If your browser can not handle compressed data, Smart Cache can uncompress it.
+# If your browser can not handle compressed data, Smart Cache can uncompress it.
 # auto_decompress 0    No automatic data decompression
-# auto_decompress 1    Decompres data if browser do not send
-#		       Accept-Encoding: gzip header
-# auto_decompress 2    ALWAYS decompress.  Useful when showing html source
-#   within Browser (Some Browsers are showing source compressed)
+# auto_decompress 1    Decompress data if the browser does not send
+#                      	   Accept-Encoding: gzip header
+# auto_decompress 2    ALWAYS decompress. This can be useful when showing the 
+# html source within the browser. (Some Browsers will show the source compressed.)
 auto_decompress 0
 
 # @19
-#   Download Machine support
+# "Download Machine" support.
 #
-#   Smart Cache can add some requested url to specified file, which can
-#   be in turn used by another program to fetch that URLs. I am using
-#   download machine for doing this. Your download program MUST NOT use
-#   YOUR Smart Cache server as its parent proxy.
-#   Download Machine can be found on Smart Cache homepage
+# Smart Cache can add some requested URLs to a specified file which can
+# be in turn, used by another program to fetch these URLs. I use
+# Download Machine for doing this. Take note that your download program
+# MUST NOT use YOUR Smart Cache server as its parent proxy.
+# Download Machine can be found on the Smart Cache homepage.
 
-#   where is queue file
+# This is where the queue file resides;
+#
 #download_machine_queue_file /home/hsn/java/dmachine/queue.web
 
-#   which URLs are interresting for batch download. Grab them in all cases.
+# Indicate here which URLs are suitable for batch downloading. Grab them in all cases.
 download_machine_url_mask *.deb ftp://*.zip ftp://*.exe ftp://*.bz2 ftp://*.gz
 
-#   which URLs are interresting for batch download, these are used
-#    only in case that you are offline and can not use content-type
-#    hook which is far more reliable
+# You can specify which file types are suitable for batch downloading here.
+# The following types are used only when you are offline and cannot use a content-type
+# hook... which is far more reliable:
 download_machine_offline_url_mask *.zip *.tgz *.gz *.deb *.exe *.rpm
 
-#   Download machine can be hooked also by content type.
-#     This is more accurate but can not be used for putting URL to DM queue
-#     when offline.
-download_machine_ctype_mask  application/*zip application/*exe application/*tar
-download_machine_ctype_mask  application/*bzip2
-download_machine_ctype_mask  application/*octet-stream application/*compressed
+# Download machine can also be hooked by content type.
+# This is more accurate but can not be used for putting URL to DM queue
+# when offline.
+#download_machine_ctype_mask  application/*zip application/*exe application/*tar
+#download_machine_ctype_mask  application/*bzip2
+#download_machine_ctype_mask  application/*octet-stream application/*compressed
 
-# minumum content size which is catched by Content-Type mask
+# Set the minumum content size used by the Content-Type mask.
 download_machine_ctype_minimum_size 20k
 
-#   You can also have list of URL masks which are ignored by download
-#   machine and loaded by Smart Cache when matching URLs.
+# You can also have list of URLmasks which are to be ignored by Download
+# Machine and loaded by Smart Cache when matched.
 #    Note: This does not apply to ctype masks.
 #download_machine_ignore *sourceforge*
 
-#   This is the same, but lists URL masks which supress Content-Type
-#   download machine hook.
+# This is the same as above but lists URL masks which SUPRESS Content-Type
+# Download Machine hook.
 #download_machine_ctype_ignore *sourceforge*
 
 # @20
-#   Smart Cache loader support
+# Smart Cache loader support
 #
-#   Using this feature requires external program called 'Smart Cache
-#   loader'. It is available with sources at 
+# To use this feature you must get, (and install), the external program "SC Loader". 
+# It is available with sources from the Smart Cache homepage: 
 #       http://home.tiscali.cz/~cz210552/loader.html
 #
-#   Smart Cache can add URL which can not be refreshed or requested now
-#   to queue file for Smart Cache loader, which can download them later.
-#   This allows marking pages for download or update when offline.
-
-#   where is queue file (any filename is OK). This queue is used by command
-#     `java loader @filename` for batch download of queued entries.
+# Smart Cache can add a URL, (which cannot be refreshed or requested right now),
+# to a queueing file for "SC Loader" which can download them later on.
+# When you are offline, this option will allow you to mark certain pages for later 
+# download, (or update), when you are next online.
+#
+# The following option determines where the queue file, (any filename is OK), is located.
+# This queue is used by the command: 
+#    'java loader @filename' for batch download of queued entries.
 #loader_queue_file /home/hsn/java/loader/src/queue.web
 
-#   Do you want to catch requests for missing pages?
-#   0 - no
-#   1 - yes
-#   2 - yes, but show confirmation dialog first (BEST)
+# You can catch requests for missing pages here.
+# 0 - no
+# 1 - yes
+# 2 - yes, but ask for confirmation first, (BEST).
 loader_add_missing 0
 loader_add_depth 0
 
-#   Do you want to catch refresh requests for allready loaded pages?
+# You can set here how you catch refresh requests for all ready loaded pages.
+# 0 - no
+# 1 - yes
+# 2 - yes, but ask for confirmation first (BEST)
 loader_add_refresh 0
 loader_refresh_depth 0
 
 # NOTE: If depth is set to -1 page without images is loaded.
 
 # @21
-#  When browser forces cache reload and do not supply If-Modified-Since
-#   header can we generate ours?
+# When a browser forces a cache reload and does not supply the If-Modified-Since
+# header can we generate ours?
 # 
-# In most cases: `YES` is correct. Use No only if there are some broken
-# servers which incorrectly reports 304 Object not modified even if it has
-# been modified. Scache uses also Etag: for checking, so buggy servers
-# needs to have broken BOTH Etag AND IMS checks.
+# In most cases: `YES` is correct. Use 'No' only if there are some broken
+# servers which incorrectly reports "304 Object not modified" even if it has
+# been modified. SC also uses Etag: for checking. This way buggy servers
+# have to have BOTH Etag AND IMS checks broken.
 # 
-# For your information: YES violates HTTP/1.1 standard.
+# For your information: YES violates the HTTP/1.1 standard.
 reload_into_ims yes
 
 # @22
-#  HTTP/1.1 allows marking pages as 'private'. These pages do not needs to
-#  be password protected. They just should not be viewed by other user.
-#  For example they can be cookie-customized.
+#  The HTTP/1.1 standard allows for marking certain pages as 'private'.
+# This is for pages that do not need to be password protected but just
+# shouldn't be viewed by others.
+# They can, for example, be cookie-customized.
 # 
 # For your information: YES violates HTTP/1.1 standard.
 cache_private yes
@@ -776,4 +821,13 @@ cache_private yes
 # For your information: YES violates HTTP/1.1 standard.
 cache_vary yes
 
+# @24
+# Set this to "yes" if you want "Via: 1.0 hostname (Smart Cache 0.XX)" 
+# appended to request. This option absoletes old method of appending
+# via to User-Agent: header. 
+# Appending to User-Agent is no longer possible with SC. This feature
+# was removed since it causes some problems with PHP-generated pages.
+proxyvia yes
+
 ## END OF FILE ##
+

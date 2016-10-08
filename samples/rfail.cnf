@@ -2,5 +2,6 @@
 # This file is Autoreloaded by SC when changed.
 #
 # Look here if you get unwanted Forbidden by rule errors.
+# This file is processed before fail.cnf.
 # 
 ^http://ads?[0-9]*\.

@@ -48,7 +48,6 @@ Smart Cache Manual
 <br>Chapter 7 - Advanced topics
 </h1>
 
-
 <hr>
 
 <a name="s-cachesize"></a>
@@ -81,9 +80,8 @@ interrested mainly in offline browsing.  200 MB cachesize is enough.
 Case #2: If you like offline browsing, you need a bigger cache.  Start with 400
 MB if you are not browsing very much.  If you have some free diskspace or you
 are browsing very much, you can go up to 1GB.  In any case use <a
-href="ch-advancedt.html#s-compress">Data compression support, Section 7.10</a>.
-It is also good to somewhat finetune GC in <code>gc.cnf</code>.  My recommended
-settings:
+href="#s-compress">Data compression support, Section 7.10</a>.  It is also good
+to somewhat finetune GC in <code>gc.cnf</code>.  My recommended settings:
 
 <pre>
      #two years in cache are enough
@@ -136,8 +134,8 @@ under 14 days of traffic unless you really need it.  Never go under 7days.
 
 <p>
 Start with cache size 500 MB.  You should read standard http-proxy section
-also.  <a href="ch-advancedt.html#s-compress">Data compression support, Section
-7.10</a> is your friend.
+also.  <a href="#s-compress">Data compression support, Section 7.10</a> is your
+friend.
 
 <hr>
 
@@ -171,44 +169,44 @@ is a fraction part &lt; 1
 <p>
 Smart Cache's refresh algorithm in English.  Page age is difference between
 date, when the page was loaded and today.
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 If browser requests a forced page reload and page is older than /Reload_age/,
 reload it otherwise return old copy.
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 If page is older than /Max_age/ load it.
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 If page has expire date and page has expired and page age is bigger than
 /Expire_age/ load it.
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="4" >
 <li>
 If page is redirect to other page and age is older than /Redir_age/ load it.
 </li>
 </ol>
-<ol start="5">
+<ol type="1" start="5" >
 <li>
 If page is younger than /Min_age/ return cached copy.
 </li>
 </ol>
-<ol start="6">
+<ol type="1" start="6" >
 <li>
 If page do not have last modified date, load it.
 </li>
 </ol>
-<ol start="7">
+<ol type="1" start="7" >
 <li>
 Compute last mod factor: lmf= page_age / (page_date - page_last_modified)
 </li>
 </ol>
-<ol start="8">
+<ol type="1" start="8" >
 <li>
 If lmf &gt; /Lastmod_factor/ load it otherwise return cached copy.
 </li>
@@ -423,22 +421,22 @@ attributes.
 
 <p>
 Cached data can be easily exported from Smart Cache.  Data are exported in
-format, which can be used in <a href="ch-advancedt.html#s-import">Importing
-files to Smart Cache, Section 7.6</a>.
+format, which can be used in <a href="#s-import">Importing files to Smart
+Cache, Section 7.6</a>.
 
 <p>
 Smart Cache can export last recently cached data in 3 modes:
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 -export uses file's last modified date.
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 -fullexport uses date when file was last checked against original server.
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 -lruexport uses file's last access date.
 </li>
@@ -597,42 +595,42 @@ For example: 1h, 40m, 2d.  Timestring defaults to minutes if no type is used.
 
 <p>
 Supported types:
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 s or S - seconds
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 m - minutes
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 d or D - day
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="4" >
 <li>
 w or W - week
 </li>
 </ol>
-<ol start="5">
+<ol type="1" start="5" >
 <li>
 f or F - fortnight
 </li>
 </ol>
-<ol start="6">
+<ol type="1" start="6" >
 <li>
 M - months
 </li>
 </ol>
-<ol start="7">
+<ol type="1" start="7" >
 <li>
 y or Y - years
 </li>
 </ol>
-<ol start="8">
+<ol type="1" start="8" >
 <li>
 h or H - hours
 </li>
@@ -654,22 +652,22 @@ For example: 1MB, 40KB, 2GB.  Sizestring defaults to Bytes if no type is used.
 
 <p>
 Supported types:
-<ol start="1">
+<ol type="1" start="1" >
 <li>
 B - bytes
 </li>
 </ol>
-<ol start="2">
+<ol type="1" start="2" >
 <li>
 K - 1024 Bytes
 </li>
 </ol>
-<ol start="3">
+<ol type="1" start="3" >
 <li>
 M - 1024 KBytes
 </li>
 </ol>
-<ol start="4">
+<ol type="1" start="4" >
 <li>
 G - 1024 MBytes
 </li>
@@ -713,8 +711,10 @@ sizestring() in garbage.java for details.
 Smart Cache Manual
 
 <address>
-0.89<br>
-Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+0.92<br>
+<br>
+Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
+<br>
 </address>
 
 <hr>

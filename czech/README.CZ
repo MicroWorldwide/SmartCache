@@ -1,7 +1,7 @@
 				  Smart Cache
 				  ===========
 			 plnohodnotny HTTP proxy server
-			autor (c) Radim Kolar 1998-2003
+			autor (c) Radim Kolar 1998-2005
                          
 Copyright
 =========
@@ -66,7 +66,6 @@ http://scache.sourceforge.net/                           (Domovska stranka)
 http://hobbes.nmsu.edu (Binary distribuce, pouzijte funkci search 'scache')
 http://ibiblio.org/pub/linux/apps/www/servers/           (Source code mirror)
 http://www.volny.cz/martin.konicek/scache                (Ceska Homepage)
-http://www.yahoogroups.com/group/scache/                 (Mailing list)
 
 Program je registrovan na http://freshmeat.net/ pod jmenem scache,
 pokud chcete byt informovani o novych verzich prihlaste se na tento
@@ -84,7 +83,7 @@ Autor
 
 * prijima ruzne dary, vice informaci v souboru TODO.
 
-Radim Kolar (hsn@cybermail.net)
+Radim Kolar
 
 Mr. Radim Kolar
 17.listopadu 2074
