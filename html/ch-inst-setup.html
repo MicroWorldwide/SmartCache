@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - Smart Cache Installation</title>
+
+</head>
+
+<body>
+
+<a name="ch-inst-setup"></a>
+<hr>
+
+[ <a href="ch-basics.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ 3 ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-configuration.html">next</a> ]
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Chapter 3 - Smart Cache Installation
+</h1>
+
+
+<hr>
+
+<a name="s-needsjava"></a>
+<h2>3.1 Smart Cache requires Java</h2>
+
+<p>
+Smart Cache is written in 100% pure Java, it does not uses or requires any
+native or non-standard packages.  Smart Cache runs on any platform, which has
+support for running compiled Java byte codes and has filesystem, which can use
+long filenames.  To run Smart Cache your computer must be equipped with
+something (often called java-runtime, jre or jdk), what is able to run Java 1.1
+programs.  [<a href="footnotes.html#f1" name="fr1">1</a>]
+
+<p>
+Java may be already installed on your system [<a href="footnotes.html#f2"
+name="fr2">2</a>] - type on command line <code>java</code> or <code>jre</code>
+and see what happens.  If you got <em>Command not found</em> or <em>Bad command
+or filename</em> error, you must download and install Java.  See following
+sections for more informations about this topic.
+
+<hr>
+
+<a name="s-javachoose"></a>
+<h2>3.2 Choosing Java version</h2>
+
+<p>
+There are several versions of Java available today, which are able to run Smart
+Cache.  Older Java 1.1 and newer Java2 (also called JDK/JRE 1.2 or higher).
+Smart Cache <strong>doesn't work</strong> [<a href="footnotes.html#f3"
+name="fr3">3</a>] with old Java 1.0.X.
+
+<p>
+Java 1.2 is about 20% faster (more with HotSpot JVM) than Java1.1, but requires
+much more memory (RAM) and is bigger for download.  I do not recommend running
+Java 1.2 on computer with 32 or less MB of RAM.  This big memory footprint was
+somewhat reduced in later Java 1.3 versions.
+
+<p>
+Java 1.4 (at least Win32 version, has not tried Unix port yet) was optimised
+and eats just about the same small amount of memory as Java 1.1.
+
+<p>
+SUMMARY: If Smart Cache is only one Java program, which you are plan to use and
+you do not plan to provide cache for large (10+) computer network, get Java1.1
+because it is smaller for downloading and you will not get noticeable benefit
+from later versions of Java except bug fixes.  If you have Win32 system and
+download file size does not matter, get 1.4 version; it is a really nice and
+stable.
+
+<p>
+Java comes with two flavour JDK or JRE.  JDK is intended for developers, who
+needs to develop and compile Java programs.  JRE is for users, who wants just
+to run them.  If you are not Java programmer, get JRE.  If you already have
+JDK, you do not need to download JRE - JDK already contains it.  [<a
+href="footnotes.html#f4" name="fr4">4</a>]
+
+<hr>
+
+<a name="s-javadown"></a>
+<h2>3.3 Java downloading</h2>
+
+<p>
+Java download links for Solaris and Windows95/98/NT users: <code><a
+href="http://java.sun.com/products/jdk/1.1/index.html">JDK1.1</a></code>,
+<code><a
+href="http://java.sun.com/products/jdk/1.1/jre/index.html">JRE1.1</a></code>,
+<code><a href="http://java.sun.com/products/jdk/1.3/">JDK1.3</a></code>.
+General informations and download of Linux version of Java are at Blackdown's
+<code><a href="http://www.blackdown.org/java-linux.html">Linux-Java</a></code>
+page.
+
+<p>
+<code><a href="http://www.debian.org/">Debian GNU/Linux</a></code> has Java
+runtime in package <code>jdk1.1</code>.  This package is in <em>non-free</em>
+section, because they can not be distributed on CD's.  You can download it from
+many <code><a href="http://www.debian.org/misc/README.mirrors">mirror
+sites</a></code>.
+
+<p>
+Users of other operation systems or Linux distributions can find Java in
+operation system itself.  Start installation program and look for
+packages/programs named java, jdk, ...  or consult documentation which comes
+with OS and follow instruction provided by OS vendor.  Also they can find
+useful <code><a href="http://java.sun.com/cgi-bin/java-ports.cgi">this
+page</a></code> which lists Java links for some less common operation systems.
+
+<hr>
+
+<a name="s-javainst"></a>
+<h2>3.4 Checking the Java installation</h2>
+
+<p>
+Follow your operation system specific instruction for installing Java.  Some
+installation comes with sample programs or applets, so you can try to run one
+of them and look if Java works.
+
+<p>
+After installation <code>java</code> or <code>jre</code> command must work - It
+displays list of available options.  If you get <em>Command not found</em> or
+<em>Bad command or filename</em> error, your <var>PATH</var> environment
+variable is not set correctly, locate these executable(s) and add it to
+<var>PATH</var>.
+
+<hr>
+
+<a name="s-instdeb"></a>
+<h2>3.5 Installation for Debian GNU/Linux users</h2>
+
+<p>
+For easy installation Smart Cache is distributed in Debian binary package
+<code>scache</code> or <code>scache-native</code>.  You can get this package at
+<code><a
+href="http://home.tiscali.cz/~cz210552/deb/">http://home.tiscali.cz/~cz210552/deb/</a></code>
+or by <code>apt</code> if you add following line to /etc/apt/sources.list
+
+<pre>
+     deb http://home.tiscali.cz/~cz210552/deb ./
+</pre>
+
+<p>
+You can also create packages yourself by getting .tar.gz distribution and
+running <samp>debian/rules binary</samp>.  Check file debian/control for
+Build-Depends if you have installed required tools.  This script creates two
+packages <code>scache</code> and <code>scache-native</code>.
+
+<p>
+Install this package and required package <code>jdk1.1</code> and optional
+package <code>tya</code>.
+
+<p>
+See also <a href="ch-operating.html#s-run-debian">Smart Cache on Debian
+GNU/Linux, Section 5.1</a> and do not forget <a
+href="ch-configuration.html#s-inst-browser">Configuring a Web browser, Section
+4.3</a>.
+
+<hr>
+
+<a name="s-generic"></a>
+<h2>3.6 Generic installation from .zip file</h2>
+
+<p>
+After <a href="ch-inst-setup.html#s-javainst">Checking the Java installation,
+Section 3.4</a>, for installing Smart Cache you must perform these steps:
+<ul>
+<li>
+Unpack <code>scache.zip</code> into some empty directory.  A zip utility
+supporting <strong>&quot;Long Names&quot; is required</strong>.  Info-Unzip or
+Winzip are fine, but DOS version of PKZip is not.
+
+<p>
+Verify, that files have '.class' extension, not '.CLA' and file names are in
+lower case.  Java is case-sensitive.  If not, you can have a bad unarchiver,
+bad scache.zip or both.
+
+<p>
+Verify if your unpacker recreates archive directory structure when unarchiving.
+</li>
+</ul>
+<ul>
+<li>
+Copy provided sample *.cnf files from directory <em>samples</em> to upper
+directory, which contains <code>.class</code> files.
+</li>
+</ul>
+
+<p>
+Do not forget to <a href="ch-configuration.html#s-inst-browser">Configuring a
+Web browser, Section 4.3</a>.
+
+<hr>
+
+[ <a href="ch-basics.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ 3 ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-configuration.html">next</a> ]
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+

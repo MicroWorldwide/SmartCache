@@ -1,0 +1,1 @@
+jre -cp . -ms1m scache -gc

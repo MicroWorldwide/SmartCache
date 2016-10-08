@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - Smart Cache command line switches</title>
+
+</head>
+
+<body>
+
+<a name="ch-switches"></a>
+<hr>
+
+[ <a href="ch-advancedt.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ 8 ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-admins.html">next</a> ]
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Chapter 8 - Smart Cache command line switches
+</h1>
+
+
+<hr>
+
+
+<p>
+Smart Cache has also some command line switches, some of them are documented
+here and some of them has aliases.  See <code>scache.java</code> for more
+detailed info.  These options overrides configuration files.
+<dl>
+<dt>-ro</dt>
+<dd>
+Read-Only.  Do not write anything to SC data directory.
+</dd>
+</dl>
+<dl>
+<dt>-cfgdir &lt;Directory&gt;</dt>
+<dd>
+Read *.cnf files from this directory, not from current dir.
+</dd>
+</dl>
+<dl>
+<dt>-nocache</dt>
+<dd>
+Do not save new objects to cache
+</dd>
+</dl>
+<dl>
+<dt>-nofail</dt>
+<dd>
+turn off URL filter
+</dd>
+</dl>
+<dl>
+<dt>-nolog</dt>
+<dd>
+turn off logging
+</dd>
+</dl>
+<dl>
+<dt>-notrace</dt>
+<dd>
+turn off console tracing messages
+</dd>
+</dl>
+<dl>
+<dt>-online</dt>
+<dd>
+disable offline hooks
+</dd>
+</dl>
+<dl>
+<dt>-cookies</dt>
+<dd>
+disable cookie filter
+</dd>
+</dl>
+<dl>
+<dt>-fastrefresh</dt>
+<dd>
+use standard web refresh policy
+</dd>
+</dl>
+<dl>
+<dt>-killunref</dt>
+<dd>
+Delete any unreferenced files in cache.  See also <a
+href="ch-operating.html#s-maint">Smart Cache maintenance, Section 5.5</a>.
+</dd>
+</dl>
+<dl>
+<dt>-p &lt;port number&gt;</dt>
+<dd>
+Run SC on alternate port number.
+</dd>
+</dl>
+<dl>
+<dt>-ui_port &lt;port number&gt;</dt>
+<dd>
+Run SC UI on alternate port number.  Use 0 to disable it.
+</dd>
+</dl>
+<dl>
+<dt>-import &lt;Directory&gt;</dt>
+<dd>
+Import files from directory into Smart Cache, see <a
+href="ch-advancedt.html#s-import">Importing files to Smart Cache, Section
+7.6</a>.
+</dd>
+</dl>
+<dl>
+<dt>-importcache &lt;Directory&gt;</dt>
+<dd>
+Import files from another Smart Cache, see <a
+href="ch-advancedt.html#s-import">Importing files to Smart Cache, Section
+7.6</a>.  <strong>CAUTION:</strong> files will be moved in (if possible, if not
+it will not be deleted), so backup of original cache may be wise.
+</dd>
+</dl>
+<dl>
+<dt>-cachedir &lt;Directory&gt; [swap_level1_dirs] [swap_level2_dirs]</dt>
+<dd>
+Use alternate directory for caching files.
+</dd>
+</dl>
+<dl>
+<dt>-http_proxy &lt;Hostname&gt; &lt;port&gt;</dt>
+<dd>
+Use specified proxy server for HTTP protocol.
+</dd>
+</dl>
+<dl>
+<dt>-ftp_proxy &lt;Hostname&gt; &lt;port&gt;</dt>
+<dd>
+Use specified proxy server for FTP protocol.
+</dd>
+</dl>
+<dl>
+<dt>-gc [minutes]</dt>
+<dd>
+<a href="ch-operating.html#s-gc">Running garbage collection, Section 5.4</a>
+and exit.  If minutes are used, Smart Cache do not exits after GC is completed,
+but waits XX minutes and GC is repeated.  You can use also strings instead of
+minutes (8h,1d,..).
+</dd>
+</dl>
+<dl>
+<dt>-fakegc</dt>
+<dd>
+Simulate <a href="ch-operating.html#s-gc">Running garbage collection, Section
+5.4</a> and exit.
+</dd>
+</dl>
+<dl>
+<dt>-export, -fullexport, -lruexport</dt>
+<dd>
+See <a href="ch-advancedt.html#s-export">Exporting data from Smart Cache,
+Section 7.7</a>.
+</dd>
+</dl>
+<dl>
+<dt>-repair</dt>
+<dd>
+Same as running recursive repair on cachedir.  See <a
+href="ch-repair.html">Smart Cache repair utility, Chapter 11</a>.
+</dd>
+</dl>
+<dl>
+<dt>-version</dt>
+<dd>
+Print Smart Cache version to standard output and exit.
+</dd>
+</dl>
+<dl>
+<dt>-rebalance</dt>
+<dd>
+Rehash directory structure.  Run it after changing swapdir levels or when
+moving by hand some server directories inside cache.  It is a fast operation.
+Also good for paranoid users, can not hurt any data.
+</dd>
+</dl>
+<dl>
+<dt>-local</dt>
+<dd>
+Avoid DNS lookups and do not connect to <strong>ANY server</strong>.  Including
+server running on the same machine as Smart Cache.
+</dd>
+</dl>
+<dl>
+<dt>-direct</dt>
+<dd>
+Bypass http_proxy and make direct connection to target server.
+</dd>
+</dl>
+<dl>
+<dt>-help</dt>
+<dd>
+Prints short command line help summary.
+</dd>
+</dl>
+
+<hr>
+
+[ <a href="ch-advancedt.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ 8 ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-admins.html">next</a> ]
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+

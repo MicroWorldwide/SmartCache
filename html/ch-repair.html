@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - Smart Cache repair utility</title>
+
+</head>
+
+<body>
+
+<a name="ch-repair"></a>
+<hr>
+
+[ <a href="ch-prog.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ 11 ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-bugs.html">next</a> ]
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Chapter 11 - Smart Cache repair utility
+</h1>
+
+
+<hr>
+
+
+<p>
+SC comes with external utility for repairing broken .cacheinfo files and
+importing of orphan files.  When importing files, repair looks at filename
+extension and tries to guess mime file type.  When testing the cache repair
+compares also last modified date of file and file length against records in
+.cacheinfo.
+
+<hr>
+
+<a name="s11.1"></a>
+<h2>11.1 Running repair</h2>
+
+<p>
+Repair is invoked with <samp>java repair</samp> command.  If you do not type
+any parameters, short usage summary will be printed.  Repair can be also
+invoked directly from Smart Cache, when command-line option <em>-repair</em> is
+used.
+
+<hr>
+
+<a name="s-repairswitches"></a>
+<h2>11.2 Command line switches</h2>
+<dl>
+<dt>-q</dt>
+<dd>
+quiet mode.  Prints less messages.
+</dd>
+</dl>
+<dl>
+<dt>-r</dt>
+<dd>
+recurse into subdirectories.
+</dd>
+</dl>
+<dl>
+<dt>-c</dt>
+<dd>
+compress text files with gzip.
+</dd>
+</dl>
+<dl>
+<dt>-w</dt>
+<dd>
+Write new .cacheinfo files even if they do not changed.  Use this with -r if
+you want to convert Smart Cache data directory into new format.
+</dd>
+</dl>
+<dl>
+<dt>-n</dt>
+<dd>
+Do not actually make changes.  Only print messages what will do.
+</dd>
+</dl>
+<dl>
+<dt>-f</dt>
+<dd>
+ignore existing .cacheinfo files, rebuilds them from scratch.  Use them if some
+files has been repaired with wrong MIME type.
+</dd>
+</dl>
+<dl>
+<dt>-i &lt;filename&gt;</dt>
+<dd>
+&quot;null&quot; filename.  If repair find file with this name, it will not
+append this filename to directory name, when constructing resulting URL.
+Contents of this file will be used as default directory index returned by
+server.
+</dd>
+</dl>
+<dl>
+<dt>-x &lt;mask&gt;[:mask] ...</dt>
+<dd>
+Ignore these files when rebuilding directory.  Default is to ignore *.tmp.
+File mask '!'  resets ignored mask list to empty.
+</dd>
+</dl>
+<dl>
+<dt>-d &lt;content type&gt;</dt>
+<dd>
+Default content-type.  Used when it can not be guessed from file name.
+</dd>
+</dl>
+<dl>
+<dt>-a</dt>
+<dd>
+Translate &amp;amp; to &amp; in URL.  Some browsers performs URL dequoting and
+could not find these objects.
+</dd>
+</dl>
+<dl>
+<dt>-m &lt;file&gt;</dt>
+<dd>
+Use external MIME table for guessing filetype from extension.  Filename !
+resets table to empty.
+</dd>
+</dl>
+
+<hr>
+
+<a name="s-mime"></a>
+<h2>11.3 External MIME table file format for repair</h2>
+
+<p>
+Line format is: mimetype [spaces or tabs] [extension ...]
+
+<pre>
+     video/dl                                        dl
+     video/fli                                       fli
+     video/gl                                        gl
+     video/mpeg                                      mpeg mpg mpe
+     video/quicktime                                 qt mov
+</pre>
+
+<hr>
+
+[ <a href="ch-prog.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ 11 ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-bugs.html">next</a> ]
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+

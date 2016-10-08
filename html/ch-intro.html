@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - Introduction</title>
+
+</head>
+
+<body>
+
+<a name="ch-intro"></a>
+<hr>
+
+[ <a href="index.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ 1 ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-basics.html">next</a> ]
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Chapter 1 - Introduction
+</h1>
+
+
+<hr>
+
+<a name="s-manual"></a>
+<h2>1.1 About this manual</h2>
+
+<p>
+This manual has been converted from Smart Cache English homepage to
+<code>debiandoc-sgml</code> format, which allows to generate many output
+formats from one source.  After conversion, this manual was extended by Radim
+Kolar into current form and merged with translated Czech documentation, which
+is no longer maintained.
+
+<p>
+English is not my native language and if you see any errors, just ignore it or
+<code><a href="mailto:hsn@cybermail.net?Subject=manual">mail me</a></code>.
+
+<hr>
+
+<a name="s-john"></a>
+<h2>1.2 When all things began</h2>
+
+<p>
+<em>, the Word already was.  The Word dwelt with God, and what God was, the
+Word was.  The Word, then, was with God at the beginning, and through him all
+things came to be; no single thing was created without him.  All that came to
+be was alive with his life, and that life was the light of men.  The light
+shines on the dark, and the darkness never mastered it.</em>
+
+<p>
+New Testament, The Gospel according to John, The coming of Christ.
+
+<hr>
+
+<a name="s-stoneage"></a>
+<h2>1.3 Smart Cache born</h2>
+
+<p>
+After leaving my job, I start to use modem connection to Internet.  It was
+slow, but biggest problem for me was a quite high prices payed to the monopoly
+Czech telecommunication company <em>SPT Telecom</em>.  I have find that I need
+some useful tool, which allows me to browse WWW pages off line.
+
+<p>
+I have tried several methods (See <a href="ch-intro.html#s-solutions">Other off
+line browsing solutions, Section 1.4</a>) to achieve this goal, but all of them
+has some limitations and I found them totally unusable for me.  These programs
+are not bad, there are just not optimal for this what I wants.
+
+<hr>
+
+<a name="s-solutions"></a>
+<h2>1.4 Other off line browsing solutions</h2>
+
+<p>
+This section was written in 1998 with exception wwwoffle.
+<dl>
+<dt>IBM Internet Connection Server 4.0</dt>
+<dd>
+This is WWW server with built in proxy cache.  Proxy cache uses simple
+CERN-like directory structure, so it was easy to find cached files.  Also proxy
+cache has the switch for off line mode, when returns only cached pages.
+Biggest problem with this server was, that server was that this server is based
+on original CERN HTTP daemon, which was not thread-safe.  IBM ported this
+daemon into OS/2, but they does not care about this and do not implemented any
+locking mechanism to protect thread sensitive data and for thread
+synchronisation.  Server complains very often about locked
+<code>.cacheinfo</code> files and loaded objects was not stored at disk.  After
+some time IBM has made new version 4.1.  This version introduced new HTTP/1.1
+support into WWW server and proxy cache.  WWW server works with some occasional
+crashes, but proxy cache was totally broken.  I never managed it running, they
+probably do not test this part of their product.  After some time IBM abandoned
+this server and recommends ICS's users to upgrade to <em>Lotus Domino</em>.
+</dd>
+</dl>
+<dl>
+<dt>Mailing pages to myself in Netscape</dt>
+<dd>
+I have found, that in Netscape Navigator is possible to email entire web page.
+So I started mailing interesting web to me and browsing it via <em>Sent
+Mail</em> folder.  This works quite well, off line browsing was possible (even
+with embedded pictures).  But Netscape do not save pictures into <em>Sent
+Mail</em> folder, It saved pictures only into its internal disk cache, so after
+expiring pictures, I was unable to see that.
+</dd>
+</dl>
+<dl>
+<dt>Using Netscape's internal disk cache</dt>
+<dd>
+Netscape browser has persistent disk cache.  This disk cache is able to cache
+web objects between sessions and there are couple of programs called
+<em>Netscape's disk cache explorers</em> which allows user to browse off line
+via Netscape's cache.  But this also has the several limitations:
+<ul>
+<li>
+Netscape do not caches web pages without <samp>'Last-Modified'</samp> HTTP
+header.  If fact It does.  Pages are stored on the disk, but never readied back
+and Netscape deletes them on exit - so there are lost.  This is the biggest
+problem, because nowadays many web pages are generated on the fly by WWW
+server, so you have only images in the cache.
+</li>
+</ul>
+<ul>
+<li>
+Cache is very slow when grows in size into 30-40 MB.  This is not a problem in
+UNIX version of the Netscape, but OS/2 and Windows versions have this problem.
+</li>
+</ul>
+<ul>
+<li>
+All informations about cache are stored in one file - <code>index.db</code>.
+When this file gets corrupted (not so uncommon) you will lost
+<strong>everything</strong>.
+</li>
+</ul>
+<ul>
+<li>
+Garbage collections is very strange.  I have set disk cache to 50 MB, when it
+grows over 50 MB Netscape deletes nearly all files and leaves only 10 MB in
+cache.  Too bad.
+</li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Using Microsoft Internet Explorer's disk cache</dt>
+<dd>
+I do not believe what I see.  This was much worse that Netscape.  MSIE 4 is
+stupid and it caches even badly downloaded (too short) file.  This badly
+downloaded file displays as good, and If you request reload on that bad file,
+It does not gets reloaded, only checked via <em>If-Modified-Since</em> request.
+If you want remove this bad file from cache, you must clear the entire cache.
+No MSIE, thank you.
+</dd>
+</dl>
+<dl>
+<dt>Using web grabbers</dt>
+<dd>
+This looks very promising, but there are some problems:
+<ul>
+<li>
+web grabber downloads what it wants, so it normally downloads many useless
+pages and not pages which you want to see.
+</li>
+</ul>
+<ul>
+<li>
+web grabber has a very few configurations options.  Even very good program,
+such as <code>wget</code> is so stupid.  This does not apply to my new
+developed web downloaded with working name <code>loader</code>.
+</li>
+</ul>
+<ul>
+<li>
+biggest problem is with web pages refreshing.  You have only three choices -
+refresh all (this normally downloads entire set of pages again), never refresh,
+or refresh it manually via WWW browser and <em>Save as..</em>.
+</li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Using Lotus Notes/Domino</dt>
+<dd>
+Lotus Notes can work with HTML documents the same way as it does with it's
+normal Document database.  You may use any Notes's features, such as Agents or
+Scripts on WWW documents.  This is very good for writing Internet or Intranet
+applications, but not the best solution for normal browsing.  The built-in WWW
+browser is very limited, even when compared to old Netscape 2.  It downloads
+only one WWW object at once - web page with many pictures takes very long to
+load.  Also Notes requires too much system resources and you can not run it on
+486 computer with only 20MB RAM.
+</dd>
+</dl>
+<dl>
+<dt>WWW Offline Explorer (wwwoffle)</dt>
+<dd>
+This program does the basically same thing for offline browsing as Smart Cache
+but with some nice additional features (like HTML changing).  It is written in
+C and is available only for Unixes, but Windows testing version also exists.  I
+have performed webbench on both (SC and wwwoffle) and when using small size
+cache (about 10MB) results are similar (wwwoffle is about 8% faster, in the
+same benchmark as used in <a href="ch-admins.html#s-perf">Smart Cache
+Performance, Section 9.1</a> it has on Linux 984 pages/min), but on large cache
+size SC is much faster because wwwoffle uses just one root directory level (SC
+uses 2) and no www's directory level; you will end with very large directories,
+which are very slow to search (at least on my machine), also WWWOffle's history
+is recorded as symlinks in special directory, which makes one symlink for each
+visited URL.  WWWOffle do not supports old HTTP/0.9 clients.  Stored files in
+wwwoffle has HTTP headers inside and uses long hashed filenames, but if you use
+HTML interface, cache contents can be browsed.
+</dd>
+</dl>
+
+<p>
+Summary: If you have a very large network (500+ users) or if you want Squid,
+get Squid.  If you don't like SC, try wwwoffle, it will do the good job also.
+Another well known proxy cache is Apache 1.3, it is a good emergency sollution
+- if you need proxy cache quickly - Apache is installed everywhere.
+
+<hr>
+
+<a name="s-goals"></a>
+<h2>1.5 Smart Cache design goals</h2>
+
+<p>
+After considering <a href="ch-intro.html#s-solutions">Other off line browsing
+solutions, Section 1.4</a>, I decided to write my own program, which solves all
+of these problems.  I write down following design notes:
+<ol start="1">
+<li>
+Perfect off line browsing support.  User must not see any difference between on
+line and off line browsing.
+</li>
+</ol>
+<ol start="2">
+<li>
+Implement it as proxy cache.  It will be independent on the used browser and
+fully transparent to user.
+</li>
+</ol>
+<ol start="3">
+<li>
+Use CERN-HTTP like (not hashed like Apache, Squid or WWWOffle) directory
+structure of the proxy cache for easy locating of cached objects.  Try to use
+read file names like <em>index.html</em> and not obscure hashed like
+<em>Q3E4R2T342XCV3F42G3H2323</em>.
+</li>
+</ol>
+<ol start="4">
+<li>
+For performance reasons, implement 2 swap directory levels (idea from Squid).
+</li>
+</ol>
+<ol start="5">
+<li>
+For easy file access do not store HTTP headers inside cached objects.  When I
+am trying to extract binary files (pictures) from CERN, Squid or Apache's
+caches with text editor (I was lazy to write special program) that claims to
+support binary files (ViM) it still fails and file gets corrupted.
+</li>
+</ol>
+<ol start="6">
+<li>
+Do not store all received HTTP headers, just important one.
+</li>
+</ol>
+<ol start="7">
+<li>
+Program must be fully portable.  I want to use it on OS/2, Linux and Windows.
+</li>
+</ol>
+<ol start="8">
+<li>
+Cache must be able to cache everything what other caches don't.  I don't to
+write <em>good cache which respects headers which webmaster uses to gain more
+hits</em>.  Modem lines are slow.  In fact, after writing Smart Cache I was
+surprised, how much faster can browsing be if we cache something more than
+usual and kill some adv.  banners.  This really makes a difference!
+</li>
+</ol>
+<ol start="9">
+<li>
+Program must allow to block unwanted URLs.  Yes, for killing adv.  banners.
+</li>
+</ol>
+<ol start="10">
+<li>
+Program must remain fast and simple.
+</li>
+</ol>
+<ol start="11">
+<li>
+Extremely configurable and tunable garbage collection.  I can't accept the
+design <em>all or nothing</em> used in other caches.  I want to control what
+and how long stays on my disk.
+</li>
+</ol>
+<ol start="12">
+<li>
+Possibility to continue with object downloading even if user press STOP in the
+browser (idea from Squid).
+</li>
+</ol>
+<ol start="13">
+<li>
+Program must be robust and possibility of data loss must be minimalized.
+</li>
+</ol>
+
+<hr>
+
+[ <a href="index.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ 1 ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-basics.html">next</a> ]
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+

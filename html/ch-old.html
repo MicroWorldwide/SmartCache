@@ -1,0 +1,3767 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - Older history of Changes</title>
+
+</head>
+
+<body>
+
+<a name="ch-old"></a>
+<hr>
+
+[ <a href="ch-new.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ 16 ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-todo.html">next</a> ]
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Chapter 16 - Older history of Changes
+</h1>
+
+
+<hr>
+
+
+<p>
+<strong>0.79</strong> 28.11.2002
+
+<p>
+News
+<ul>
+<li>
+building native gcj version do not require jdk
+</li>
+</ul>
+<ul>
+<li>
+first rule in fail/pass was matched insensitive
+</li>
+</ul>
+<ul>
+<li>
+fail/pass not working (bug from .78)
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache now sends Content-length: 0, where needed
+</li>
+</ul>
+<ul>
+<li>
+new config keyword listenbacklog, defaults to 511
+</li>
+</ul>
+<ul>
+<li>
+default number of clients increased from 25 to 30
+</li>
+</ul>
+
+<p>
+<strong>0.78</strong> 25.11.2002
+
+<p>
+News
+<ul>
+<li>
+GC: do not allow average dirsize &lt; blocksize
+</li>
+</ul>
+<ul>
+<li>
+report correct count of unlinked directories (updirs included)
+</li>
+</ul>
+<ul>
+<li>
+GC: deleted directories during GC delete pass are now correctly counted
+</li>
+</ul>
+<ul>
+<li>
+Delta display supports Months, Years.
+</li>
+</ul>
+<ul>
+<li>
+Trace on/off configurable in UI
+</li>
+</ul>
+<ul>
+<li>
+New configuration keyword <samp>loglevel</samp>
+</li>
+</ul>
+<ul>
+<li>
+Speed ups by reverse regsearch on fail/pass
+</li>
+</ul>
+<ul>
+<li>
+on conflicting filenames, use random numbers, not loop over long list of
+possible list of existing filenames.  Really big performance improvment for
+directory with about 1000 files with conflicting filename (i.e.  Google).
+</li>
+</ul>
+<ul>
+<li>
+look for etag and return 304 if exists and connection failed.
+</li>
+</ul>
+<ul>
+<li>
+<samp>force_ims_on_reloads</samp> when doing forced refresh do not add IMS
+header.
+</li>
+</ul>
+<ul>
+<li>
+Fixed some syntax errors for making gcj happy.
+</li>
+</ul>
+<ul>
+<li>
+Debian: smartcache as gcj-native can be build from sources.  Works great and
+fast.
+</li>
+</ul>
+<ul>
+<li>
+New manual section: <a href="ch-admins.html#s-bench">Proxy cache Benchmarks,
+Section 9.2</a>
+</li>
+</ul>
+<ul>
+<li>
+trace_url shows also request protocol
+</li>
+</ul>
+<ul>
+<li>
+trace_refresh shows expire date when not reached
+</li>
+</ul>
+
+<p>
+<strong>0.77</strong> 14.11.2002
+
+<p>
+<strong>You need to change maximum_object_size in gc.cnf to bytes.</strong>
+
+<p>
+News
+<ul>
+<li>
+GC: average_directory_size do not includes size of .cacheinfo now.  .cacheinfo
+files are sized using blocksize alg.  as all other files.
+</li>
+</ul>
+<ul>
+<li>
+GC: minimum_object_size (idea from Squid)
+</li>
+</ul>
+<ul>
+<li>
+GC: maximum_object_size is now in bytes, not KB as before
+</li>
+</ul>
+<ul>
+<li>
+GC: small_object_penalty syntax extended and changed to be like LOP
+</li>
+</ul>
+<ul>
+<li>
+GC: cache size is now computed more correctly nearly 100% exact.  Only one case
+is not handled and can not be: some filesystem /ext2/ preallocates blocks for
+files.
+</li>
+</ul>
+<ul>
+<li>
+GC: use long interger instead of int
+</li>
+</ul>
+<ul>
+<li>
+GC: improved after scan cache statistics
+</li>
+</ul>
+<ul>
+<li>
+agent_log, referer_log feature removed
+</li>
+</ul>
+<ul>
+<li>
+new common/combined log file format (features correct httprc and bytes count)
+</li>
+</ul>
+<ul>
+<li>
+-nolog command line switch
+</li>
+</ul>
+<ul>
+<li>
+auto_decompress can unpack 'deflate' encoding (used in IIS)
+</li>
+</ul>
+<ul>
+<li>
+Manual: new section <a href="ch-advancedt.html#s-gcworks">How garbage
+collection works, Section 7.3</a>
+</li>
+</ul>
+<ul>
+<li>
+Manual: new section <a href="ch-admins.html#s-squid">Smart Cache vs Squid,
+Section 9.5</a>
+</li>
+</ul>
+<ul>
+<li>
+Manual updated: section <a href="ch-inst-setup.html#s-javachoose">Choosing Java
+version, Section 3.2</a>
+</li>
+</ul>
+<ul>
+<li>
+new defaults in DM content-type hook
+</li>
+</ul>
+<ul>
+<li>
+short refresh patterns are no longer allowed
+</li>
+</ul>
+<ul>
+<li>
+do not print to console that dirs are GC's - confuses users.  There are freed.
+</li>
+</ul>
+<ul>
+<li>
+some hardcoded defaults was retuned
+</li>
+</ul>
+<ul>
+<li>
+Major update of Debian packaging.  Features: debconf support, correct file and
+dirs perms., do not allow root to run system-wide smartcache, support for
+rotated log files, configuration generation.
+</li>
+</ul>
+<ul>
+<li>
+New command line switch -notrace
+</li>
+</ul>
+<ul>
+<li>
+-local switch now sets a maximum possible expire time (benchmarks results
+increased by 5%)
+</li>
+</ul>
+<ul>
+<li>
+note: increasing internal buffers from 4096 to 8192 lowers performance.
+</li>
+</ul>
+<ul>
+<li>
+note: slower when compiled with javac -O
+</li>
+</ul>
+<ul>
+<li>
+log file format chooser log_common true/false
+</li>
+</ul>
+<ul>
+<li>
+dmachine_offline_url_mask command gives content-type hooks priority over URL
+hooks
+</li>
+</ul>
+<ul>
+<li>
+UI: port of main server is shown
+</li>
+</ul>
+<ul>
+<li>
+log file buffer increased to 8K.
+</li>
+</ul>
+
+<p>
+<strong>0.76</strong> 3.11.2002
+
+<p>
+News
+<ul>
+<li>
+UI: Interface for Download machine
+</li>
+</ul>
+<ul>
+<li>
+Download machine can be hooked to content type
+<samp>download_machine_ctype_mask</samp>
+</li>
+</ul>
+<ul>
+<li>
+-ui_port runs UI on alternate port
+</li>
+</ul>
+<ul>
+<li>
+<samp>download_machine_mask</samp> renamed to
+<samp>download_machine_url_mask</samp>
+</li>
+</ul>
+<ul>
+<li>
+Win: VBS startup script
+</li>
+</ul>
+
+<p>
+Bug fixes
+<ul>
+<li>
+UI: loader also accept empty string as default loader.cnf depth
+</li>
+</ul>
+<ul>
+<li>
+UI: end of queue messages displayed
+</li>
+</ul>
+<ul>
+<li>
+UI: shows which URLs are removed from queue
+</li>
+</ul>
+<ul>
+<li>
+No more duplicated entrys in DM queue file
+</li>
+</ul>
+<ul>
+<li>
+Trace messages are now printed correctly with full URL
+</li>
+</ul>
+
+<p>
+<strong>0.75</strong> 1.09.2002
+
+<p>
+News
+<ul>
+<li>
+Download machine hook can now ignore some URLs.  Try download_machine_ignore
+*sourceforge*
+</li>
+</ul>
+<ul>
+<li>
+UI: File date is shown instead of mime type
+</li>
+</ul>
+
+<p>
+Bug fixes
+<ul>
+<li>
+UI: bindaddress is shown
+</li>
+</ul>
+<ul>
+<li>
+UI: show loader queue is disabled when there is no loader support
+</li>
+</ul>
+<ul>
+<li>
+GC: protocol URL matching works, see example gc.cnf
+</li>
+</ul>
+<ul>
+<li>
+GC: fixed typo in gc output
+</li>
+</ul>
+
+<p>
+<strong>0.74</strong> 1.08.2002
+
+<p>
+News
+<ul>
+<li>
+new structure of .cacheinfo files (version 4).  Now it supports ETag: header.
+Existing one will be converted when used.
+</li>
+</ul>
+<ul>
+<li>
+support for Etag and If-None-Match
+</li>
+</ul>
+<ul>
+<li>
+added some new methods for webdav/deltaV.  Not yet working due to lack of
+documentation.
+</li>
+</ul>
+
+<p>
+Bug fixes
+<ul>
+<li>
+Do not use IMS when loading Missing objects from cache
+</li>
+</ul>
+<ul>
+<li>
+HEAD request no longer fails on object which is not in cache
+</li>
+</ul>
+<ul>
+<li>
+repair handles files with .gz extension better.
+</li>
+</ul>
+<ul>
+<li>
+when generating fake user agent add space after : in header
+</li>
+</ul>
+<ul>
+<li>
+Fix for refresh and no if-modified-since header.  Browser should get object and
+not 304.
+</li>
+</ul>
+
+<p>
+<strong>0.73</strong> 17.06.2002
+<ul>
+<li>
+appending to existing via: header instead creating a new one.
+</li>
+</ul>
+<ul>
+<li>
+several new <a href="ch-switches.html">Smart Cache command line switches,
+Chapter 8</a>
+</li>
+</ul>
+
+<p>
+<strong>0.72</strong> 16.05.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+cache searches are less CPU intensive
+</li>
+</ul>
+<ul>
+<li>
+fixed problems when auto deleting of patterns was too active on
+refresh_patterns
+</li>
+</ul>
+<ul>
+<li>
+added support for seconds in delta reporting engine
+</li>
+</ul>
+<ul>
+<li>
+google searches have .gz when gzipped
+</li>
+</ul>
+
+<p>
+<strong>0.71</strong> 22.04.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+max_clients renamed to max_connections
+</li>
+</ul>
+<ul>
+<li>
+UI: escaping &quot; char.
+</li>
+</ul>
+<ul>
+<li>
+Fixed trace output from refresh engine when forced refresh is being ignored
+</li>
+</ul>
+<ul>
+<li>
+UI: do not display choices for loader if loader is not configured
+</li>
+</ul>
+<ul>
+<li>
+Fixed typo in regex matching
+</li>
+</ul>
+<ul>
+<li>
+Fixed problem with netmasks/n when n mod 8 != 0
+</li>
+</ul>
+<ul>
+<li>
+Fixed problem with cfgdir and regex_fail
+</li>
+</ul>
+
+<p>
+<strong>0.70</strong> 11.04.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+-direct switch works again (broken in .69)
+</li>
+</ul>
+<ul>
+<li>
+UI: Added cache-control: no-cache
+</li>
+</ul>
+<ul>
+<li>
+UI: removed no-cache from redirects to good ui hostname
+</li>
+</ul>
+<ul>
+<li>
+Changed error message: too more clients -&gt; too more connections
+</li>
+</ul>
+<ul>
+<li>
+send_from_cache now handles IMS requests in the correct way (Needed for Opera5)
+</li>
+</ul>
+<ul>
+<li>
+Redirects to UI generates now last-modified-date in the past
+</li>
+</ul>
+<ul>
+<li>
+summary: Opera5 now works with redirects generated by SC.
+</li>
+</ul>
+<ul>
+<li>
+UI: announces URL when adding it to loader queue, saves 1 goback.
+</li>
+</ul>
+<ul>
+<li>
+adding proxy-connection: close to all documents flying through.
+</li>
+</ul>
+<ul>
+<li>
+changed startup messages: host os -&gt; filesystem
+</li>
+</ul>
+<ul>
+<li>
+updated troubleshoting section
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Auto - removing not needed fules from fail.cnf.
+</li>
+</ul>
+
+<p>
+<strong>0.69</strong> 8.04.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+Removed anti windows sections from manual
+</li>
+</ul>
+<ul>
+<li>
+Fixed typo in GC
+</li>
+</ul>
+<ul>
+<li>
+Redebianized again, runs from JAR file now.
+</li>
+</ul>
+<ul>
+<li>
+Do not use block list whew accessing UI.
+</li>
+</ul>
+<ul>
+<li>
+<samp>append_via</samp> feature removed
+</li>
+</ul>
+<ul>
+<li>
+updated faq, buglist, limitation list.
+</li>
+</ul>
+<ul>
+<li>
+Tracing sign in UI reversed.
+</li>
+</ul>
+<ul>
+<li>
+Removed unix path in alive flag in ZIP archive
+</li>
+</ul>
+<ul>
+<li>
+added support for command line arguments in scache.bat
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Periodic running of GC is possible -gc [minutes].
+</li>
+</ul>
+<ul>
+<li>
+IP access rules can now use submasks.  See <a
+href="ch-admins.html#s-access">Proxy access control, Section 9.11</a>.
+</li>
+</ul>
+<ul>
+<li>
+You can get CVS snapshot, see <a href="ch-contact.html#s-address">Addresses,
+Section 6.5</a>
+</li>
+</ul>
+<ul>
+<li>
+Bindaddress is announced on startup.
+</li>
+</ul>
+<ul>
+<li>
+<a href="ch-contact.html#s-sponsor">Sponsoring Smart Cache development, Section
+6.1</a>
+</li>
+</ul>
+<ul>
+<li>
+proxyvia feature, like in Apache.  Feature sponsored by Deflora CE.  RFC 2616
+14.45.
+</li>
+</ul>
+<ul>
+<li>
+<samp>https_proxy</samp> allows security proxy chaining.
+</li>
+</ul>
+
+<p>
+<strong>0.68</strong> 31.03.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+When getting gzipped HTML, add .gz to local filename
+</li>
+</ul>
+<ul>
+<li>
+ansi_init patch in os2 .cmd file for eCS (Dag Bjerkeli)
+</li>
+</ul>
+<ul>
+<li>
+loader_add_reloads renamed to loader_add_refresh
+</li>
+</ul>
+<ul>
+<li>
+full_referer_log set to yes/no in default sample cfg
+</li>
+</ul>
+<ul>
+<li>
+garb.  collection section in manual improved
+</li>
+</ul>
+<ul>
+<li>
+Removed HTML doc from tar
+</li>
+</ul>
+<ul>
+<li>
+cache_sensitive_matching in gc.cnf accept yes/no values
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Builtin gif can have non transparent color.  Thanks to JMS.
+<samp>builtin_gif_color r g b</samp>
+</li>
+</ul>
+<ul>
+<li>
+Number of empty removed dirs is now reported during cleanup.
+</li>
+</ul>
+
+<p>
+<strong>0.67</strong> 21.02.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+fix for URL with no * in fail.cnf
+</li>
+</ul>
+<ul>
+<li>
+added some missing &lt;title&gt; to GUI responses
+</li>
+</ul>
+<ul>
+<li>
+removed debug output from regexp engine
+</li>
+</ul>
+<ul>
+<li>
+do not use download machine for downloading from ui_hostname
+</li>
+</ul>
+<ul>
+<li>
+check if we are using UI with right hostname, SC needs this for special UI
+request handling.
+</li>
+</ul>
+
+<p>
+<strong>0.66</strong> 3.02.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+add_missing/reload feature disabled if ui_port is not defined
+</li>
+</ul>
+<ul>
+<li>
+quotes added to GUI
+</li>
+</ul>
+<ul>
+<li>
+errordocument 0 sends empty HTML page if URL ends with .js, otherwise it sends
+1x1 transparent GIF
+</li>
+</ul>
+<ul>
+<li>
+Errordocument feature !  removed
+</li>
+</ul>
+<ul>
+<li>
+Expire header added to UI redirects
+</li>
+</ul>
+<ul>
+<li>
+Fixed problem in UI with browsers which sends a overkill of HTTP headers
+(LYNX!)
+</li>
+</ul>
+<ul>
+<li>
+Fixed problem with directory browser when directory name contain special
+characters, such as %
+</li>
+</ul>
+<ul>
+<li>
+<a href="ch-operating.html#s-gui">Smart Cache GUI, Section 5.7</a>
+</li>
+</ul>
+
+<p>
+<strong>0.65</strong> 30.01.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+Removed crash when port number is out of range.
+</li>
+</ul>
+<ul>
+<li>
+Removed .sources from zip archive.
+</li>
+</ul>
+<ul>
+<li>
+Removed .classes from tar archive.
+</li>
+</ul>
+<ul>
+<li>
+Turning on/off offline support in GUI fixed.
+</li>
+</ul>
+<ul>
+<li>
+Updated copyright file, added more contributors to it.  If you are not in this
+file and want to be there, send email.
+</li>
+</ul>
+<ul>
+<li>
+Directory browser is nicer.
+</li>
+</ul>
+<ul>
+<li>
+Fixed rfail.cnf example
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Added .tar archive to distribution (you can build Debian package from it).
+</li>
+</ul>
+<ul>
+<li>
+Added partial support for Cache-control: header, fixes reloads in Mozilla and
+newer MSIE.  (Achain achain@netlaputa.ne.jp)
+</li>
+</ul>
+
+<p>
+<strong>0.64</strong> 12.1.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+URL parser work when protocol is null
+</li>
+</ul>
+<ul>
+<li>
+Directory was not saved after object deletion
+</li>
+</ul>
+<ul>
+<li>
+Regexp substrings are now implemented correctly
+</li>
+</ul>
+<ul>
+<li>
+fixed rfail.cnf
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+UI: File deletion.
+</li>
+</ul>
+<ul>
+<li>
+UI: Directory deletion.
+</li>
+</ul>
+
+<p>
+<strong>0.63</strong> 11.1.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+UI: Queue display do not show URLs.
+</li>
+</ul>
+<ul>
+<li>
+UI: Search form do not works in Netscape and Opera
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+UI: Search dialog for Cache content browser and search results.
+</li>
+</ul>
+
+<p>
+<strong>0.62</strong> 7.1.2002
+
+<p>
+Bug fixes
+<ul>
+<li>
+Setting autoadd to 0 disables also confirmation for refresh-watch.
+</li>
+</ul>
+<ul>
+<li>
+Changed message 202 for DM add to queue.
+</li>
+</ul>
+<ul>
+<li>
+When using UI do not go through http_proxy.  (avoids infinite loops)
+</li>
+</ul>
+<ul>
+<li>
+UI uses 127.0.0.1 instead of `localhost`
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+User interface has a simple welcome screen when browser is pointed to it.
+</li>
+</ul>
+<ul>
+<li>
+Port numbers are printed on start for both normal and ui ports.
+</li>
+</ul>
+<ul>
+<li>
+Configurable depths for fetching: loader_add_depth and loader_refresh_depth
+</li>
+</ul>
+<ul>
+<li>
+Unix scripts added from debian package
+</li>
+</ul>
+<ul>
+<li>
+UI: Cache content browsing
+</li>
+</ul>
+<ul>
+<li>
+UI: Directory searching
+</li>
+</ul>
+<ul>
+<li>
+UI: Loader queue browsing
+</li>
+</ul>
+<ul>
+<li>
+UI: Loader queue deleting
+</li>
+</ul>
+<ul>
+<li>
+Sample cnf files has UI enabled by default
+</li>
+</ul>
+
+<p>
+<strong>0.61</strong> 30.12.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+URL without port number http://www.here.com:/index.html works
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Support for offline marking pages for batch refresh/download.  See @20 in
+scache.cnf and ui_* also.  I am interrested in some feedback on this feature.
+</li>
+</ul>
+
+<p>
+<strong>0.60</strong> 10.12.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+removed Zbynek Pospichal's CGI POST workaround
+</li>
+</ul>
+<ul>
+<li>
+better messages from trace_refresh (still bad when parent proxy is not used)
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Download machine integration.  See <samp>download_machine_queue_file</samp> and
+<samp>download_machine_mask</samp>.
+</li>
+</ul>
+
+<p>
+<strong>0.59</strong> 21.11.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+better messages from tracing refresh engine
+</li>
+</ul>
+<ul>
+<li>
+fixed reloading configuration problem if -cfgdir is used
+</li>
+</ul>
+<ul>
+<li>
+stack dump removed from can not bind error message
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Most wanted feature ....  <strong>REGEXP SUPPORT</strong> ....  It looks like
+this is matches some regex (like .*\.gif).  If some regex expert can look at
+this.
+</li>
+</ul>
+<ul>
+<li>
+regex_fail_file
+</li>
+</ul>
+<ul>
+<li>
+Czech documentation about Smart Cache &amp; MSIE install
+</li>
+</ul>
+<ul>
+<li>
+scache.bat gc.bat repair.bat
+</li>
+</ul>
+
+<p>
+<strong>0.58</strong> 16.11.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+in trace dumps &lt; and &gt; was reversed
+</li>
+</ul>
+<ul>
+<li>
+fail trace message changed
+</li>
+</ul>
+<ul>
+<li>
+true/false is allowed in on/off options
+</li>
+</ul>
+<ul>
+<li>
+Removed very old debug message: Cleaned empty dir
+</li>
+</ul>
+<ul>
+<li>
+Infinite looping when doing GC with multiple passes
+</li>
+</ul>
+<ul>
+<li>
+Messages from garbage collector improved and fixed
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Added refresh engine tracing
+</li>
+</ul>
+<ul>
+<li>
+Added quick abort engine tracing
+</li>
+</ul>
+<ul>
+<li>
+Added cookies tracing
+</li>
+</ul>
+<ul>
+<li>
+Cookie filter can be switched to incomming mode in which allows all session
+cookies.  If server attempts to send a pernament cookie; it will be converted
+to session cookie.  This mode is less safe than outgoing filter if you have
+JavaScript enabled.  See also <a href="ch-advancedt.html#s-cookies">Cookies
+filtering, Section 7.4</a>
+</li>
+</ul>
+
+<p>
+<strong>0.57</strong> 13.11.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+minor codebase cleanup
+</li>
+</ul>
+<ul>
+<li>
+increased default cache size from 50 to 100 MB
+</li>
+</ul>
+<ul>
+<li>
+blocking https://site/* works
+</li>
+</ul>
+<ul>
+<li>
+-cfgdir fixed (Bastian Maerkisch)
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Adbusters support removed
+</li>
+</ul>
+<ul>
+<li>
+conversion code from old SC 0.20 and 0.30 removed
+</li>
+</ul>
+<ul>
+<li>
+fail_trace renamed to trace_fail
+</li>
+</ul>
+<ul>
+<li>
+removed keywords: fail, pass, allow_cookies_to, wafer
+</li>
+</ul>
+<ul>
+<li>
+new keywords: trace_url, trace_request, trace_reply
+</li>
+</ul>
+<ul>
+<li>
+in on off options words on/off yes/no can be also used
+</li>
+</ul>
+<ul>
+<li>
+when auto_compress is activated.  Smart Cache will ask server to send
+compressed data.
+</li>
+</ul>
+<ul>
+<li>
+Added 4 missing mantras from Sri Isopanishad
+</li>
+</ul>
+
+<p>
+<strong>0.56</strong> 3.11.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+Smart Cache do not works when compilled with jikes on some JVMs
+</li>
+</ul>
+<ul>
+<li>
+javac made .class files are now included in archive again
+</li>
+</ul>
+<ul>
+<li>
+Cleaned -cfgdir handling in sources
+</li>
+</ul>
+<ul>
+<li>
+cacheroot can now have spaces inside (needed for Mac)
+</li>
+</ul>
+<ul>
+<li>
+alive flag is now deleted on normal cache shutdown (Hartmut Krafft)
+</li>
+</ul>
+<ul>
+<li>
+Fixed typo in info message (Hartmut Krafft)
+</li>
+</ul>
+<ul>
+<li>
+Added info for Java 1.3 setup for avoiding <a href="ch-bugs.html#s-dnsbug">Java
+DNS caching bug/feature, Section 12.1</a> (Monika Schilling)
+</li>
+</ul>
+
+<p>
+<strong>0.55</strong> 13.10.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+Fixed problem with JavaScript end Errordocument !  (me)
+</li>
+</ul>
+<ul>
+<li>
+Fixed Modified After Load errors on FAT file system (Monika Schilling)
+</li>
+</ul>
+
+<p>
+<strong>0.54</strong> 11.06.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+Fixed linger option (Roman Trunov)
+</li>
+</ul>
+<ul>
+<li>
+Fixed export bug (Polgar Istvan)
+</li>
+</ul>
+
+<p>
+<strong>0.53</strong> 01.05.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+Stack dump is no longer printed when server port is in use
+</li>
+</ul>
+<ul>
+<li>
+Fixed repair FAT rounding bug, thanks MS for nice bug report.
+</li>
+</ul>
+<ul>
+<li>
+Minor source cleanup
+</li>
+</ul>
+<ul>
+<li>
+Prepared for future regexp integration
+</li>
+</ul>
+
+<p>
+<strong>0.52</strong> 24.04.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+NONE
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+<samp>alive_flag</samp> This file is periodically touched when server is
+running.
+</li>
+</ul>
+<ul>
+<li>
+<samp>nocompress</samp> Allows add some extension which will not be compressed
+(.rm .ram .jar .tgz) this is necessary because many www servers sends bad
+content-type for these files.
+</li>
+</ul>
+
+<p>
+<strong>0.51</strong> 21.03.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+auto_compress 0 should not compress any file(s)
+</li>
+</ul>
+<ul>
+<li>
+fixed access log * (new bug from 0.50)
+</li>
+</ul>
+<ul>
+<li>
+increased default gc array size in sample gc.cnf to 3000.
+</li>
+</ul>
+<ul>
+<li>
+synchronized gc.java and mgr.java filename generator
+</li>
+</ul>
+
+<p>
+<strong>0.50</strong> 25.02.2001
+
+<p>
+New features
+<ul>
+<li>
+Included fixes from <code><a
+href="mailto:Karl-Heinz.Duesentrieb@gmx.de">Karl-Heinz</a></code>
+</li>
+</ul>
+<ul>
+<li>
+auto_decompress 2 - ALWAYS decompress.  Useful when showing html source within
+Browser (Some Browsers are showing source compressed).
+</li>
+</ul>
+<ul>
+<li>
+auto_compress x, values for x &gt;512 useful if some files should not be
+compressed.
+</li>
+</ul>
+<ul>
+<li>
+<a href="ap-sacred.html">Mysteries of the Sacred Universe, Appendix E</a>
+</li>
+</ul>
+<ul>
+<li>
+<a href="ap-dvd.html">ISKCON Interactive DVD, Appendix D</a>
+</li>
+</ul>
+
+<p>
+<strong>0.49.1</strong> 26.01.2001
+
+<p>
+Bug fixes
+<ul>
+<li>
+OS/2 or Windows do not like character '|' in filename.  Changed to '!'.
+</li>
+</ul>
+
+<p>
+<strong>0.49</strong> 27.10.2000
+
+<p>
+Bug fixes
+<ul>
+<li>
+Makes generation of localnames for compressed files smarter.  Compression code
+should works OK.
+</li>
+</ul>
+<ul>
+<li>
+Flush logs when doing immediate shutdown.
+</li>
+</ul>
+<ul>
+<li>
+Log file format <samp>access.log</samp> has been changed to be more
+&quot;standard&quot;.
+</li>
+</ul>
+<ul>
+<li>
+Fix for scache.main(null);
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Redirects and Expire headers have now their separate settings in
+*refresh_pattern.  You can set special refresh rate for redirects.  TODO:
+cacheobject.needRefresh may be slightly smarter, ideas?
+</li>
+</ul>
+<ul>
+<li>
+Added nice quotes from <code><a href="http://www.iskcon.net/isopanisad/">Sri
+Isopanisad</a></code>.  Just about 3K.
+</li>
+</ul>
+
+<p>
+<strong>0.48.1</strong> 11.10.2000
+
+<p>
+Bug fixes
+<ul>
+<li>
+FIXED (??) generating local filenames when auto_compression is enabled.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+<a href="ch-contact.html">Contacting author, Chapter 6</a>
+</li>
+</ul>
+
+<p>
+<strong>0.48</strong> 10.10.2000
+
+<p>
+Bug fixes
+<ul>
+<li>
+Fixed generating local filenames when auto_compression is enabled.  No more
+.gz.gz.gz :)
+</li>
+</ul>
+<ul>
+<li>
+When killing old Expire header, generate Pragma: no-cache.  PNC header can be
+killed with <samp>pragma_no_cache</samp> later.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Smart Cache will refuse work if data directory is set to root directory.  (for
+example c:\ )
+</li>
+</ul>
+<ul>
+<li>
+All numbers in (default) refresh_pattern are floating point now.  Allows better
+fine tuning.
+</li>
+</ul>
+<ul>
+<li>
+When checking <samp>Expire:</samp>, <samp>Date:</samp> from remote server is
+used.  Fixes problems with difference between local and remote clocks.
+</li>
+</ul>
+<ul>
+<li>
+<samp>pragma_no_cache 4</samp> Do not cache 'uncacheable' redirects.  This may
+fix some troubles with it.  More investigation or redirects caching is still
+needed.
+</li>
+</ul>
+
+<p>
+<strong>0.47</strong> 27.9.2000
+<ul>
+<li>
+SC users OS statistics (taken from bug reports).  1- OS/2, 2- OS/2+Win, 3- (big
+space), 4-Windows, 5- (space), 6- Linux.  I do not know what cache Linux users
+uses?  Maybe Squid or wwwoffle.
+</li>
+</ul>
+<ul>
+<li>
+If someone wants to add optional regexp support, library from
+http://www.cacas.org/java/gnu/regexp/ may be usefull.
+</li>
+</ul>
+<ul>
+<li>
+I am out of diskspace (see bugfixes in 0.47, 0.46, 0.45 :) ).  Problem is
+solved for some time -- I have added compression support.  It compresses only
+mime types text/* (This should be enough for preventing SC from compressing
+JPEG, GIFs, MP3 and so on).  When I compressed entire SC directory about 50%
+diskspace was saved.  It depends on number of images in cache.
+</li>
+</ul>
+
+<p>
+Bug fixes
+<ul>
+<li>
+Repair do not crash on directories without read access.
+</li>
+</ul>
+<ul>
+<li>
+Out of diskspace detecting problem is solved.  Added flush() before close().
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Auto-Compression support.  See <a href="ch-advancedt.html#s-compress">Data
+compression support, Section 7.10</a>
+</li>
+</ul>
+<ul>
+<li>
+Repair has -w (force write) switch.  <a href="ch-repair.html">Smart Cache
+repair utility, Chapter 11</a>
+</li>
+</ul>
+<ul>
+<li>
+Repair has -c (compress) switch.  <a href="ch-repair.html">Smart Cache repair
+utility, Chapter 11</a>
+</li>
+</ul>
+<ul>
+<li>
+New structure of .cacheinfo files.  Smart Cache will convert them when used.
+Smart Cache loader 0.18 will NOT WORK with them, use 0.19.
+</li>
+</ul>
+<ul>
+<li>
+Support for <samp>Content-Encoding</samp> header.  This removes problems with
+www.finanztreff.de.  Garbage on the screen was gziped data :)
+</li>
+</ul>
+<ul>
+<li>
+<samp>negative_cached_penalty</samp> in <code>gc.cnf</code>
+</li>
+</ul>
+
+<p>
+<strong>0.46</strong> 8.8.2000
+
+<p>
+Bug fixes
+<ul>
+<li>
+Turns off access.log when out of diskspace.
+</li>
+</ul>
+<ul>
+<li>
+When caching URLs like
+<samp>http://www.metalonline.com/../../../../../../../../azovstal/index.htm</samp>,
+cached files gets written in directories upper that CacheRoot.  Reported by
+Dmitry Ban.  This closes a possible security hole.
+</li>
+</ul>
+<ul>
+<li>
+Added some questions to FAQ.
+</li>
+</ul>
+<ul>
+<li>
+Cleaned parent proxy cache select code (side effect from L.B.  patch).
+</li>
+</ul>
+<ul>
+<li>
+I have no idea why 'www.finanztreff.de' do not works (screws up when reloaded,
+maybe JavaScript problem?).
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Applied patches made by <code><a href="mailto:boga@podolsk.ru">Lesha
+Bogdanow</a></code>.  These patches added two new features.  <a
+href="ch-admins.html#s-access">Proxy access control, Section 9.11</a> and <a
+href="ch-advancedt.html#s-parentauth">Parent proxy authentification, Section
+7.9</a>.
+</li>
+</ul>
+<ul>
+<li>
+For people who do not remember syntax of -export command like me, its two
+arguments can be used in any order now.
+</li>
+</ul>
+
+<p>
+<strong>0.45</strong> 20.5.2000
+
+<p>
+I have received <strong>a new keyboard!</strong> (all keys works!).  Also I
+have got a cool ZyXEL U-1496 (V32bis) modem with display!
+
+<p>
+Bug fixes
+<ul>
+<li>
+Works better when out-of-diskspace.
+</li>
+</ul>
+<ul>
+<li>
+Reduced number of syscalls.
+</li>
+</ul>
+<ul>
+<li>
+Clean directory do not crashes when cache directory is empty.
+</li>
+</ul>
+<ul>
+<li>
+Corrected regexp.toString(), <samp>fail_trace</samp> works better.
+</li>
+</ul>
+<ul>
+<li>
+LRU is touched when importing data.
+</li>
+</ul>
+<ul>
+<li>
+RC 408 is temporary server error.
+</li>
+</ul>
+<ul>
+<li>
+<samp>no_caching</samp> works with Client/Server Pragma: no-cache headers.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Negative caching of some 4XX server replies.  Unlike Squid, this will never
+overwrite good cached page, (if does, report it as bug).
+</li>
+</ul>
+<ul>
+<li>
+Data from Smart Cache can be exported see <a href="ch-switches.html">Smart
+Cache command line switches, Chapter 8</a>.
+</li>
+</ul>
+<ul>
+<li>
+refage &lt; 0 - disables refage check.
+</li>
+</ul>
+<ul>
+<li>
+maxobjsize &lt; 0 - disables maxobjectsize check.
+</li>
+</ul>
+<ul>
+<li>
+If fail/pass do not contain any '*', it is added to end.
+</li>
+</ul>
+<ul>
+<li>
+-version command line switch (Helps Smart Cache Run).
+</li>
+</ul>
+
+<p>
+<strong>0.44</strong> 8.4.2000
+
+<p>
+This another very quick bug-fix release.  It looks like 'Smoke test' on
+Internet is required before releasing, but I do not have even modemoid.  Also
+my keyboard looks like it will be dead soon.
+
+<p>
+You can now start to use <samp>referer_log</samp> without problems.  It is a
+good thing.  Nobody want to contribute an icon for Smart Cache?
+
+<p>
+Bug fixes
+<ul>
+<li>
+Fixed crashes (from 0.43) or corrupting <samp>Referer:</samp> header bug (from
+0.37) when <samp>fake_referer</samp> is not used and <samp>referer_log</samp>
+is used.
+</li>
+</ul>
+<ul>
+<li>
+Removed <em>NullPointerException</em> ignoring in main loop.  It there is an
+error, request will still fails, but you see the exception.  If you see a NPE
+it is a SC bug and report it.
+</li>
+</ul>
+
+<p>
+<strong>0.43</strong> 6.4.2000
+
+<p>
+As expected, 0.42 have some serious screw-up in <samp>Referer:</samp> header
+handling.  This is a bug fix release.  Thanks for <strong>all</strong> bug
+reports.  It is a simple: <em>If I do not know about a bug, I can not fix
+it</em>.  It looks like Smart Cache is most popular OS/2 software in Germany :)
+
+<p>
+I have received a working 486 board donated by <em>Monika Schilling</em>.  Java
+compiler runs much (2-3x) faster, Thanks a lot!
+
+<p>
+If you never read Bhagavad-Gita or even thinking about purpose of (your) life,
+there is a very good starting point.  See <a href="ap-gitacd.html">Interactive
+Bhagavad-gita, Appendix C</a>.
+
+<p>
+Bug fixes
+<ul>
+<li>
+TODO list revised to version 2.0.1 and added priority to it.  Nobody wants to
+donate a <strong>working KEYBOARD</strong>?  :)
+</li>
+</ul>
+<ul>
+<li>
+Fixed bug (new in 0.42), which prevents <samp>referer_hack</samp> from working,
+it <strong>corrupted every</strong> <samp>Referer:</samp> header instead.
+</li>
+</ul>
+<ul>
+<li>
+-import should work under non-Unix OS also (Windows, OS/2).
+</li>
+</ul>
+<ul>
+<li>
+corrected some bugs in import, import sometimes fails if object is already in
+cache.
+</li>
+</ul>
+<ul>
+<li>
+import checks if already loaded object in cache is valid.
+</li>
+</ul>
+<ul>
+<li>
+File system check must be performed <strong>before</strong> import.
+</li>
+</ul>
+<ul>
+<li>
+Errors are displayed even in load-headers HTTP transaction phase (was only in
+connect phase).
+</li>
+</ul>
+<ul>
+<li>
+When announcing invalid OBJ reference, SC will print <em>why</em> reference is
+invalid.
+</li>
+</ul>
+<ul>
+<li>
+Removed setDirty() call, used direct variable access -&gt; faster execution of
+non-JIT JVMs.
+</li>
+</ul>
+<ul>
+<li>
+Remote server errors on refresh (RC) are also printed.
+</li>
+</ul>
+<ul>
+<li>
+Better error handling when multiple times loading the same URL and some of
+loads fails.  I hope, that now there are all multiple-load errors handled
+correctly.
+</li>
+</ul>
+<ul>
+<li>
+Blocked requests are counted as `good` when computing Smart Cache hit ratio,
+because they are also handled by Smart Cache.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+New keyword <samp>flag_check_interval</samp>.  How often will Smart Cache check
+for presence of immediate_shutdown_flag.  Using this type of shutdown is better
+than killing the task.  See <a href="ch-operating.html#s-stopping">Stopping
+Smart Cache/Shutdown flag, Section 5.3</a>.  This is most requested feature
+from Czech users.  (Non-Czech users most often requests JunkBusters.)
+</li>
+</ul>
+<ul>
+<li>
+New command line switch `<samp>-direct</samp>`, if used SC will not use
+http_proxy.
+</li>
+</ul>
+<ul>
+<li>
+New command line switch `<samp>-http_proxy</samp>`, overrides http_proxy in
+scache.cnf.
+</li>
+</ul>
+<ul>
+<li>
+<samp>referer_hack</samp> <strong>do not longer accept fake URL</strong>.
+</li>
+</ul>
+<ul>
+<li>
+New keyword '<samp>fake_referer</samp>' for setting fake <em>Referer:</em> HTTP
+header.
+</li>
+</ul>
+<ul>
+<li>
+Import will refuse to import directory with names without '.'
+</li>
+</ul>
+<ul>
+<li>
+Data from another Smart Cache can be imported, see <a
+href="ch-switches.html">Smart Cache command line switches, Chapter 8</a>.
+Import makes checks if it is really SC data directory (subdirectories must be
+numbers).
+</li>
+</ul>
+<ul>
+<li>
+New keyword '<samp>fake_cookie</samp>', used instead <samp>wafer</samp>.
+</li>
+</ul>
+
+<p>
+<strong>0.42</strong> 2.4.2000
+
+<p>
+This version was not tested as much as 0.40.  If you find some fatal bugs, send
+a report and use old 0.40 (see README for list of URLs).  0.40 has no known
+fatal bugs.
+
+<p>
+Bug fixes
+<ul>
+<li>
+Host names are no longer case-sensitive, when checking in cookies filter or
+no_proxy.
+</li>
+</ul>
+<ul>
+<li>
+Better detection of deleted directories (by hand), when SC is running.  Now it
+works under Linux better.
+</li>
+</ul>
+<ul>
+<li>
+.cacheinfo files are checked for write access.
+</li>
+</ul>
+<ul>
+<li>
+Import can works also on read-only filesystems.
+</li>
+</ul>
+<ul>
+<li>
+Timestamp is changed after import (by copy), but not after move.
+</li>
+</ul>
+<ul>
+<li>
+Import: clashing file name generation corrected.
+</li>
+</ul>
+<ul>
+<li>
+Import tries to rename file first (preserving last write date), if it do not
+work, it will try to copy it.
+</li>
+</ul>
+<ul>
+<li>
+Better error handling when importing.
+</li>
+</ul>
+<ul>
+<li>
+Repair now also deletes empty directories.
+</li>
+</ul>
+<ul>
+<li>
+Generating of error messages is now faster - green variant.  (Creates less Java
+objects on heap)
+</li>
+</ul>
+<ul>
+<li>
+Linger option is more friendly to OS resources.
+</li>
+</ul>
+<ul>
+<li>
+Reordered generated headers for avoiding browsers bugs.
+</li>
+</ul>
+<ul>
+<li>
+Access.log should have correct timezone now (DST is supported).
+</li>
+</ul>
+<ul>
+<li>
+filesystem check is now always performed.
+</li>
+</ul>
+<ul>
+<li>
+Non parseable Expire headers are not ignored.
+</li>
+</ul>
+<ul>
+<li>
+Distribution classes are no longer hashed by HashJava.
+</li>
+</ul>
+<ul>
+<li>
+External mime file can contains # comments.
+</li>
+</ul>
+<ul>
+<li>
+No crash on startup with newer beta versions of Kaffe JVM, but GC DO NOT WORK
+in Kaffe.
+</li>
+</ul>
+<ul>
+<li>
+Request will be processed even if client send bad data format in headers.
+</li>
+</ul>
+<ul>
+<li>
+Check if we get negative Content-Length.
+</li>
+</ul>
+<ul>
+<li>
+Removed trailing / or \ from cacheroot directory, if user uses it.  (Fixed
+problems with OS which do no like two // or \\).
+</li>
+</ul>
+<ul>
+<li>
+Backslash test is performed in cache data directory, not from global OS setup
+(File.separatorChar).
+</li>
+</ul>
+<ul>
+<li>
+Do not allow swap_dir1/2 to be &lt; 1.
+</li>
+</ul>
+<ul>
+<li>
+CRC32 directory hashing function is simplified (read: faster) and works ok when
+swap_level1_dirs &gt; swap_level2_dirs (read: brain-dead algorithm was replaced
+with dumb algorithm).
+</li>
+</ul>
+<ul>
+<li>
+-rebalance switch also kills empty directories.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+<strong>Much improved this documentation</strong>.  There will be a lot of
+English grammar mistakes.  Included in main archive because Homepage may be
+unavailabe/outdated.
+</li>
+</ul>
+<ul>
+<li>
+Support for special HTTP/1.1 methods: PUT, OPTIONS, DELETE, TRACE.  WWW
+publishing via HTTP1.1 should work.  (I can not test it, I have no such
+program.)
+</li>
+</ul>
+<ul>
+<li>
+Support for SSL/CONNECT gatewaying.  These requests are handled directly and
+<strong>not send</strong> to parent proxy server (http_proxy).  If someone
+needs this, send me mail and I will add <samp>security_proxy</samp> in next
+version.
+</li>
+</ul>
+<ul>
+<li>
+New keyword <samp>allowconnect</samp> for allowed SSL/CONNECT ports.
+</li>
+</ul>
+<ul>
+<li>
+New keyword <samp>fail_trace</samp> for tracing which mask blocked requested
+URL.
+</li>
+</ul>
+<ul>
+<li>
+New keyword <samp>visible_link</samp> for setting Smart Cache's homepage link
+in generated error messages.  (You can direct it to Hobbes for new version
+checking via Search).
+</li>
+</ul>
+<ul>
+<li>
+New keyword <samp>mime_types</samp> for using external mime table, when <a
+href="ch-advancedt.html#s-import">Importing files to Smart Cache, Section
+7.6</a>.
+</li>
+</ul>
+<ul>
+<li>
+New keyword <samp>stat_log</samp> logs statistics to file.
+</li>
+</ul>
+<ul>
+<li>
+New keyword <samp>append_via</samp> can disable appending &quot;via Smart Cache
+0.XX&quot; to your User-Agent: header.  If you are not using
+<samp>fake_user_agent</samp> this will (somewhat) protect your privacy, because
+nobody will know, that you are using Smart Cache.  I hope that this also
+disables problem with slightly modified pages without having to use
+<samp>fake_user_agent</samp>.  See <a href="ch-troubles.html">Troubleshooting,
+Chapter 13</a>.
+</li>
+</ul>
+<ul>
+<li>
+<a href="ch-repair.html">Smart Cache repair utility, Chapter 11</a>
+significantly enhanced.
+</li>
+</ul>
+<ul>
+<li>
+More checks when testing cache integrity (checking filesize and date).
+</li>
+</ul>
+<ul>
+<li>
+When running GC/repair we will not touch any file, which are less than 6
+minutes old (they may be in use).
+</li>
+</ul>
+<ul>
+<li>
+-p command line switch.  See <a href="ch-switches.html">Smart Cache command
+line switches, Chapter 8</a>.
+</li>
+</ul>
+<ul>
+<li>
+Return code 307 is now cacheable.
+</li>
+</ul>
+<ul>
+<li>
+Check if cacheroot directory exists and exit if it can not be created.
+</li>
+</ul>
+<ul>
+<li>
+You can use hardcoded 1x1 GIF when using <samp>ErrorDocument 403 0</samp>.  Use
+it if you can, it is much faster than sending redirect.
+</li>
+</ul>
+<ul>
+<li>
+Added bunch of startup quotes from Bhagavad-Gita.
+</li>
+</ul>
+<ul>
+<li>
+Load failed error code is 500 instead of 400.  I do not know why many caches
+uses 400, it can confuse some non-interactive clients.
+</li>
+</ul>
+<ul>
+<li>
+Every Pragma header is now considered as no cache request.
+</li>
+</ul>
+<ul>
+<li>
+SC will not crash when gets incorrect port number (not a number) in request.
+</li>
+</ul>
+<ul>
+<li>
+New keyword <samp>clear_flags_on_start</samp>.  Should be any flags files
+deleted when starting?
+</li>
+</ul>
+<ul>
+<li>
+Striping Pragma and Expire headers.  Discovered by Sergey Levin, when looking
+on packets.  This helps people, who use this cache only as front-end cache to
+browser cache.  Smart Cache removes bad headers and pages will end in browser
+cache.  This kind of use was discovered and reported by Martin Konicek.  He
+also writes utility for <code><a
+href="http://www.volny.cz/martin.konicek/scache">running Smart Cache in
+Windows/systray</a></code>.
+</li>
+</ul>
+<ul>
+<li>
+When checking for already matched rule, Smart Cache displays already matching
+rule.
+</li>
+</ul>
+<ul>
+<li>
+SC always display delta time, when URL is refreshed.  If page do not have
+Last-Modified date, time of URL receive will be used.
+</li>
+</ul>
+<ul>
+<li>
+Partial object downloads are now included in bytes stats.
+</li>
+</ul>
+<ul>
+<li>
+Failed object loads are announced with exception info.
+</li>
+</ul>
+<ul>
+<li>
+New command line switch '-repair' it calls recursive repair on data directory.
+</li>
+</ul>
+
+<p>
+<strong>0.41</strong> 8.9.1999 (Limited release)
+
+<p>
+Bug fixes
+<ul>
+<li>
+Some typos
+</li>
+</ul>
+<ul>
+<li>
+Changed from FREE software to <code><a href="http://www.opensource.org/">Open
+Source Software</a></code>, which is better, because many crippled demo
+versions claims there are also FREE software.  License is still GPL.
+</li>
+</ul>
+<ul>
+<li>
+English version of this documentation was checked with <em>ispell -d
+british</em>.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+GNU Debian/Linux binary distribution.  (.deb package) can be built from Unix
+sources.  Not tested too much and is <strong>very</strong> primitive.
+</li>
+</ul>
+<ul>
+<li>
+Configuration files can be read from alternate directory <em>-cfgdir</em>
+command line switch.  Needed for better UNIX support.
+</li>
+</ul>
+<ul>
+<li>
+Smart cache can now also operate on read-only file systems, such as CD-ROMS or
+HPFS drives under Linux.
+</li>
+</ul>
+<ul>
+<li>
+Smart cache will test filesystem if is read only.
+</li>
+</ul>
+<ul>
+<li>
+Cacheroot can be changed by command line argument <em>-cacheroot</em>
+&lt;Directory&gt; [ swap_dirs_1 ] [ swap_dirs_2 ]
+</li>
+</ul>
+<ul>
+<li>
+Smart cache can reorder cached files after changing swap_dirs.
+<em>-rebalance</em> command line option.
+</li>
+</ul>
+<ul>
+<li>
+<code>repair</code> has now better built-in MIME table.
+</li>
+</ul>
+<ul>
+<li>
+<code>repair</code> has now -q command line switch.  Prints less messages.
+</li>
+</ul>
+<ul>
+<li>
+<code>repair</code> can read external (Unix style <em>/etc/mime.types</em>
+format) MIME table.
+</li>
+</ul>
+<ul>
+<li>
+rewrite command line handling.  It is possible to use more than one command
+line option.
+</li>
+</ul>
+<ul>
+<li>
+directive <em>reload_block_files</em> is now obsolete.  Changed files (except
+<code>scache.cnf</code>) are now always reloaded.
+</li>
+</ul>
+<ul>
+<li>
+<em>-import &lt;Directory&gt;</em> command line option for importing data into
+smart cache directory structure from external sources.  Place downloaded data
+from web servers (for example with some web grabber) into some directory for
+example <samp>/tmp/www</samp>, where servers will be stored in subdirectories
+such as <samp>/tmp/www/www.linux.org</samp> and import them with <samp>java
+scache -import /tmp/www</samp>
+</li>
+</ul>
+
+<p>
+<strong>0.40</strong> 11.3.1999
+
+<p>
+Bug fixes
+<ul>
+<li>
+Distribution archive for 0.39 contains classes from 0.38 not 0.39.
+</li>
+</ul>
+<ul>
+<li>
+Reloading of block files now works without any side-effect.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+experimental GUI removed.  Slow, resource hungry and prevents Smart Cache from
+running when no X-server is available.  Never again.
+</li>
+</ul>
+<ul>
+<li>
+cookies block list can be also loaded from file <em>allows_cookies_to_file</em>
+</li>
+</ul>
+<ul>
+<li>
+Warning when config file is not found
+</li>
+</ul>
+
+<p>
+<strong>0.39</strong> 10.3.1999
+
+<p>
+This document has been revised by <em>Luc Le Blanc</em>, thanks for it.
+
+<p>
+Bug fixes
+<ul>
+<li>
+In BUGS file is documented internal Java error.  Smart Cache will report it,
+send these reports to SUN (not me!).
+</li>
+</ul>
+<ul>
+<li>
+Corrected web forwarder, which doesn't works since changes in 0.37.  Why Nobody
+reports it?
+</li>
+</ul>
+<ul>
+<li>
+Socket Linger option (maybe) doesn't works.  It's hard to test it without LAN
+or WAN.
+</li>
+</ul>
+<ul>
+<li>
+Support for <samp>Expires:</samp> headers generated by IIS 3/4 servers, which
+violates HTTP protocol.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Repair.java program for broken .cacheinfo files (no docs, src only) has been
+improved.  Use this program for importing files into Smart Cache file system.
+</li>
+</ul>
+<ul>
+<li>
+Implemented OUTGOING cookie filter as requested by Klaus Nitsche.  See
+cookies.txt and Have fun.
+</li>
+</ul>
+<ul>
+<li>
+Wafer option (fake cookies)
+</li>
+</ul>
+<ul>
+<li>
+Experimental GUI option <em>-gui</em> (unfinished)
+</li>
+</ul>
+<ul>
+<li>
+Simple requests and bytes Statistics.
+</li>
+</ul>
+<ul>
+<li>
+Refresh time can be also printed in hours
+</li>
+</ul>
+<ul>
+<li>
+new keywords <em>pass_file</em>, <em>fail_file</em>.  Smart Cache can now load
+these directives from external files and when this file is changed, Smart Cache
+will detect it and reload it - no need to restart it as before.
+</li>
+</ul>
+
+<p>
+<strong>0.38</strong> 10.2.1999
+
+<p>
+Bug fixes
+<ul>
+<li>
+Fixed case-sensitive bug in the regexp engine.
+</li>
+</ul>
+<ul>
+<li>
+Another bug gets (at least) documented.  Read BUGS.
+</li>
+</ul>
+<ul>
+<li>
+Bad <samp>content-type</samp> header don't crash whole request.
+</li>
+</ul>
+<ul>
+<li>
+Default mime type is text/html (like in NutScrape).
+</li>
+</ul>
+<ul>
+<li>
+Lord Vishnu is no longer default in fake_agent.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Repair program for broken .cacheinfo files (no docs, src only)
+</li>
+</ul>
+<ul>
+<li>
+password protected documents can be cached
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache now displays error (instead of crashing) when talking to HTTP 0.9
+server.  (untested)
+</li>
+</ul>
+<ul>
+<li>
+fake garbage collector (run via -fakegc).  No files gets deleted.
+</li>
+</ul>
+<ul>
+<li>
+You may turn on case_sensitive URL mask checking - this considerably speeds up
+garbage collection.  Profiling GC on my 386/40 was a PAIN!  For your
+information -- It takes about 7 hours.
+</li>
+</ul>
+<ul>
+<li>
+Delta time is displayed in days for better readability if greater than 2d.
+</li>
+</ul>
+<ul>
+<li>
+Added socket linger option for better support http clients (like my
+web-grabber).  I didn't test it since I'm more than year unemployed and don't
+have LAN at home.
+</li>
+</ul>
+
+<p>
+<strong>0.37</strong> 20.12.1998
+
+<p>
+<strong>License has been changed to GPL!  Share and Enjoy!</strong>
+
+<p>
+Bug fixes
+<ul>
+<li>
+Corrected HEAD requests handling.  Message body is not sent anymore.  Some
+stupid web grabbers were too confused.  Yes, WGET again.  Because I'm tired
+with WGET, I started coding my own web grabber.  It's in a very early stage of
+development (not yet working), but will probably be the most configurable web
+grabber ever seen.
+</li>
+</ul>
+<ul>
+<li>
+No_proxy now case-insensitive.
+</li>
+</ul>
+<ul>
+<li>
+no_proxy localhost will no longer match localhost.xxxx.com
+</li>
+</ul>
+<ul>
+<li>
+Log writers are synchronized, so logs are now consistent.
+</li>
+</ul>
+<ul>
+<li>
+Some internal optimization tricks based on the Java-Library source.
+</li>
+</ul>
+<ul>
+<li>
+Registration keys are no longer needed.
+</li>
+</ul>
+<ul>
+<li>
+Last version check and Ad Busters removed.  The server side needed for this
+stuff is not online.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache crashes less often on bad config file.  Sometimes even prints the
+number the offending line!
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Support for <em>agent_log</em> and <em>referer_log</em>.  Happy logging and
+forwarding.
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>full_referer_log</em> (0/1).  0 produces a more compact log,
+referer is logged only when servers are different.  So you can record your path
+in cyberspace :)
+</li>
+</ul>
+<ul>
+<li>
+no_proxy, fail, cacheonly, nocache can have more than one argument.  Arguments
+are separated by SPACES.
+</li>
+</ul>
+<ul>
+<li>
+Authentification in url ( http://looser:kewl@i.hate.ssh/ ) now works properly.
+</li>
+</ul>
+<ul>
+<li>
+Unknown or unsupported protocols (FTP, gopher) are now forwarded to your
+http_proxy (if you have one) and received reply is, of course, cached.  So
+happy off line FTP sites browsing!
+</li>
+</ul>
+<ul>
+<li>
+Default filename (.welcome) can be now redefined.  UNIX users may like this.
+</li>
+</ul>
+<ul>
+<li>
+When generating filenames, numbers are inserted at beginning, not end -
+programs may now still recognize file based on file extension .
+</li>
+</ul>
+<ul>
+<li>
+<em>-local</em> command line switch.  Forces Smart Cache to run in local mode.
+Smart Cache will not try to connect anywhere.
+</li>
+</ul>
+<ul>
+<li>
+New garbage collection action '='.  File will ALWAYS be removed if older than X
+days.
+
+<pre>
+     urlmask ftp://* =7
+</pre>
+
+<p>
+Removes all files received by FTP when not used in 7 days.
+</li>
+</ul>
+
+<p>
+<strong>0.36</strong> 20.11.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Due to bug in stupid Wget, I added correct handling of requests with #.  No
+more multiple downloads with Wget.
+</li>
+</ul>
+<ul>
+<li>
+Message <em>cleaned empty dir</em> is now sent to stderr.  Less garbage in
+stdout.
+</li>
+</ul>
+<ul>
+<li>
+Some less important internal changes (i already forgot them).
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+<em>referer_hack</em> has been extended and can now send USER-specified URL
+instead.
+</li>
+</ul>
+<ul>
+<li>
+<em>Error_document</em> also supports return code 400 (proxy load failed).
+</li>
+</ul>
+<ul>
+<li>
+New feature <em>Fake_user_agent</em> used for making WWW logs more interesting.
+Note: via line is not added to string specified.
+</li>
+</ul>
+
+<p>
+<strong>0.35</strong> 20.9.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Some internal optimizations for speed in cache engine.  GC engine is still not
+yet optimized for speed (because I run GC only about twice a month).
+</li>
+</ul>
+<ul>
+<li>
+Support for bunch of new protocols such as hTTP, hTtp, HttP, ...
+</li>
+</ul>
+<ul>
+<li>
+Handling errors in multiple downloads of the same object is now smarter than
+before.  (I wonder if anyone will even notice it).
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+New special feature - <em>referer_hack</em>.  With this feature you can
+(somewhat) protect your privacy and fool servers that check the
+<samp>Referer</samp> header in requests.  Nice side effect of this new feature
+is that if you use something like this:
+
+<pre>
+     Redirect http://my.homepage/* http://members.xoom.com/myname/*
+</pre>
+
+<p>
+your images will be displayed.  Default value of referer_hack is disabled
+(zero).
+</li>
+</ul>
+<ul>
+<li>
+Small read.me file added to distribution archive.
+</li>
+</ul>
+<ul>
+<li>
+Improved descriptions of commands in both configuration files
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache got another stupid AWARD from some BFU magazine.  I don't know why
+some people generate so much hype for this product...  It's strange that this
+BFUs gets Smart Cache running...
+</li>
+</ul>
+<ul>
+<li>
+Value of default_refresh_pattern changed in default config file to honor all
+forced reloads...
+</li>
+</ul>
+<ul>
+<li>
+swap_dirs_levels changed from 5 to 4 in default config file.  WARNING: If you
+are upgrading Smart Cache and change this value (from 5 to 4) your cached
+objects will not be found!
+</li>
+</ul>
+<ul>
+<li>
+&quot;Full&quot; version has default BindAddress set to * instead of 127.0.0.1.
+</li>
+</ul>
+<ul>
+<li>
+Also, I somewhat improved the well-known directive for customized 403 error
+messages.  An empty html file can now be sent.  This may fix some JavaScript
+troubles.  I didn't test it, because i hate stupid technologies such as
+JavaScript, Active X, ...
+</li>
+</ul>
+
+<p>
+<strong>0.34</strong> 12.9.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Faster in-memory garbage collection.
+</li>
+</ul>
+<ul>
+<li>
+Added header <samp>Proxy-Connection: Close</samp> to generated error messages.
+This fixes troubles with old browsers, which don't have proper handling of
+Keep-Alive connections.
+</li>
+</ul>
+<ul>
+<li>
+<em>Security bug</em>: Password-protected documents were still cached!
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Choice of removing <samp>Pragma: no-cache</samp> header from clients requests.
+See <code>scache.cnf</code> for more info (look for remove_pragma_no_cache)
+</li>
+</ul>
+<ul>
+<li>
+Customized Error Reply by redirecting to specified URL.  Only 403 Error reply
+(Forbidden, generated by Fail directive) is now supported.
+</li>
+</ul>
+<ul>
+<li>
+Nicer HTML in generated error messages.
+</li>
+</ul>
+<ul>
+<li>
+Ad Busters moved to another server, so -faststart switch is no longer needed
+for workaround to JVM DNS caching bug.
+</li>
+</ul>
+<ul>
+<li>
+Less important init messages are now sent to stderr.
+</li>
+</ul>
+
+<p>
+<strong>0.33</strong> 5.9.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Workaround for bug in Squid Cache 1.2.X (if Squid is used as http_proxy).
+</li>
+</ul>
+<ul>
+<li>
+Improved some messages generated by garbage collector engine.
+</li>
+</ul>
+<ul>
+<li>
+Default value of maximal object size increased from 4 to 10 Mb.
+</li>
+</ul>
+<ul>
+<li>
+Improved error detection - Smart Cache can now detect when user of garbage
+collector removes directory with active file transfers.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+HTTP RC 403 added to group 'temporary remote server errors'.
+</li>
+</ul>
+<ul>
+<li>
+By popular demand, size of transfered objects now displayed in Smart Cache
+window.
+</li>
+</ul>
+<ul>
+<li>
+Refreshed object without last_modified date (delta=0 m) no longer mentioned in
+Smart Cache window.
+</li>
+</ul>
+
+<p>
+<strong>0.32</strong> 19.8.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Fixed bug in garbage collector.  GC crashed when there were fewer objects in
+cache than <em>gcarraysize</em>.
+</li>
+</ul>
+<ul>
+<li>
+Cacheroot directory is now always created on cache startup.
+</li>
+</ul>
+
+<p>
+<strong>0.31</strong> 18.8.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Fixed some rare cases which created &quot;unreferenced&quot; objects when
+object loading failed.
+</li>
+</ul>
+<ul>
+<li>
+Fixed bug in GC.  Due to changes in 0.30, only 50% &quot;unreferenced&quot;
+files were removed.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Extended directive generate_lastmod.  If set to 1, generates
+<samp>Last-modified</samp> header only if object is sent from cache.  This
+removes problem with both stupid browsers (MSIE, Netscape) and aborted
+transfers.  If you want to restore the previous operation mode, set it to 2.
+</li>
+</ul>
+<ul>
+<li>
+Local filename generating is now significantly faster.  This makes Smart Cache
+about 10% faster when operating with &quot;normal&quot; URL length and much
+faster with very long URLs.
+</li>
+</ul>
+<ul>
+<li>
+URL Search string can now be delimited with more chars: <samp>:?  = ;</samp>
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache got TOP 25% Rating from J.A.R.S.
+</li>
+</ul>
+
+<p>
+<strong>0.30</strong> 3.8.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Last-Modified dates in future no longer confuse the refresh engine.
+</li>
+</ul>
+<ul>
+<li>
+In some rare cases, when object load failed, object was deleted from cache, but
+not from .cacheinfo files.
+</li>
+</ul>
+<ul>
+<li>
+When directory creation fails, Smart Cache no longer creates file
+<em>nullnull</em>, when attempting to transfer cacheable object.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+<strong>Garbage collection</strong>!  It's configurable through <em>gc.cnf</em>
+file.  Run it via <samp>java scache -gc</samp> and enjoy!
+</li>
+</ul>
+<ul>
+<li>
+New directory structure - character ~ is no longer replaced by -.  If you want
+to convert directories to new format (recommended), use the -convert030 switch.
+</li>
+</ul>
+
+<p>
+<strong>0.29</strong> 5.7.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Corrected new error from 0.28 - documents without expire line don't get cached
+if pragma_nocache were set to zero.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Command-line option <strong>-faststart</strong>.  Suppresses latest available
+version check and Ad Busters rule set refresh.
+</li>
+</ul>
+<ul>
+<li>
+Better <samp>last-modified</samp>.  headers generation, now works even on
+transient objects.
+</li>
+</ul>
+<ul>
+<li>
+Possibility to send pages from cache if remote server returns internal error.
+Good for overloaded servers, such as Geocities.  If you want this, set
+<em>hide_errors</em> to one.
+</li>
+</ul>
+<ul>
+<li>
+English version of docs.
+</li>
+</ul>
+
+<p>
+<strong>0.28</strong> 2.7.1998
+
+<p>
+Bug fixes
+<ul>
+<li>
+Handling errors when reading corrupted <code>.cacheinfo</code> files.
+</li>
+</ul>
+<ul>
+<li>
+Faster saving <code>.cacheinfo</code> files.
+</li>
+</ul>
+<ul>
+<li>
+Directory memory cache optimized.
+</li>
+</ul>
+<ul>
+<li>
+Internal optimalizations for better speed.
+</li>
+</ul>
+<ul>
+<li>
+Corrected sended HTTP reply 304 when load failed.
+</li>
+</ul>
+<ul>
+<li>
+Ignoring <samp>Expires:</samp> header in the past.
+</li>
+</ul>
+<ul>
+<li>
+Removed filesystem's case sensitivity check.
+</li>
+</ul>
+<ul>
+<li>
+Check if is possible to use character '\' in filenames.
+</li>
+</ul>
+
+<p>
+New features
+<ul>
+<li>
+Sending pages which are already deleted on WWW servers (rc=404), but still
+existing in cache.  Directive <em>keep_deleted</em> [0/1].  Good for off line
+browsing of removed sites.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache can now generate <samp>last-modified</samp> headers if document is
+cacheable and original do not have one.  <em>generate_lastmod</em> [0/1] - it
+is very good for web forwarding.
+</li>
+</ul>
+
+<p>
+<strong>0.27</strong> 23.6.1998
+<ul>
+<li>
+Product license changed from FREEWARE to shareware.  Some features exists only
+in registered version.  Introduced built in web forwarder.
+</li>
+</ul>
+<ul>
+<li>
+Changed syntax for <em>default_refresh_pattern</em> to <samp>reload_age min_age
+lastmod_factor max_age</samp>.  Lastmod_factor is a floating point number and
+other numbers are times in minutes.  These numbers are used when testing if
+document needs to be refreshed.  Setting reload_age value &gt; 0 disables
+reloads for specified time.  Setting min_age value &gt; 0 allows caching pages
+without <samp>Last-Modified</samp> header, which makes web browsing much
+faster.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache has been optimized and now is <strong>five times</strong> faster
+than before.  Now is only about 25% slower than Apache 1.0 for OS/2.
+</li>
+</ul>
+<ul>
+<li>
+Changed POST method handling - added workaround for some badly programmed CGI
+scripts.
+</li>
+</ul>
+<ul>
+<li>
+Password protected documents are not cacheable now.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache now beeps, when new version exists.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache will exit (not hangs) when can not bind to specified port.
+</li>
+</ul>
+<ul>
+<li>
+Changed handling of <em>redirect</em> - proxycache now do not sends redirected
+back to the browser, but remaps the request and continue working on it - it is
+necessary for web forwarding.
+</li>
+</ul>
+<ul>
+<li>
+Classes are before distributing protected by hashjava utility.  This also make
+them 10kB smaller.
+</li>
+</ul>
+
+<p>
+<strong>Registered version</strong>
+<ul>
+<li>
+Directive <em>SerialNumber</em> for entering the secret registration number.
+[<a href="footnotes.html#f13" name="fr13">13</a>]
+</li>
+</ul>
+<ul>
+<li>
+Access logging by <em>access_log</em> with URL masks.  Good for logs on web
+forwarders.
+
+<pre>
+     access_log http://netmag.cz/* netmag.access.log
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>default_forward_for</em>, which is default hostname for
+forwarder.
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>BindAddress</em> for entering local IP address for port binding.
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>max_clients</em> for setting maximal number of http clients.
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>Refresh_pattern</em> for fine tuning expiration setup by URL
+mask.
+</li>
+</ul>
+
+<p>
+<strong>0.26</strong> 6.6.1998
+<ul>
+<li>
+Fixed vsb [<a href="footnotes.html#f14" name="fr14">14</a>] when processing
+HEAD requests.  Smart Cache caches results of this requests and this overwrites
+normal pages with zero-sized pages.
+</li>
+</ul>
+<ul>
+<li>
+Adding <samp>Host:</samp> headers to outgoing requests with port number.
+</li>
+</ul>
+<ul>
+<li>
+Corrected file system check - works even if cacheroot directory does not
+exists.
+</li>
+</ul>
+<ul>
+<li>
+Better resolving of the filename/directory clashes.
+</li>
+</ul>
+<ul>
+<li>
+Cache now works better in some rare situations, when is not possible to create
+working directory for requested pages.  These pages are still not cached, but
+are now sended to clients.
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>inputtimeout</em> - socket read timeout for client's request.
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>proxyreadtimeout</em> - timeout for reading reply from remote web
+server.
+</li>
+</ul>
+<ul>
+<li>
+Both time are in seconds.
+</li>
+</ul>
+
+<p>
+<strong>0.25</strong>
+<ul>
+<li>
+Changed error message <samp>Target not set</samp> to <samp>Host Unknown</samp>
+</li>
+</ul>
+<ul>
+<li>
+Hostnames are now no longer case-sensitive.
+</li>
+</ul>
+<ul>
+<li>
+Protocol names are no longer case-sensitive.
+</li>
+</ul>
+
+<p>
+<strong>0.24</strong>
+<ul>
+<li>
+Added support for my AdBusters!  web service.
+</li>
+</ul>
+<ul>
+<li>
+<em>AdBustersId</em> and <em>AdBustersAuth</em> for AdBusters login.
+</li>
+</ul>
+<ul>
+<li>
+Cache can check if newer version of itself is available.
+</li>
+</ul>
+<ul>
+<li>
+Check for unnecessary Fail or Pass mask (already matched by others).
+</li>
+</ul>
+
+<p>
+<strong>0.23</strong>
+<ul>
+<li>
+Wildcard '*' support in all directives but <em>Redirect</em> and
+<em>No_Proxy</em>
+</li>
+</ul>
+<ul>
+<li>
+URL are no longer case sensitive.  (Fixes problem with IBM Alpha Works site)
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>NoCaching</em> for defining what URL you do not want to cache.
+</li>
+</ul>
+<ul>
+<li>
+Directive <em>CacheOnly</em> for defining only what are allowed to gets cached.
+</li>
+</ul>
+<ul>
+<li>
+You must use only one of them
+</li>
+</ul>
+<ul>
+<li>
+New keyword <em>Pass</em> for marking allowed URLs, which Fail disables (by
+mistake).
+</li>
+</ul>
+<ul>
+<li>
+Some generic traps for adv.  banners installed in default configuration file.
+</li>
+</ul>
+
+<p>
+<strong>0.22</strong>
+<ul>
+<li>
+Because many users use this program in commercional environments for caching
+entire networks even if this is not allowed by license, Smart Cache has now
+hard coded bindaddress to 127.0.0.1.
+</li>
+</ul>
+<ul>
+<li>
+Better error messages, displays also thrown Java exception.
+</li>
+</ul>
+
+<p>
+<strong>0.21</strong>
+<ul>
+<li>
+Corrected URL parser for working with URL containing strange characters such as
+'=;%^&amp;'.
+</li>
+</ul>
+<ul>
+<li>
+do not create filenames with '|' inside
+</li>
+</ul>
+<ul>
+<li>
+<samp>If-Modified-Since</samp> header is sended as first line in request.
+</li>
+</ul>
+<ul>
+<li>
+If cache assumes that object is in the cache, but can not be accessed (for
+example is deleted), request headers will not be send to server twice.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache do not works with Java 1.0 (only missing class is CRC32).
+</li>
+</ul>
+<ul>
+<li>
+Shutdown flag is deleted on the start.
+</li>
+</ul>
+
+<p>
+<strong>0.20</strong>
+<ul>
+<li>
+New structure of <code>.cacheinfo</code> files.  Now last access date is
+included (needed for future garbage collector).
+</li>
+</ul>
+<ul>
+<li>
+Faster exit on shutdown_flag
+</li>
+</ul>
+<ul>
+<li>
+Header <samp>Server:</samp> added to error messages.
+</li>
+</ul>
+<ul>
+<li>
+Error messages has no expiration time 5 minutes (like Squid).
+</li>
+</ul>
+<ul>
+<li>
+All dates are now in the 'correct' Internet format including day of the week
+(some servers tested DOTW on IMS requests!!!)
+</li>
+</ul>
+<ul>
+<li>
+Dates with day &lt; 10 now has two digits size as required in RFC.  Java claims
+to support 'Internet date format standard', but zero on the beginning was
+missing.
+</li>
+</ul>
+
+<p>
+<strong>0.19</strong>
+<ul>
+<li>
+Removed nearly all headers from generated 304 replies as required by HTTP/1.1
+protocol.
+</li>
+</ul>
+<ul>
+<li>
+Changed case in generated headers.  Some stupid servers has case sensitive
+matching on headers.
+</li>
+</ul>
+<ul>
+<li>
+More important dates has now correct day of the week.
+</li>
+</ul>
+<ul>
+<li>
+Corrected crashing when URL has more than one '?'  - (Microsoft's servers).
+</li>
+</ul>
+<ul>
+<li>
+Kill unreferenced files tests if does not exist directory with name of the
+cached file.
+</li>
+</ul>
+
+<p>
+<strong>0.18</strong>
+<ul>
+<li>
+When network error is detected when sending (after sucessfull connect) request
+to server, old cached object will be sent.
+</li>
+</ul>
+<ul>
+<li>
+Also if network error is detected when reading reply from server, send old
+object.
+</li>
+</ul>
+
+<p>
+<strong>0.17</strong>
+<ul>
+<li>
+<em>If-Modified-Since</em> requests from clients are now correctly handled in
+all cases.  Sending bad responses crashed <em>IBM WebExplorer</em> browser
+(Netscape was fine) and entire <em>Presentation Manager</em> (OS/2 GUI
+Interface).
+</li>
+</ul>
+<ul>
+<li>
+Cache do not crash if gets date from remote server in unknown format
+(<samp>Expires:</samp> headers send by developer.javasoft.com).
+</li>
+</ul>
+
+<p>
+<strong>0.16</strong>
+<ul>
+<li>
+Check if filesystems allows to create filenames with dot at end only.  (seen on
+the Hare Krishna World Online).
+</li>
+</ul>
+<ul>
+<li>
+Thread synchronization is now much better.  If Smart Cache gets many requests
+per second for loading the same object into cache, object will be loaded and
+lost.  (Discovered by my <code>webbench</code> program.
+</li>
+</ul>
+<ul>
+<li>
+Removing headers <samp>Proxy-Connection</samp> and <samp>Connection</samp> from
+client's requests.  Some wants to use persistent connection, which Smart Cache
+do not support.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache is now smarter when tests for removed files or directories by user.
+</li>
+</ul>
+
+<p>
+<strong>0.15</strong>
+<ul>
+<li>
+Cache appends its name to <samp>User-Agent</samp> header.
+</li>
+</ul>
+<ul>
+<li>
+Corrected error (buffering problem) when processing POST requests.
+</li>
+</ul>
+
+<p>
+<strong>0.14</strong> 23.3.1998
+<ul>
+<li>
+Cache displays information about objects which are successfully checked via
+IMS.
+</li>
+</ul>
+<ul>
+<li>
+Better handling of aborted requests.  It is not necessary to wait for remote
+server reply to be request considered as aborted.
+</li>
+</ul>
+<ul>
+<li>
+<em>Shutdown_flag</em> for clean cache shutdown.
+</li>
+</ul>
+<ul>
+<li>
+Better support for multiple downloads of the same object.
+</li>
+</ul>
+
+<p>
+<strong>0.13</strong> - 22.3.1998 <strong>First public release on the
+Net</strong>
+<ul>
+<li>
+When got 404, delete object in the cache
+</li>
+</ul>
+<ul>
+<li>
+Cache only `good` error codes from server, not bad, which overwrites `good`
+cached object (Squid does this overwriting).
+</li>
+</ul>
+<ul>
+<li>
+Temporary files are deleted, when transfer is aborted by network error.
+</li>
+</ul>
+<ul>
+<li>
+Support for case sensitive filesystems with auto detection.
+</li>
+</ul>
+<ul>
+<li>
+<em>pragma_no_cache</em> introduced
+</li>
+</ul>
+
+<p>
+<strong>0.12(Private)</strong> - 21.3.1998
+<ul>
+<li>
+Clients got 304 if they send IMS request and connect fails.
+</li>
+</ul>
+<ul>
+<li>
+<em>-killunref</em> introduced.
+</li>
+</ul>
+<ul>
+<li>
+Error messages has now <samp>last-modified</samp> and <samp>Expire:</samp>
+headers like Squid.
+</li>
+</ul>
+<ul>
+<li>
+added header <samp>Date:</samp> to server responses.  Some browsers use this
+for last-mod check.
+</li>
+</ul>
+<ul>
+<li>
+<em>quick_abort</em> introduced
+</li>
+</ul>
+
+<p>
+<strong>0.11(Private)</strong>
+<ul>
+<li>
+new directives <em>no_proxy</em>, <em>fail</em>, <em>redir</em>
+</li>
+</ul>
+<ul>
+<li>
+Better dir cleanup - directories are now deleted up to the dir hierarchy as
+much as possible.
+</li>
+</ul>
+<ul>
+<li>
+Directories are now cleaned when garbage collected from memory, not on saving.
+</li>
+</ul>
+
+<p>
+<strong>0.10(Private)</strong> - 20.3.1998
+<ul>
+<li>
+More intelligent IMS refresh
+</li>
+</ul>
+<ul>
+<li>
+Better memory directory garbage collector
+</li>
+</ul>
+<ul>
+<li>
+I/O buffer set to 2048 bytes instead 512
+</li>
+</ul>
+<ul>
+<li>
+background directory saver set to 10 minutes
+</li>
+</ul>
+<ul>
+<li>
+better multi-thread synchronization
+</li>
+</ul>
+
+<p>
+<strong>19.3.1998</strong>
+<ul>
+<li>
+Core coding is fully completed.
+</li>
+</ul>
+<ul>
+<li>
+Let's debug in the real world!
+</li>
+</ul>
+<ul>
+<li>
+First 'Smoke test' on the Internet.
+</li>
+</ul>
+<ul>
+<li>
+something from www.javaworld.com really gets cached, but due to bugs in the
+thread-synchronization many objects gets lost.
+</li>
+</ul>
+
+<p>
+<strong>17.3.1998</strong>
+<ul>
+<li>
+very basic skeleton of cache appeared
+</li>
+</ul>
+<ul>
+<li>
+coded handling of POST requests, but untested.
+</li>
+</ul>
+
+<p>
+<strong>12.3.1998</strong>
+<ul>
+<li>
+<strong>Smart Cache project started</strong>
+</li>
+</ul>
+<ul>
+<li>
+Thinking about <a href="ch-intro.html#s-goals">Smart Cache design goals,
+Section 1.5</a>
+</li>
+</ul>
+
+<hr>
+
+[ <a href="ch-new.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ 16 ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-todo.html">next</a> ]
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+

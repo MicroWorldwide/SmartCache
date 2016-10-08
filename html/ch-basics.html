@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - Basics informations</title>
+
+</head>
+
+<body>
+
+<a name="ch-basics"></a>
+<hr>
+
+[ <a href="ch-intro.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ 2 ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-inst-setup.html">next</a> ]
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Chapter 2 - Basics informations
+</h1>
+
+
+<hr>
+
+<a name="s2.1"></a>
+<h2>2.1 What is Smart Cache</h2>
+
+<p>
+Smart Cache is a full-featured HTTP proxy caching server and web forwarder
+written entirely in 100% pure Java (Java 1.1 or later is required).  Smart
+Cache was inspired by two most popular caches - modern Squid and older CERN
+HTTP (IBM port to OS/2 called ICS).  Smart Cache gets only ideas from this
+program, no source code is used.  Smart Cache has been primarily written as a
+my <em>Personal Proxy Cache</em>.  This <em>Personal Proxy Cache</em> replaces
+your internal browser cache and offers some extra features for allowing offline
+browsing.
+
+<p>
+After this, Smart Cache was optimised, has not a very configurable garbage
+collection, support for web forwarding/accelerator/transparent proxy and grows
+into full-featured HTTP proxy server.
+
+<hr>
+
+<a name="s2.2"></a>
+<h2>2.2 Smart Cache summary</h2>
+
+<p>
+I have got a very nice following summary of Smart Cache's main features by
+email.
+
+<p>
+<em>First I like to say you've done a great job with SCache.  It does not only
+anonymize me, like many other programs, it's main feature, the cache, is a
+great thing not only for speeding up surfing but also for offline browsing.  I
+use it under OS/2 and under Windows without any problems.</em>
+
+<hr>
+
+<a name="s-features"></a>
+<h2>2.3 Features List</h2>
+
+<p>
+Smart Cache can:
+<ul>
+<li>
+Block unwanted URLs.  What about blocking some adverts?  This makes browsing
+much faster.  Try to block adverts at least on your favourite www servers and
+see the difference.
+</li>
+</ul>
+<ul>
+<li>
+Replace blocked adverts with your own images.  Quite interesting.
+</li>
+</ul>
+<ul>
+<li>
+2 Cookie filters for enhancing browsing privacy.
+</li>
+</ul>
+<ul>
+<li>
+Referer URL filter for enhancing browsing privacy.
+</li>
+</ul>
+<ul>
+<li>
+Redirect your browser to avoid multiple caching of the same WWW server.  For
+example, if a WWW server has two aliases (www.netmag.cz and netmag.cz), you can
+tell Smart Cache these are the same server!
+</li>
+</ul>
+<ul>
+<li>
+Redirect can make &quot;aliases&quot; for your favourite pages.  Try:
+<samp>Redirect http://myhome/* http://www.geocities.com/blah/blah/*</samp>
+</li>
+</ul>
+<ul>
+<li>
+Faster and better than internal browser cache; see <a
+href="ch-intro.html#s-solutions">Other off line browsing solutions, Section
+1.4</a>.  I recommend using Netscape and turning off disk cache while leaving a
+small (about 2MB) memory cache.  This makes my Netscape significantly faster.
+</li>
+</ul>
+<ul>
+<li>
+Secure network access.  It can be shared between browsers and computers.
+</li>
+</ul>
+<ul>
+<li>
+Because we use <em>CERN-style</em> methods for saving objects into cache, you
+may easily look into cache and see what's in it.  You will see server names and
+subdirectories.
+</li>
+</ul>
+<ul>
+<li>
+Stored objects don't have any &quot;noise&quot; inside, like in other caches.
+You may locate for example a .zip file stored in cache and immediately unpack
+it to the desired location without needing removing http headers like in other
+caches (Squid, Apache).
+</li>
+</ul>
+<ul>
+<li>
+<strong>All types</strong> of documents including &quot;UNCACHEABLE&quot;
+objects can be cached - like counters, etc.  Look for directive
+<em>pragma_no_cache</em>
+</li>
+</ul>
+<ul>
+<li>
+Optionally - If you press Stop in your browser, Smart Cache can still loads the
+object into the cache.  So if you return to page later, you can see it
+immediately loaded.
+</li>
+</ul>
+<ul>
+<li>
+Great for downloading many small files via the browser without needing to apply
+boring <em>Save as..</em> procedure to all.  Simply click on one - don't wait
+for it be downloaded - and click on the next one.  After all objects have been
+loaded, you can locate them in the cache and copy/move them to your desired
+directory or you may click on them in your browser.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache works even if you are off line and simulates Internet connection
+quite good.
+</li>
+</ul>
+<ul>
+<li>
+You will not see any difference between on-line and off line browsing.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache is fully transparent, you will not have any problems with updating
+off line cached pages.
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache do not run garbage collection when it wants.  Until you run garbage
+collection by hand, you are sure that all previously seen web pages are also on
+your hard drive.
+</li>
+</ul>
+<ul>
+<li>
+Very configurable garbage collection.  You can decide what pages are important
+for you and you Smart Cache keeps it in cache longer.
+</li>
+</ul>
+<ul>
+<li>
+Damaged cache can be repaired without losing all cached data.
+</li>
+</ul>
+<ul>
+<li>
+HTML User interface for searching and configuring.
+</li>
+</ul>
+<ul>
+<li>
+Download manager integration.
+</li>
+</ul>
+<ul>
+<li>
+Data compression support for saving diskspace.
+</li>
+</ul>
+<ul>
+<li>
+Web grabber integration, mark pages when offline and download them later.
+</li>
+</ul>
+<ul>
+<li>
+HTTP/1.1 persistent connection support for better browsing performance.
+</li>
+</ul>
+
+<hr>
+
+[ <a href="ch-intro.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ 2 ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ <a href="ch-new.html">15</a> ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-inst-setup.html">next</a> ]
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+

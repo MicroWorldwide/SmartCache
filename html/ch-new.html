@@ -1,0 +1,1058 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - What's new</title>
+
+</head>
+
+<body>
+
+<a name="ch-new"></a>
+<hr>
+
+[ <a href="ch-faq.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ 15 ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-old.html">next</a> ]
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Chapter 15 - What's new
+</h1>
+
+
+<hr>
+
+
+<p>
+<strong>0.89</strong> 1.9.2003
+
+<p>
+Smart Cache has been moved to sourceforge.net.  Stats: 31 (+2) <code><a
+href="http://freshmeat.net/projects/scache/">freshmeat announces</a></code>
+subscribers, 46 (+2) <code><a
+href="http://www.yahoogroups.com/group/scache">Yahoo!</a></code> mailing list
+subscribers.
+<ul>
+<li>
+cacheobject.genTMP() method made synchonized.  This MAY fix some troubles in
+Windoze.
+</li>
+</ul>
+<ul>
+<li>
+Do not convert string to lowercase when doing case-insensitive redirection or
+rewrite.
+</li>
+</ul>
+<ul>
+<li>
+Remove all up levels of empty directories during GC.
+</li>
+</ul>
+<ul>
+<li>
+Enhanced <a href="ch-repair.html">Smart Cache repair utility, Chapter 11</a>.
+NEW: default type can be now set, mime table can be reset to empty, fixed
+argument processing for -i, can translate &amp;amp; to &amp;
+</li>
+</ul>
+<ul>
+<li>
+Smart Cache now accept SPACES in URL.  There are not (yet?) converted to %20
+before sending out.
+</li>
+</ul>
+<ul>
+<li>
+Changed compresed message, log analyzers needs to be updated.
+</li>
+</ul>
+<ul>
+<li>
+UI: new command ui_searchcache_minage == minimum age of search cache
+</li>
+</ul>
+<ul>
+<li>
+ui_searchcachefactor changed to ui_searchcache_factor
+</li>
+</ul>
+
+<p>
+<strong>0.88</strong> 18.6.2003
+<ul>
+<li>
+reset chunked encoding and ims status when sending object from cache if refresh
+failed after receiving headers from server.
+</li>
+</ul>
+<ul>
+<li>
+build system: when generating scache-latest.zip, remove not changed .class
+files - allows faster beta releases
+</li>
+</ul>
+<ul>
+<li>
+Thanks to Karl-Heinz work, Smart Cache does clean shutdown on CTRL-C/kill
+process.  You need jdk &gt;= 1.3 for this.  Still jdk1.1 backward compatible.
+</li>
+</ul>
+<ul>
+<li>
+uses line.separator when generating logfiles.  Logfiles on windows machines
+should have correct line terminators now.
+</li>
+</ul>
+<ul>
+<li>
+build system: generate scache-latest.diff.gz file by hand, not via broken CVS
+diff
+</li>
+</ul>
+<ul>
+<li>
+Documetation: added example large cache configuration
+</li>
+</ul>
+<ul>
+<li>
+stats.py: added ignore offline mode switch
+</li>
+</ul>
+<ul>
+<li>
+stats.py: increased max.  time difference to 3m+10s
+</li>
+</ul>
+<ul>
+<li>
+mgr.save() is now synchonized
+</li>
+</ul>
+<ul>
+<li>
+reinit dircache hashtable when idle (frees memory)
+</li>
+</ul>
+<ul>
+<li>
+ignore empty request line (like Apache); needed for fixing bad POSTing clients
+on keepalive connection.
+</li>
+</ul>
+<ul>
+<li>
+UI: send expires header in the past in reply
+</li>
+</ul>
+
+<p>
+<strong>0.87</strong> 24.5.2003
+
+<p>
+Some configuration file directives were renamed to be Squid compatible.  Stats:
+29 (+2) <code><a href="http://freshmeat.net/projects/scache/">freshmeat
+announces</a></code> subscribers, 44 (+11) <code><a
+href="http://www.yahoogroups.com/group/scache">Yahoo!</a></code> mailing list
+subscribers.
+<ul>
+<li>
+Important bug fix: cacheable has priority over cache-private
+</li>
+</ul>
+<ul>
+<li>
+UI: escape #, change word wrap in BG quote.
+</li>
+</ul>
+<ul>
+<li>
+-fakegc reports how many bad files was deleted from cache
+</li>
+</ul>
+<ul>
+<li>
+Report network error when headers read failed.
+</li>
+</ul>
+<ul>
+<li>
+Quick abort config changed to: quick_abort_min, quick_abort_max,
+quick_abort_pct
+</li>
+</ul>
+<ul>
+<li>
+<a href="ch-advancedt.html#s-timestrings">Timestrings, Section 7.12</a>
+supports unit 'f' - fortnight
+</li>
+</ul>
+<ul>
+<li>
+<a href="ch-advancedt.html#s-timestrings">Timestrings, Section 7.12</a>
+supports long titles like minute, hour, week, day, year, second
+</li>
+</ul>
+<ul>
+<li>
+reference_age is timestring now
+</li>
+</ul>
+<ul>
+<li>
+min/max_ob_size, blocksize, avg_dir_size, cachesize are <a
+href="ch-advancedt.html#s-sizestrings">Sizestrings, Section 7.13</a>
+</li>
+</ul>
+<ul>
+<li>
+corrected printDelta values for months and years.
+</li>
+</ul>
+<ul>
+<li>
+flag_check_interval is timestring
+</li>
+</ul>
+<ul>
+<li>
+port remamed to http_port, nocaching renamed to no_cache, force_ims_on_reloads
+renamed to reload_into_ims, cache_swap_low/high, cache_size to cache_swap_size.
+(like Squid cfg)
+</li>
+</ul>
+<ul>
+<li>
+report transfer errors on direct request to client
+</li>
+</ul>
+<ul>
+<li>
+reuse keepalive connection when direct request has no data from client
+</li>
+</ul>
+<ul>
+<li>
+min_download_size for dm online hook
+</li>
+</ul>
+<ul>
+<li>
+disable keepalive correctly after trace and options reply
+</li>
+</ul>
+<ul>
+<li>
+handle io errors when loading body of non GET requests correctly
+</li>
+</ul>
+<ul>
+<li>
+New options for limiting request/reply size: reply_body_max_size,
+request_body_max_size, max_cacheable_size.
+</li>
+</ul>
+<ul>
+<li>
+fixed error in webconnection.close()
+</li>
+</ul>
+<ul>
+<li>
+stop on SC generated errors during refresh object
+</li>
+</ul>
+<ul>
+<li>
+disable client keepalive on failed POST
+</li>
+</ul>
+<ul>
+<li>
+do not Exit if main directory can not be created, switch to readonly mode
+instead.
+</li>
+</ul>
+<ul>
+<li>
+do not Exit if UI port can not be binded, turn UI off.
+</li>
+</ul>
+<ul>
+<li>
+stat.log file has now also DIRS counts
+</li>
+</ul>
+<ul>
+<li>
+Included <code><a href="http://www.python.org/">Python</a></code> script for
+calculating cache hit stats.
+</li>
+</ul>
+<ul>
+<li>
+cacheroot renamed to cache_dir
+</li>
+</ul>
+<ul>
+<li>
+GC: do not crash on cachesize 0
+</li>
+</ul>
+<ul>
+<li>
+UI: escape backslash (Karl-Heinz); needed for Opera browser
+</li>
+</ul>
+<ul>
+<li>
+Source code: Removed throws IOException from scache.main and mgr.go (it was not
+needed)
+</li>
+</ul>
+<ul>
+<li>
+possible touch object when generating 403 too large reply
+</li>
+</ul>
+<ul>
+<li>
+Selective caching based on existence of <samp>Vary:</samp> HTTP/1.1 header.
+cache_vary
+</li>
+</ul>
+<ul>
+<li>
+handling of Expires: header changed to method described in rfc2616 section
+14.21
+</li>
+</ul>
+
+<p>
+<strong>0.86</strong> 30.4.2003
+
+<p>
+27 <code><a href="http://freshmeat.net/projects/scache/">freshmeat
+announces</a></code> subscribers, 33 <code><a
+href="http://www.yahoogroups.com/group/scache">Yahoo!</a></code> mailing list
+subscribers.  When you are changing timeout configuration, be sure to add 's'
+to it, because <a href="ch-advancedt.html#s-timestrings">Timestrings, Section
+7.12</a> defaults to minutes.
+<ul>
+<li>
+removed keyword <samp>redirect</samp>.
+</li>
+</ul>
+<ul>
+<li>
+new keyword <samp>redirect_file</samp>, reads redirects from file.
+</li>
+</ul>
+<ul>
+<li>
+new keyword <samp>rewrite_file</samp>, reads rewrites from file.
+</li>
+</ul>
+<ul>
+<li>
+UI: new trace options: redirect, rewrite.
+</li>
+</ul>
+<ul>
+<li>
+UI: visible_link is shown in UI welcome screen.
+</li>
+</ul>
+<ul>
+<li>
+UI: prev/next in quotes
+</li>
+</ul>
+<ul>
+<li>
+UI: handle all numberformatexceptions
+</li>
+</ul>
+<ul>
+<li>
+UI: Some strings in HTML gets quoted
+</li>
+</ul>
+<ul>
+<li>
+Generate Etag on auto-decompressed data.
+</li>
+</ul>
+<ul>
+<li>
+Fixed VSB which prevents from sending Etag to client in most cases.  SC used
+Etag only internally.
+</li>
+</ul>
+<ul>
+<li>
+Zero sized reply from server is now handled as error.
+</li>
+</ul>
+<ul>
+<li>
+Allow client side persistent connections after generated errors.
+</li>
+</ul>
+<ul>
+<li>
+Allow client side persistent connections after 304 reply.
+</li>
+</ul>
+<ul>
+<li>
+Send expire header on 304 reply.
+</li>
+</ul>
+<ul>
+<li>
+If-none-match from client works again.  (forgot to reenable)
+</li>
+</ul>
+<ul>
+<li>
+Server full reply code shown when tracing.
+</li>
+</ul>
+<ul>
+<li>
+Retry once every failed request or connection.  Helps with servers which are
+all the time overloaded.
+</li>
+</ul>
+<ul>
+<li>
+Exit if store directory can not be created.
+</li>
+</ul>
+<ul>
+<li>
+-gc switch has timestring argument
+</li>
+</ul>
+<ul>
+<li>
+timestrings now supports seconds 20s
+</li>
+</ul>
+<ul>
+<li>
+improved check for using root as cachedir
+</li>
+</ul>
+<ul>
+<li>
+No lie in -fakegc intro text.  Bad files <em>Will be deleted</em> from cache.
+</li>
+</ul>
+<ul>
+<li>
+<samp>generate_lastmod</samp> changed into boolean value.  Value 2 brokes all
+browsers on the Earth.
+</li>
+</ul>
+<ul>
+<li>
+Close file after sending it to browser (new bug from 0.82)
+</li>
+</ul>
+<ul>
+<li>
+Close file after serving HEAD request (historic bug)
+</li>
+</ul>
+<ul>
+<li>
+New section <a href="ch-advancedt.html#s-remap">Request remap/redirecting,
+Section 7.11</a>
+</li>
+</ul>
+<ul>
+<li>
+Updated sections <a href="ch-admins.html#s-forwarder">Web forwarding with Smart
+Cache, Section 9.7</a>, <a href="ch-admins.html#s-largecache">Administration of
+large cache, Section 9.3</a>.
+</li>
+</ul>
+<ul>
+<li>
+Fixed crash when access logfile can not be created.  (new bug from 0.83)
+</li>
+</ul>
+<ul>
+<li>
+Removed forgotten debug prints.
+</li>
+</ul>
+<ul>
+<li>
+Updated sections <a href="ch-admins.html#s-perf">Smart Cache Performance,
+Section 9.1</a>, <a href="ch-admins.html#s-bench">Proxy cache Benchmarks,
+Section 9.2</a>.
+</li>
+</ul>
+<ul>
+<li>
+Contributed documentation: How to run it on Netware 6.
+</li>
+</ul>
+<ul>
+<li>
+Adding of <samp>Proxy-Connection:</samp> headers when gatewaying server
+response to client; we are turning all responses to HTTP/1.0.
+</li>
+</ul>
+<ul>
+<li>
+Private documents may not be cached.  <samp>cache_private</samp>
+</li>
+</ul>
+<ul>
+<li>
+Send expires info on 304 reply.
+</li>
+</ul>
+<ul>
+<li>
+Do not send stale cache entry if hide errors is false.
+</li>
+</ul>
+<ul>
+<li>
+Supports <samp>Cache-Control:</samp> header with options: private, no-store,
+no-cache.
+</li>
+</ul>
+<ul>
+<li>
+check for HTTP/1.1 and enable KA istead of checking for HTTP/1.0 and disabling.
+</li>
+</ul>
+<ul>
+<li>
+Support for 100-Continue.
+</li>
+</ul>
+<ul>
+<li>
+Improved support for 204-No content.
+</li>
+</ul>
+<ul>
+<li>
+Fixed Debian packaking: delete logfiles on purge, purge only if not
+/usr/bin/smartcache exists, new logfile for weekly gc, corrected bad filename
+cookies.cnf.
+</li>
+</ul>
+<ul>
+<li>
+added first historical SC announce from Netmag 13/1998 to /czech/.
+</li>
+</ul>
+<ul>
+<li>
+<samp>inputtimeout</samp> renamed to <samp>client_timeout</samp>.  Changed from
+integer to timestring.
+</li>
+</ul>
+<ul>
+<li>
+<samp>proxyreadtimeout</samp> renamed to <samp>read_timeout</samp>.  Changed
+from integer to timestring.
+</li>
+</ul>
+<ul>
+<li>
+<samp>keepalivetimeout</samp> renamed to <samp>pconn_timeout</samp>.  Changed
+from integer to timestring.
+</li>
+</ul>
+<ul>
+<li>
+New configuration variable <samp>request_timeout</samp>.  Also timestring.
+</li>
+</ul>
+<ul>
+<li>
+Close server keepalive connection when ignoring body of reply.
+</li>
+</ul>
+<ul>
+<li>
+default_forward_for is now unset by default.
+</li>
+</ul>
+<ul>
+<li>
+<samp>max_aborted_transfer_time</samp> made timestring.
+</li>
+</ul>
+<ul>
+<li>
+remove <samp>Cache-Control:</samp> from response as well <samp>Pragma:
+no-cache</samp>.
+</li>
+</ul>
+
+<p>
+<strong>0.85</strong> 22.3.2003 There are 19 people subscribed to mailing list.
+This release fixes remaining keepalive connections POST bugs.
+<ul>
+<li>
+Fixed NPE in webconnection.toString().
+</li>
+</ul>
+<ul>
+<li>
+disable input keepalive after blocked POST request.
+</li>
+</ul>
+<ul>
+<li>
+Use standard keep-alive factory for direct requests.
+</li>
+</ul>
+
+<p>
+<strong>0.84</strong> 3.3.2003 There are 11 people subscribed to mailing list.
+This release fixes many 304 reply handling bugs, some very old.
+
+<p>
+News
+<ul>
+<li>
+Update ETag info on 304 reply if possible.
+</li>
+</ul>
+<ul>
+<li>
+Allow client side persistent connection alive after 304 reply.
+</li>
+</ul>
+<ul>
+<li>
+Do not update Expires: info on 304 reply, if not sent by server.
+</li>
+</ul>
+<ul>
+<li>
+Generate our headers on 304 reply instead of using headers from server.
+</li>
+</ul>
+<ul>
+<li>
+Fix bad headers on 304 reply from Microsoft IIS servers.
+</li>
+</ul>
+<ul>
+<li>
+-fastrefresh sets Max-Age: to 3 day.
+</li>
+</ul>
+<ul>
+<li>
+UI: added some missing titles.
+</li>
+</ul>
+<ul>
+<li>
+UI: Smart Cache Loader screen has bgcolor.
+</li>
+</ul>
+<ul>
+<li>
+Show URL on generated errors.
+</li>
+</ul>
+<ul>
+<li>
+GC: do not apply multiple modifiers to object when checking for penalty.
+</li>
+</ul>
+<ul>
+<li>
+More intelligent check for writeable filesystem.
+</li>
+</ul>
+<ul>
+<li>
+New manual section <a href="ch-admins.html#s-largecache">Administration of
+large cache, Section 9.3</a>.
+</li>
+</ul>
+
+<p>
+<strong>0.83</strong> 16.2.2003 Turbo version.  I have created mailing list for
+scache, you can read more information <code><a
+href="http://scache.sourceforge.net/list.html">here</a></code>.  Come and joins
+us!
+
+<p>
+News
+<ul>
+<li>
+Support for keep-alive connections on input side.  This makes sending cached
+data to browser 100% faster.  Offline browsing goes turbo.
+</li>
+</ul>
+<ul>
+<li>
+<samp>trace_input_keepalive</samp> switch
+</li>
+</ul>
+<ul>
+<li>
+TCP nagle alg.  is disabled as says wise men on w3c.
+</li>
+</ul>
+<ul>
+<li>
+improved log synchronisation on log files.
+</li>
+</ul>
+<ul>
+<li>
+<samp>max_aborted_transfer_time</samp> is now floating point number.
+</li>
+</ul>
+<ul>
+<li>
+<samp>reference_age</samp> is now floating point number.
+</li>
+</ul>
+<ul>
+<li>
+send reset on full cache.
+</li>
+</ul>
+<ul>
+<li>
+File/directory clash is now handled correctly when exporting data.
+</li>
+</ul>
+<ul>
+<li>
+Manual updates.  New sections: for admins, for hackers.
+</li>
+</ul>
+<ul>
+<li>
+New manual section <a href="ch-advancedt.html#s-cachesize">Choosing a good
+cachesize, Section 7.1</a>
+</li>
+</ul>
+
+<p>
+<strong>0.82.1</strong> Bugfix for customers only
+
+<p>
+News
+<ul>
+<li>
+Fixed NPE crash on unknown hostname.
+</li>
+</ul>
+<ul>
+<li>
+GC: no infinite loops on lopsizeinc=0 or sopsizedec=0
+</li>
+</ul>
+<ul>
+<li>
+GC: null modificators (i.e.  +0 *1 -0) are detected and ignored.
+</li>
+</ul>
+<ul>
+<li>
+UI: offline support buttons are now switchable
+</li>
+</ul>
+
+<p>
+<strong>0.82</strong> 9.2.2003
+
+<p>
+News
+<ul>
+<li>
+Support for HTTP/1.1 persistent connections on output side.  <strong>Browsing
+performance increased!</strong> Some code taken from BSD copyrighted Rabbit2
+proxy server.  Many thanks to Robert Olofsson.  )
+</li>
+</ul>
+<ul>
+<li>
+values liked 1d can be used in refresh patterns and export times with decimal
+fraction part.
+</li>
+</ul>
+<ul>
+<li>
+print notice when refresh pattern gets ignored.
+</li>
+</ul>
+<ul>
+<li>
+<samp>trace_keepalive</samp> config keyword + UI options for tracing keep alive
+connections.
+</li>
+</ul>
+<ul>
+<li>
+new option <samp>keepalivetimeout</samp> for enabling them.
+</li>
+</ul>
+<ul>
+<li>
+https now works even if http_proxy is defined but https_proxy is not.
+</li>
+</ul>
+<ul>
+<li>
+Console loglevel can be changed in UI.
+</li>
+</ul>
+<ul>
+<li>
+remove end file separator from target directory when exporting.
+</li>
+</ul>
+<ul>
+<li>
+fixed old bug from 0.54 version, which causes that incorrect directory
+structure was created by export function.
+</li>
+</ul>
+<ul>
+<li>
+<samp>gcloglevel</samp> configuration option for making reports from garbage
+collection less verbose.
+</li>
+</ul>
+<ul>
+<li>
+Example <samp>scache.cnf</samp> has a nice table inside - choosing directory
+swaplevels for cachesize.
+</li>
+</ul>
+<ul>
+<li>
+Minor improvment in GC stats reporting.
+</li>
+</ul>
+<ul>
+<li>
+Test for using root directory as cacheroot somewhat improved.  Protect Windows
+users from doing something stupid.
+</li>
+</ul>
+<ul>
+<li>
+<samp>download_machine_ctype_ignore</samp> Turns off ctype dmachine hook for
+specific URLs.
+</li>
+</ul>
+<ul>
+<li>
+Manual updated
+</li>
+</ul>
+<ul>
+<li>
+somewhat reduced memory requirements during GC.
+</li>
+</ul>
+<ul>
+<li>
+-fakegc do not deletes files on = gc rule.
+</li>
+</ul>
+<ul>
+<li>
+GC: objects with Etag: header ARE checkable
+</li>
+</ul>
+<ul>
+<li>
+GC: new <samp>redirect_penalty</samp> option in gc.cnf
+</li>
+</ul>
+<ul>
+<li>
+UI: loglevel can be changed.
+</li>
+</ul>
+
+<p>
+<strong>0.81</strong> 2.2.2003
+
+<p>
+News
+<ul>
+<li>
+UI: added flush logs command.
+</li>
+</ul>
+<ul>
+<li>
+combined log file has missing &quot; after user agent.  (Klaus Schirmanns)
+</li>
+</ul>
+
+<p>
+<strong>0.80.1</strong> 23.1.2003
+
+<p>
+News
+<ul>
+<li>
+UI: fixed crash when search depth is not a number.
+</li>
+</ul>
+<ul>
+<li>
+combined log file do not have doubles \n (Klaus Schirmanns)
+</li>
+</ul>
+
+<p>
+<strong>0.80</strong> 6.1.2003
+
+<p>
+News
+<ul>
+<li>
+UI: directory depth after search is set to last depth used.
+</li>
+</ul>
+<ul>
+<li>
+fixed NPE crash on BAD method.
+</li>
+</ul>
+<ul>
+<li>
+fixed cleandir to work correctly in Linux and Windows.  Worked ok only on OS/2
+</li>
+</ul>
+<ul>
+<li>
+Try to rename files when there is directory/filename conflict.
+</li>
+</ul>
+<ul>
+<li>
+search cache feature, config keyword <samp>ui_searchcachefactor</samp>.  This
+makes searches on large caches more useable.
+</li>
+</ul>
+<ul>
+<li>
+New manual section <a href="ch-advancedt.html#s-refresh">Configurating refresh
+patterns, Section 7.2</a>
+</li>
+</ul>
+<ul>
+<li>
+410 is also httprc for page deletion.
+</li>
+</ul>
+<ul>
+<li>
+Cache also 414, like Squid.
+</li>
+</ul>
+<ul>
+<li>
+Debian packages are also distributed.
+</li>
+</ul>
+<ul>
+<li>
+GC summary report contains also median time mark.
+</li>
+</ul>
+
+<p>
+See also <a href="ch-old.html">Older history of Changes, Chapter 16</a>
+
+<hr>
+
+[ <a href="ch-faq.html">previous</a> ]
+[ <a href="index.html#contents">Contents</a> ]
+[ <a href="ch-intro.html">1</a> ]
+[ <a href="ch-basics.html">2</a> ]
+[ <a href="ch-inst-setup.html">3</a> ]
+[ <a href="ch-configuration.html">4</a> ]
+[ <a href="ch-operating.html">5</a> ]
+[ <a href="ch-contact.html">6</a> ]
+[ <a href="ch-advancedt.html">7</a> ]
+[ <a href="ch-switches.html">8</a> ]
+[ <a href="ch-admins.html">9</a> ]
+[ <a href="ch-prog.html">10</a> ]
+[ <a href="ch-repair.html">11</a> ]
+[ <a href="ch-bugs.html">12</a> ]
+[ <a href="ch-troubles.html">13</a> ]
+[ <a href="ch-faq.html">14</a> ]
+[ 15 ]
+[ <a href="ch-old.html">16</a> ]
+[ <a href="ch-todo.html">17</a> ]
+[ <a href="ap-credits.html">A</a> ]
+[ <a href="ap-thanks.html">B</a> ]
+[ <a href="ap-gitacd.html">C</a> ]
+[ <a href="ap-dvd.html">D</a> ]
+[ <a href="ap-sacred.html">E</a> ]
+[ <a href="ch-old.html">next</a> ]
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+

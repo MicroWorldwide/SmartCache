@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>Smart Cache Manual - Footnotes</title>
+
+</head>
+
+<body>
+
+<hr>
+
+<h1>
+Smart Cache Manual
+<br>Footnotes
+</h1>
+
+
+<h2><a href="ch-inst-setup.html#fr1" name="f1">1</a></h2>
+
+<p>
+JDK1.1, JRE1.1 or JDK1.2, JRE1.2 are such programs.  There are also some Open
+Source alternatives, such as <code><a
+href="http://www.kaffe.org/">Kaffe</a></code> or <code><a
+href="http://www.japhar.org/">Japhar</a></code>.
+
+<h2><a href="ch-inst-setup.html#fr2" name="f2">2</a></h2>
+
+<p>
+Some operations system, such as many Linux distributions or OS/2 Warp, comes
+with bundled Java.  Newer web browsers (Netscape 2+ and Microsoft Internet
+Explorer 3+) has embedded Java, but because this Java is unable to operate
+outside web browser's environment, it can not be used to run Smart Cache.
+
+<h2><a href="ch-inst-setup.html#fr3" name="f3">3</a></h2>
+
+<p>
+It is not impossible to made a Java-1.0 compatible version.  Only Java 1.1
+features, which Smart Cache uses, are Date format stuff, CRC32, Socket Linger
+and Timeout options.
+
+<h2><a href="ch-inst-setup.html#fr4" name="f4">4</a></h2>
+
+<p>
+Upgrade pack from JRE to full JDK is not available in Sun distribution.  Debian
+GNU/Linux uses can perform upgrade by installing package
+<code>jdk1.1-dev</code>.
+
+<h2><a href="ch-operating.html#fr5" name="f5">5</a></h2>
+
+<p>
+Many people found that just deleting entire cache directory by hand is easier
+for them.
+
+<h2><a href="ch-admins.html#fr6" name="f6">6</a></h2>
+
+<p>
+I simply do not understand why Squid documentation writes that using
+transparent proxy can open new security hole.
+
+<h2><a href="ch-troubles.html#fr7" name="f7">7</a></h2>
+
+<p>
+Some versions of JRE/JAVA gives more detailed error messages.  If you get
+something like <samp>Port is already in use</samp> look at 1 or 2.  If you get
+<samp>Not a local address</samp> look at 3 or 4.
+
+<h2><a href="ch-troubles.html#fr8" name="f8">8</a></h2>
+
+<p>
+Some people tries to set up transparent proxy when using <em>BindAddress</em>
+with wildcard for example <samp>BindAddress 192.168.*.*</samp>.  <strong>There
+are wrong.</strong> Transparent proxy requires special TCP/IP setup, not Smart
+Cache's setup.  See <a href="ch-admins.html#s-transparent">Using Smart Cache as
+transparent proxy, Section 9.8</a>.
+
+<h2><a href="ch-troubles.html#fr9" name="f9">9</a></h2>
+
+<p>
+Older SmartCache has in default config files browser faking enabled.  I never
+notice it, but this was reported by some users and removing browser faking
+solves this problem.
+
+<h2><a href="ch-troubles.html#fr10" name="f10">10</a></h2>
+
+<p>
+Ignoring reload requests is a great thing for web-forwarders and for increasing
+productivity in office (WEB-CHAT-style pages will stops work; There are quite
+useless if users can't reload every XX minutes.  Also I find, that many users
+are bored in work and do not have anything other things to do than pressing
+Reload on their favourite servers every 10 minutes).
+
+<h2><a href="ch-faq.html#fr11" name="f11">11</a></h2>
+
+<p>
+SC need Java but JDK can not be distributed in the same way as SC.  You must
+include JRE instead, which can be redistributed without problems.
+
+<h2><a href="ch-faq.html#fr12" name="f12">12</a></h2>
+
+<p>
+It is interesting that many users reported to me that SC is faster than Squid,
+after their switched.  I have a very few experience with Squid now.
+
+<h2><a href="ch-old.html#fr13" name="f13">13</a></h2>
+
+<p>
+Because I am lazy programmer, my registration number check was very easy.  It
+considers everything what's begins with <em>HTTP</em> as good registration
+number.  I have fun to giving everybody (for free) who ask for serial number
+horrible long numbers such as
+<samp>HTTP-CACHE-3122578-Hwrd734-bvfdrt4365-3234343</samp>.  Nobody ever
+noticed that Smart Cache works even with 'bad' numbers.
+
+<h2><a href="ch-old.html#fr14" name="f14">14</a></h2>
+
+<p>
+VSB - Very Stupid Bug.
+
+<hr>
+
+<p>
+Smart Cache Manual
+
+<address>
+0.89<br>
+Radim Kolar <code><a href="mailto:hsn@cybermail.net">hsn@cybermail.net</a></code>
+</address>
+
+<hr>
+
+</body>
+
+</html>
+
