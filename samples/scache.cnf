@@ -8,7 +8,7 @@
 #   rfail.cnf   - posix Regexp block list
 #   cookies.cnf - Cookies filter setup
 #
-# (C) Radim Kolar 1998-2003  (hsn@cybermail.net)
+# (C) Radim Kolar 1998-2005
 #  http://scache.sourceforge.net/ (Smart Cache home-page)
 #
 #  Smart Cache is Open Source Software.
@@ -829,5 +829,10 @@ cache_vary yes
 # was removed since it causes some problems with PHP-generated pages.
 proxyvia yes
 
-## END OF FILE ##
+# @25
+# If set to 'no' redirects can not overwrite regular files with
+# the same URL. This option is usefull for offline browsing
+# only
+overwrite_by_redirect yes
 
+## END OF FILE ##

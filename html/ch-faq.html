@@ -165,7 +165,7 @@ place cacheroot directory on FAT disk, seen by both OSes.
 <dd>
 In OS/2 you can run it invisibly via <samp>detach java -norestart -ms1m
 scache</samp>.  Scache can very easily (in all Windows versions, afaik) be
-started from a batchfile, like so:
+started from a batch file, like so:
 
 <pre>
      @echo off
@@ -174,7 +174,7 @@ started from a batchfile, like so:
 </pre>
 
 <p>
-A desktop shortcut to this batchfile, with in the properties a
+A desktop shortcut to this batch file, with in the properties a
 &quot;close-when-finished&quot; setting, will with one mouse click activate the
 cache and let it run invisible in the background (if necessary, it can always
 be unloaded later from the Ctrl-Alt-Del dialog).  If you put the same shortcut
@@ -294,7 +294,7 @@ terms.  Use server which works the best for <strong>YOU</strong>.
 </dd>
 </dl>
 <dl>
-<dt>In <code>gc.cnf</code> for hpfs there is a suggested block size of 1024 for HPFS, but the sector size on HPFS is 512 byte and there is no sector-clustering (or with other words a cluster-size of 1) for HPFS.</dt>
+<dt>In <code>gc.cnf</code> for HPFS there is a suggested block size of 1024 for HPFS, but the sector size on HPFS is 512 byte and there is no sector-clustering (or with other words a cluster-size of 1) for HPFS.</dt>
 <dd>
 HPFS really uses 512 bytes long file blocks, but every (even empty) file uses
 also one sector (512 bytes) FNODE and directory entry (ignoring their size).
@@ -337,7 +337,7 @@ for you.  This is one of key benefits of Open Source Software model.
 </dd>
 </dl>
 <dl>
-<dt>I have 2 scache programs on 8080 and on 8090 ports whith diferent filter rules at the same time. Can I make one cache folder for both programm?</dt>
+<dt>I have 2 scache programs on 8080 and on 8090 ports whith different filter rules at the same time. Can I make one cache folder for both program?</dt>
 <dd>
 Some ppl are doing that.  In worst case when both caches are working with the
 same directory at same time; some files will gets cached twice and some lost
@@ -345,7 +345,7 @@ due to unsynchonized .cacheinfo writings.  If only one scache writes into
 folder, it is 100% ok.  If you do not plan to offline browse, these writing
 conflicts are okay.  Who cares on leased line about if some HTMLs or GIFs are
 loaded twice, there are small in size.  Better is chain them: filtering sc with
--ro -&gt; nonfiltering sc -&gt; Internet.
+-ro -&gt; non filtering sc -&gt; Internet.
 </dd>
 </dl>
 
@@ -383,7 +383,7 @@ loaded twice, there are small in size.  Better is chain them: filtering sc with
 Smart Cache Manual
 
 <address>
-0.92<br>
+0.93<br>
 <br>
 Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
 <br>

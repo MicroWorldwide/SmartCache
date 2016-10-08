@@ -74,7 +74,7 @@ Next sections has some hints about choosing cache size.
 <p>
 Case #1: If you do not browsing at home very much (you have T1 line at work)
 and just want to see some hot breaking news sometimes and you are not
-interrested mainly in offline browsing.  200 MB cachesize is enough.
+interested mainly in offline browsing.  200 MB cachesize is enough.
 
 <p>
 Case #2: If you like offline browsing, you need a bigger cache.  Start with 400
@@ -88,7 +88,7 @@ to somewhat finetune GC in <code>gc.cnf</code>.  My recommended settings:
      reference_age 2y
      large_object_penalty 200000 *2.5 50000 +5
      negative_cached_penalty *5
-     #disable faster expiraction
+     #disable faster expiration
      expired_penalty *1
      expired_but_checkable_penalty *1
      not_checkable_penalty *1
@@ -100,9 +100,9 @@ to somewhat finetune GC in <code>gc.cnf</code>.  My recommended settings:
 <h3>7.1.2 Know your daily traffic</h3>
 
 <p>
-You need to determinte average daily traffic - how fast will grow your cache
-daily without doing -gc.  It is prefered to use -fakegc operation for computing
-cache size.
+You need to determine average daily traffic - how fast will grow your cache
+daily without doing -gc.  It is preferred to use -fakegc operation for
+computing cache size.
 
 <p>
 If you are starting with empty cache, do not use numbers from first days.
@@ -116,7 +116,7 @@ down cache size, wait one week; compute difference and divide it by 7.
 <h3>7.1.3 Standard network http-proxy</h3>
 
 <p>
-Standard mode of operation: leased line internet, not planing to use offline
+Standard mode of operation: leased line Internet, not planing to use offline
 browsing, use proxy cache for saving the bandwidth, about 50 computers
 connected to it.
 
@@ -140,7 +140,7 @@ friend.
 <hr>
 
 <a name="s-refresh"></a>
-<h2>7.2 Configurating refresh patterns</h2>
+<h2>7.2 Configuring refresh patterns</h2>
 
 <p>
 Smart Cache can be configured how often will made checks if new version of page
@@ -310,7 +310,7 @@ itself do not harm), you can <strong>CRASH</strong> remote WWW site when
 sending back very long cookies (buffer overflow attack) or cookies with known
 name, but unexpected value (for example text instead of numeric input).  Some
 versions of Microsoft Internet Information Server will crash entire (instead of
-just one http-child in apache), so no new users can access this server until
+just one http-child in Apache), so no new users can access this server until
 IIS is restarted.
 
 <hr>
@@ -465,7 +465,7 @@ See also <a href="ch-bugs.html#s-limitations">Smart Cache limitations, Section
 <hr>
 
 <a name="s-parentauth"></a>
-<h2>7.9 Parent proxy authentification</h2>
+<h2>7.9 Parent proxy authentication</h2>
 
 <p>
 A parent proxy login and password may be specified in the
@@ -552,7 +552,7 @@ Mozilla 5.0 beta/OS2
 
 <p>
 I have no information about browsers on other OSes (Win,Mac).  If you want, you
-can send me these informations.
+can send me these information.
 
 <hr>
 
@@ -711,7 +711,7 @@ sizestring() in garbage.java for details.
 Smart Cache Manual
 
 <address>
-0.92<br>
+0.93<br>
 <br>
 Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
 <br>

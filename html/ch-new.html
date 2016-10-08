@@ -51,6 +51,55 @@ Smart Cache Manual
 <hr>
 
 <p>
+<strong>0.93</strong> 24.6.2005
+
+<p>
+Stats: 35 (+2) <code><a href="http://freshmeat.net/projects/scache/">freshmeat
+announces</a></code> subscribers, 3 (+3) <code><a
+href="http://lists.sourceforge.net/lists/listinfo/scache-users">mailing
+list</a></code> subscribers.
+<ul>
+<li>
+overwrite_by_redirect documented
+</li>
+</ul>
+<ul>
+<li>
+fixed -local command line switch
+</li>
+</ul>
+<ul>
+<li>
+303 HTTP return code is supported and cached
+</li>
+</ul>
+<ul>
+<li>
+allow refresh redirect time &gt; min_refresh time
+</li>
+</ul>
+<ul>
+<li>
+Support for Expires: never
+</li>
+</ul>
+<ul>
+<li>
+mailing list re-created on sf.net
+</li>
+</ul>
+<ul>
+<li>
+Support for Expires: 1.1.1970
+</li>
+</ul>
+<ul>
+<li>
+Fixed synchronize error in printDate
+</li>
+</ul>
+
+<p>
 <strong>0.92</strong> 31.3.2005
 
 <p>
@@ -190,7 +239,7 @@ href="http://www.yahoogroups.com/group/scache">Yahoo!</a></code> mailing list
 subscribers.
 <ul>
 <li>
-cacheobject.genTMP() method made synchonized.  This MAY fix some troubles in
+cacheobject.genTMP() method made synchronized.  This MAY fix some troubles in
 Windoze.
 </li>
 </ul>
@@ -220,7 +269,7 @@ before sending out.
 </ul>
 <ul>
 <li>
-Changed compresed message, log analyzers needs to be updated.
+Changed compressed message, log analyzers needs to be updated.
 </li>
 </ul>
 <ul>
@@ -268,7 +317,7 @@ diff
 </ul>
 <ul>
 <li>
-Documetation: added example large cache configuration
+Documentation: added example large cache configuration
 </li>
 </ul>
 <ul>
@@ -283,7 +332,7 @@ stats.py: increased max.  time difference to 3m+10s
 </ul>
 <ul>
 <li>
-mgr.save() is now synchonized
+mgr.save() is now synchronized
 </li>
 </ul>
 <ul>
@@ -373,7 +422,7 @@ flag_check_interval is timestring
 </ul>
 <ul>
 <li>
-port remamed to http_port, nocaching renamed to no_cache, force_ims_on_reloads
+port renamed to http_port, nocaching renamed to no_cache, force_ims_on_reloads
 renamed to reload_into_ims, cache_swap_low/high, cache_size to cache_swap_size.
 (like Squid cfg)
 </li>
@@ -426,13 +475,13 @@ disable client keepalive on failed POST
 </ul>
 <ul>
 <li>
-do not Exit if main directory can not be created, switch to readonly mode
+do not Exit if main directory can not be created, switch to read-only mode
 instead.
 </li>
 </ul>
 <ul>
 <li>
-do not Exit if UI port can not be binded, turn UI off.
+do not Exit if UI port can not be bind, turn UI off.
 </li>
 </ul>
 <ul>
@@ -480,7 +529,7 @@ cache_vary
 </ul>
 <ul>
 <li>
-handling of Expires: header changed to method described in rfc2616 section
+handling of Expires: header changed to method described in RFC2616 section
 14.21
 </li>
 </ul>
@@ -568,7 +617,7 @@ Send expire header on 304 reply.
 </ul>
 <ul>
 <li>
-If-none-match from client works again.  (forgot to reenable)
+If-none-match from client works again.  (forgot to re-enable)
 </li>
 </ul>
 <ul>
@@ -609,7 +658,7 @@ No lie in -fakegc intro text.  Bad files <em>Will be deleted</em> from cache.
 </ul>
 <ul>
 <li>
-<samp>generate_lastmod</samp> changed into boolean value.  Value 2 brokes all
+<samp>generate_lastmod</samp> changed into boolean value.  Value 2 brakes all
 browsers on the Earth.
 </li>
 </ul>
@@ -687,7 +736,8 @@ no-cache.
 </ul>
 <ul>
 <li>
-check for HTTP/1.1 and enable KA istead of checking for HTTP/1.0 and disabling.
+check for HTTP/1.1 and enable KA instead of checking for HTTP/1.0 and
+disabling.
 </li>
 </ul>
 <ul>
@@ -702,7 +752,7 @@ Improved support for 204-No content.
 </ul>
 <ul>
 <li>
-Fixed Debian packaking: delete logfiles on purge, purge only if not
+Fixed Debian packaging: delete logfiles on purge, purge only if not
 /usr/bin/smartcache exists, new logfile for weekly gc, corrected bad filename
 cookies.cnf.
 </li>
@@ -834,7 +884,7 @@ GC: do not apply multiple modifiers to object when checking for penalty.
 </ul>
 <ul>
 <li>
-More intelligent check for writeable filesystem.
+More intelligent check for write able filesystem.
 </li>
 </ul>
 <ul>
@@ -870,7 +920,7 @@ TCP nagle alg.  is disabled as says wise men on w3c.
 </ul>
 <ul>
 <li>
-improved log synchronisation on log files.
+improved log synchronization on log files.
 </li>
 </ul>
 <ul>
@@ -1000,7 +1050,7 @@ swaplevels for cachesize.
 </ul>
 <ul>
 <li>
-Minor improvment in GC stats reporting.
+Minor improvement in GC stats reporting.
 </li>
 </ul>
 <ul>
@@ -1111,7 +1161,7 @@ makes searches on large caches more useable.
 </ul>
 <ul>
 <li>
-New manual section <a href="ch-advancedt.html#s-refresh">Configurating refresh
+New manual section <a href="ch-advancedt.html#s-refresh">Configuring refresh
 patterns, Section 7.2</a>
 </li>
 </ul>
@@ -1173,7 +1223,7 @@ See also <a href="ch-old.html">Older history of Changes, Chapter 16</a>
 Smart Cache Manual
 
 <address>
-0.92<br>
+0.93<br>
 <br>
 Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
 <br>

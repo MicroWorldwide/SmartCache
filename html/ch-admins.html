@@ -80,7 +80,7 @@ proxy for 25 users.
 <p>
 Test method: The benchmark is simple `give me the same page` test.  I have run
 every test 3 times; highest number was recorded.  Smart Cache configuration:
--nolog -notrace -nofail -local.  Other software has defaults.  Test html page
+-nolog -notrace -nofail -local.  Other software has defaults.  Test HTML page
 was 38314 Bytes long, you can get it from <code><a
 href="http://home.tiscali.cz/~cz210552/retrogames.html">here</a></code>.
 Numbers are in pages/min.  The test execution time was 15 or 20 seconds.
@@ -98,7 +98,7 @@ only Java 1.1 runs faster with more memory available to JVM.
 </ol>
 <ol type="1" start="2" >
 <li>
--server switch has no speed increase effect.  This switch should optimise JVM
+-server switch has no speed increase effect.  This switch should optimize JVM
 for server apps.
 </li>
 </ol>
@@ -239,7 +239,7 @@ serves 910 pages/min.  Do not use native threads under Linux's Java 1.1, it is
 buggy, slow and memory hungry.
 
 <p>
-Linux can use different filesystems.  Do not use vfat unless you need to share
+Linux can use different filesystems.  Do not use VFAT unless you need to share
 your cache with Windows running on the same machine.  In my benchmarks i have
 found that reiser fs (especially with notail,noatime) is much faster than ext2.
 Reiserfs can pack small files together into one disk block which saves a lot of
@@ -262,7 +262,7 @@ over 2 GB.
 <p>
 The best is to store cached data on dedicated physical drive.  You do not need
 to backup it, if drive goes wrong; simply throw it away and plug a new one.
-You can take some used harddrives for that.
+You can take some used hard drives for that.
 
 <p>
 If you are not using dedicated physical drive, than use dedicated partition
@@ -370,7 +370,7 @@ Smart Cache runs when it is recompiled with <code><a
 href="http://gcc.gnu.org/">GCJ</a></code> to native executable.  I have tested
 GCJ 3.2 and there are no problems with it.  This native executable runs faster
 (at least on Linux), but eats more memory.  Is is quite possible that you will
-not able to compile it due to bugs in gcj.
+not able to compile it due to bugs in GCJ.
 
 <p>
 You can build Debian GCJ compiled package <code>scache-native</code> directly
@@ -431,7 +431,7 @@ Both caches needs nearly no CPU power.  They needs fast disk IO.
 <h2>9.6 Smart Cache memory usage</h2>
 
 <p>
-Smart Cache has been optimised for minimal RAM and CPU use.  In normal use (by
+Smart Cache has been optimized for minimal RAM and CPU use.  In normal use (by
 single browsing user), it requires only about 400Kb RAM from JVM.  To get total
 size of required memory, you must add the shared dynamic (DLL) code loaded by
 the Java Runtime itself, which depends on Java versions, Java runtime options
@@ -460,7 +460,7 @@ See LXOPT documentation for more info.
 
 <p>
 Another memory gain is to add -norestart option just before -ms1m on Java
-invocation commandline.  This do not starts another copy of Java with PM
+invocation command line.  This do not starts another copy of Java with PM
 libraries (used for AWT).
 
 <hr>
@@ -565,7 +565,7 @@ new levels using <em>-rebalance</em> command line option.
 <p>
 For classic design filesystems which does not uses trees for indexing directory
 (ext2,fat) there should not be more than 100 subdirectories.  Modern
-filesystems hpfs, ntfs, reiserfs, xfs can handle more without any performance
+filesystems HPFS, NTFS, reiserfs, xfs can handle more without any performance
 problems.  See <code>scache.cnf</code> for cachesize vs swaplevels table.
 
 <hr>
@@ -652,7 +652,7 @@ Allow statement can have optionally netmask or number of bits appended.
 Smart Cache Manual
 
 <address>
-0.92<br>
+0.93<br>
 <br>
 Radim Kolar <code><a href="mailto:hsn_nospam_at.netmag.dot.cz">hsn_nospam_at.netmag.dot.cz</a></code><br>
 <br>
